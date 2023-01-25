@@ -15,8 +15,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "src" //added to make clean import statments possible
+    "baseUrl": "src", //added to make clean import statments possible
+    "noImplicitAny": true //added to show warning when ts infers the type "any"
   },
-  "include": ["src"],
+  "include": ["src", "tsconfig.node.json"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
