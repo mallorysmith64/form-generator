@@ -4,7 +4,7 @@ const Templates = () => {
 
     return (
        <>
-         <h1>Hi</h1>
+         <h1>This is the templates page.</h1>
        </>
     );
  };

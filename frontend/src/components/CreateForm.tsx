@@ -4,7 +4,7 @@ const CreateForm = () => {
 
     return (
        <>
-         <h1>Hi</h1>
+         <h1>This is the create form page.</h1>
        </>
     );
  };
