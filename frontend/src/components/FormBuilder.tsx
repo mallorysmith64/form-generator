@@ -6,63 +6,57 @@ const items = [
    {
      key: "Header",
      name: "Header Text",
-     icon: "fa fa-heading",
-     static: true,
+     icon: "fa fa-heading"
    },
    {
      key: "Label",
      name: "Label",
      icon: "fa fa-font",
-     static: true,
    },
    {
      key: "Paragraph",
      name: "Paragraph",
      icon: "fa fa-paragraph",
-     static: true,
    },
    {
      key: "LineBreak",
      name: "Line Break",
-     icon: "fa fa-arrows-h",
+     icon: "fa fa-arrows-alt-h"
    },
    {
      key: "Dropdown",
      name: "Dropdown",
-     icon: "fa fa-caret-square-o-down",
+     icon: "far fa-caret-square-down",
    },
    {
      key: "Tags",
      name: "Tags",
-     icon: "fa fa-tags",
+     icon: "fas fa-tags",
    },
    {
      key: "Checkboxes",
      name: "Checkboxes",
-     icon: "fa fa-check-square-o",
+     icon: "far fa-check-square",
    },
    {
      key: "RadioButtons",
      name: "Multiple Choice",
-     icon: "fa fa-dot-circle-o",
+     icon: "far fa-dot-circle",
    },
    {
      key: "TextInput",
      name: "Text Input",
      icon: "fa fa-font",
-     static: true,
    },
    {
      key: "NumberInput",
      name: "Number Input",
      icon: "fa fa-plus",
-     static: true,
    },
    {
      key: "TextArea",
      name: "Multi-line Input",
      icon: "fa fa-text-height",
-     static: true,
    },
    {
      key: "Image",
@@ -80,18 +74,18 @@ const items = [
    {
      key: "Range",
      name: "Range",
-     icon: "fa fa-sliders",
+     icon: "fas fa-sliders-h",
    },
-   {
-     key: "Email",
-     name: "Email",
-     icon: "fa fa-at",
-   },
-   {
-     key: "Date",
-     name: "Date",
-     icon: "fa fa-calendar",
-   },
+  //  {
+  //    key: "Email",
+  //    name: "Email",
+  //    icon: "fas fa-envelope",
+  //  },
+  //  {
+  //    key: "Date",
+  //    name: "Date",
+  //    icon: "far fa-calendar-alt",
+  //  },
    {
      key: "Signature",
      name: "Signature",
