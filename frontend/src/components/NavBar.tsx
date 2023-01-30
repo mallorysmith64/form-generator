@@ -28,7 +28,7 @@ const NavBar = () => {
 
             <div id="navbarBasicExample" className="navbar-menu">
                <div className="navbar-start">
-                  <Link to="/CreateForm" className="navbar-item">
+                  <Link to="/FormBuilder" className="navbar-item">
                      Create Form
                   </Link>
 
