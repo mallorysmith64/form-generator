@@ -36,6 +36,10 @@ const NavBar = () => {
                      Templates
                   </Link>
 
+                  <Link to="/Publish" className="navbar-item">
+                     Publish
+                  </Link>
+
                   {/* <div className="navbar-item has-dropdown is-hoverable">
                   <Link to="/Support" className="navbar-item">
                      Support
