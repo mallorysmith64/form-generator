@@ -16,7 +16,7 @@ function App() {
             <Routes>
                <Route path="/" element={<HomePage />} />
                <Route path="/FormBuilder" element={<FormBuilder />} />
-               <Route path="/Publish" element={<Publish />} />
+               <Route path="/Publish" element={<Publish data={undefined} formData={undefined} />} />
                <Route path="/Templates" element={<Templates />} />
             </Routes>
             <Footer />
