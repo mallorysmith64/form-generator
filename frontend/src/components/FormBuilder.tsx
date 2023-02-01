@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { ReactFormBuilder, ReactFormGenerator } from "react-form-builder2";
 import "react-form-builder2/dist/app.css";
-import FormGenerator from "./FormGenearator";
 
 interface FormBuilderProps {
    toolbarItems: {
@@ -13,8 +13,8 @@ interface FormBuilderProps {
    }[];
    onSave: (data: any) => void;
    url: string;
-   e:(data:any) => void;
-   data:(data:any) => void;
+   e: (data: any) => void;
+   data: (data: any) => void;
 }
 
 const items = [
@@ -129,27 +129,45 @@ function FormBuilder() {
    const [formData, setFormData] = useState([]);
    // const [submitted, setSubmitted] = useState(false);
 
-
-   const handleSave = () => {
-      localStorage.setItem("formData", JSON.stringify(formData))
-      // e.preventDefault();
-      console.log(formData)
-      setFormData(formData)
-      console.log(formData)
-      // setSubmitted(true);
+   const submitForm = async (e: { preventDefault: () => void; }) => {
+      e.preventDefault()
+      try {
+         e.preventDefault();
+         const resp = await axios.post(`http://localhost:8080/Publish`, formData);
+         localStorage.setItem("formData", JSON.stringify(resp.data));
+         console.log(resp.data);
+         setFormData(resp.data);
+      } catch (error) {
+         console.error(`${error}`);
+      }
    };
 
    return (
       <>
-         <ReactFormBuilder toolbarItems={items} url="http://localhost:8080/FormBuilder" saveUrl="http://localhost:8080/Publish"/>
-         <button onClick={handleSave}>Publish</button>
-         {/* <FormGenerator data={}/> */}
-        
+         <form onSubmit={submitForm}>
+            <ReactFormBuilder
+               toolbarItems={items}
+               url="http://localhost:8080/FormBuilder"
+               saveUrl="http://localhost:8080/Publish"
+            />
+            <button type="submit">Publish</button>
+         </form>
       </>
    );
 }
 
 export default FormBuilder;
+
+// const handleSave = (e: { target: { value: React.SetStateAction<never[]>; }; }) => {
+//    setFormData(e.target.value);
+//  };
+
+// const handleChange = (e: { target: { id: any; value: any; }; }) => {
+//    setFormData({
+//      ...formData,
+//      [e.target.id]: e.target.value,
+//    });
+//  };
 
 //  edit data={form}
 //  onChange={handleUpdate}
