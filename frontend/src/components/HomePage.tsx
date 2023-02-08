@@ -1,10 +1,12 @@
-import React from 'react'
+import React from "react";
+import "./index.scss";
 
 const HomePage = () => {
-
    return (
       <>
-         <h1>Hello</h1>
+         <header className="header-wrapper">
+            <h1 className="header">Create any form with Form Factory</h1>
+         </header>
       </>
    );
 };

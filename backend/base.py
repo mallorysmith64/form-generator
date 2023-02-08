@@ -1,13 +1,28 @@
 import os
-from flask import Flask
+from flask import Flask, request
+from flask_restful import reqparse, abort, Api, Resource
 from pymongo import MongoClient
 from dotenv import load_dotenv
+from flask import jsonify
+from flask_cors import CORS
 
 load_dotenv()
 USER = os.getenv("USER")
 PASSWORD = os.getenv("PASSWORD")
 HOST = os.getenv("HOST")
 DB_NAME = os.getenv("DB_NAME")
+
+app = Flask(__name__)
+api = Api(app)
+CORS(app)
+db = MongoClient()
+
+Forms = {
+    'form1': {'form_name': 'Lorem Ipsum'},
+    'form2': {'form_name': 'Lorem Ipsum 2'},
+    'form3': {'form_name': 'Lorem Ipsum 3'},
+}
+
 
 # def mongodb_conn():
 try:
@@ -17,25 +32,35 @@ try:
     # Create a New Database - dictionary style
     form_db = database['form_generator_db']
     # Create a Collection - dictionary style
-    col_clients = form_db['clients']
+    collection_forms = form_db['forms']
     # Insert a Single Document
-    document = {'name': 'john doe', 'email': "johndoe@gmail.com"}
-    col_clients.insert_one(document)
+    # document = {'name': 'john doe', 'email': "johndoe@gmail.com"}
+    # collection_forms.insert_one(document)
     print(f"\nCollections in the Database form_generator_db: ",
           form_db.list_collection_names())
-    print(f"\nDocuments in the clients Collection")
-    client_docs = col_clients.find()
+    print(f"\nDocuments in the forms Collection")
+    form_docs = collection_forms.find()
     # Print each Document
-    for doc in client_docs:
+    for doc in form_docs:
         print(doc)
 except Exception as e:
     print(f"Error - Could not connect to mongo: {e}")
 
 
-app = Flask(__name__)
-app.config.from_pyfile('settings.py')
-
-
 @app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+def HelloWorld():
+    resp = jsonify({"message": "Hello"})
+    return resp
+
+
+@app.route('/Publish', methods=["POST"])
+def save_data():
+    data = request.get_json()  # Get data from the request
+    collection_forms.insert_one(data)  # Save the data to the collection
+    return "Data saved successfully", 201
+
+
+cors = CORS(app, resources={'/*': {'origins': 'http://localhost:5000'}})
+
+if __name__ == '__main__':
+    app.run(debug=True)
