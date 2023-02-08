@@ -1,7 +1,6 @@
-
 import axios from "axios";
-import React, { useState } from "react";
-import { ReactFormBuilder, ReactFormGenerator } from "react-form-builder2";
+import React, { FormEventHandler, useState } from "react";
+import { ReactFormBuilder } from "react-form-builder2";
 import "react-form-builder2/dist/app.css";
 
 interface FormBuilderProps {
@@ -125,47 +124,56 @@ const items = [
 ];
 
 function FormBuilder() {
-   const [data, setData] = useState({ key: "", name: "", icon: "", static: "", content: "" });
-   // console.log("b1", formData);
+   const [data, setData] = useState({
+      key: "",
+      name: "",
+      icon: "",
+      static: true,
+      content: "",
+   });
+   console.log("b1", data);
 
    const handleSubmit = async (e: { preventDefault: () => void }) => {
       e.preventDefault();
       try {
-         const resp = await axios.post(`http://localhost:5000/Publish`, data);
+         const resp = await axios.post("http://localhost:5000/Publish", data);
+         console.log(resp.data);
          sessionStorage.setItem("token", resp.data);
-         setData(resp.data)
-         console.log("post form", resp.data);
          console.log("Form submitted successfully", resp.data);
       } catch (error) {
          console.error("Unsuccessful form submission", error);
       }
    };
 
-   // const updateForm = (e) => {
-   //    setData({
-   //       ...data,
-   //       [e.target.id]: e.target.value,
-   //    });
-   // };
+   const updateForm: FormEventHandler<HTMLFormElement> = (e) => {
+      const target = e.target as HTMLInputElement;
+      console.log(target);
+      setData({ ...data, [target.id]: target.value });
+   };
 
    return (
       <>
-         <ReactFormBuilder toolbarItems={items} url="/FormBuilder" saveUrl="/Publish" />
-
-         <form onSubmit={handleSubmit}>
+         <form onSubmit={handleSubmit} onChange={updateForm}>
+            <ReactFormBuilder
+               toolbarItems={items}
+               url="http://localhost:8080/FormBuilder"
+               saveUrl="http://localhost:5000/Publish"
+            />
             <button type="submit">Publish</button>
          </form>
-
-         {/* <ReactFormGenerator
-            data={[]}
-            form_action="/data"
-            form_method="POST"
-            action_name="Publish"
-         /> */}
       </>
    );
 }
 export default FormBuilder;
+
+{
+   /* <ReactFormGenerator
+            data={[]}
+            form_action="/data"
+            form_method="POST"
+            action_name="Publish"
+         /> */
+}
 
 // localStorage.setItem("formData", JSON.stringify(resp.data));
 
