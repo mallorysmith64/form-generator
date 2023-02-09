@@ -124,14 +124,7 @@ const items = [
 ];
 
 function FormBuilder() {
-   const [data, setData] = useState({
-      key: "",
-      name: "",
-      icon: "",
-      static: true,
-      content: "",
-   });
-   console.log("b1", data);
+   const [data, setData] = useState({});
 
    const handleSubmit = async (e: { preventDefault: () => void }) => {
       e.preventDefault();
