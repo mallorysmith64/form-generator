@@ -60,6 +60,27 @@ def save_data():
     return "Data saved successfully", 201
 
 
+# delete all documents in form collection
+# db = database["form_generator_db"]
+# collection_forms = db["forms"]
+# all_docs = collection_forms.delete_many({})
+# print(all_docs.deleted_count, "documents deleted.")
+
+# delete many documents in form collection via regex
+# db = database["form_generator_db"]
+# collection_forms = db["forms"]
+# query = {"test": {"$regex": "^t"}}
+# docs = collection_forms.delete_many(query)
+# print(docs.deleted_count, "documents deleted.")
+
+# delete single document in form collection
+# db = database["form_generator_db"]
+# collection_forms = db["forms"]
+# query = { "test": "test" }
+# doc = collection_forms.delete_one(query)
+# print(doc.deleted_count, "was deleted.")
+
+
 cors = CORS(app, resources={'/*': {'origins': 'http://localhost:5000'}})
 
 if __name__ == '__main__':
