@@ -1,55 +1,99 @@
 .header-wrapper {
-    display:flex;
-    justify-content: center;
-    padding:5em 0em 12em 0em;
-    font-size:2.5em;
+   display: flex;
+   justify-content: center;
+   padding: 5em 0em 12em 0em;
+   font-size: 2.5em;
 }
 
 header {
-    color:black;
+   color: black;
 }
 
 .App {
-    padding-top:4em;
-    text-align: center;
-  }
-  
-  .App-link {
-    color: #61dafb;
-  }
-  
-  ul > li {
-    list-style-type: none;
-  }
-  
-  /* body {
+   padding-top: 4em;
+   text-align: center;
+}
+
+.App-link {
+   color: #61dafb;
+}
+
+ul > li {
+   list-style-type: none;
+}
+
+/* body {
     font-size: 14px;
     font-weight: 300;
     width: 1200px;
     margin: 0 auto;
   } */
-  
-  .react-form-builder {
-    width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .modal {
-    background: rgba(0, 0, 0, 0.3);
-  }
-  
-  .modal-content {
-    padding: 30px;
-    max-height: 800px;
-    overflow-y: auto
-  }
-  
-  .Sortable {
-    background-color:white;
-  }
-  
-  
-  
-  
-  
-  
+
+.react-form-builder {
+   width: 1200px;
+   margin: 0 auto;
+}
+
+.modal {
+   background: rgba(0, 0, 0, 0.3);
+}
+
+.modal-content {
+   padding: 30px;
+   max-height: 800px;
+   overflow-y: auto;
+}
+
+.Sortable {
+   background-color: white;
+}
+
+// copy link publish page below:
+.card {
+   width:50em;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  width:50em;
+}
+
+.card-header-title {
+  font-size:2em;
+}
+
+.copy-link-input {
+   display:flex;
+   padding: 0.7em;
+   font-size: 2em;
+   border: 0.1em solid #cccccc;
+   border-right: none;
+   outline: none;
+   width:20em;
+}
+
+.copy-link-input:hover {
+   background: #eeeeee;
+}
+
+.copy-link-btn {
+   // display: flex;
+   // align-items: center;
+   // justify-content: center;
+   flex-shrink: 0;
+   width: 2em;
+   height: 2em;
+   background: #ffffff;
+   border: 0.2em solid #cccccc;
+   cursor: pointer;
+}
+
+.copy-link-button:hover {
+   background: #cccccc;
+}
+
+.row {
+   display:flex;
+   flex-direction: row;
+}

@@ -17,6 +17,7 @@ function App() {
                <Route path="/" element={<HomePage />} />
                <Route path="/FormBuilder" element={<FormBuilder />} />
                <Route path="/Publish" element={<Publish/>} />
+               <Route path="/Publish/:id" element={<Publish/>}/>
                <Route path="/Templates" element={<Templates />} />
             </Routes>
             <Footer />
