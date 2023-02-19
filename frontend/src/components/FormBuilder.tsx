@@ -1,6 +1,7 @@
 import axios from "axios";
-import React, { FormEventHandler, useState } from "react";
+import React, { FormEventHandler, useEffect, useState } from "react";
 import { ReactFormBuilder } from "react-form-builder2";
+import { useNavigate } from "react-router-dom";
 import "react-form-builder2/dist/app.css";
 
 interface FormBuilderProps {
@@ -125,14 +126,15 @@ const items = [
 
 function FormBuilder() {
    const [data, setData] = useState({});
+   const navigate = useNavigate();
 
    const handleSubmit = async (e: { preventDefault: () => void }) => {
       e.preventDefault();
       try {
          const resp = await axios.post("http://localhost:5000/Publish", data);
-         console.log(resp.data);
-         sessionStorage.setItem("token", resp.data);
-         console.log("Form submitted successfully", resp.data);
+         // sessionStorage.setItem("token", resp.data);
+         console.log("Form submitted successfully", resp);
+         navigate("/Publish");
       } catch (error) {
          console.error("Unsuccessful form submission", error);
       }
@@ -146,14 +148,16 @@ function FormBuilder() {
 
    return (
       <>
-         <form onSubmit={handleSubmit} onChange={updateForm}>
-            <ReactFormBuilder
-               toolbarItems={items}
-               url="http://localhost:8080/FormBuilder"
-               saveUrl="http://localhost:5000/Publish"
-            />
-            <button type="submit">Publish</button>
-         </form>
+         <div>
+            <form onSubmit={handleSubmit} onChange={updateForm}>
+               <ReactFormBuilder
+                  toolbarItems={items}
+                  url="http://localhost:8080/FormBuilder"
+                  saveUrl="http://localhost:5000/Publish"
+               />
+               <button type="submit">Publish</button>
+            </form>
+         </div>
       </>
    );
 }
@@ -173,35 +177,3 @@ export default FormBuilder;
 // import { useNavigate } from "react-router-dom"; //useHistory was replaced by useNavigate
 // const navigate = useNavigate();
 // navigate("/Publish");
-
-// const handleSave = (e: { target: { value: React.SetStateAction<never[]>; }; }) => {
-//    setFormData(e.target.value);
-//  };
-
-// const handleChange = (e: { target: { id: any; value: any; }; }) => {
-//    setFormData({
-//      ...formData,
-//      [e.target.id]: e.target.value,
-//    });
-//  };
-
-//  edit data={form}
-//  onChange={handleUpdate}
-//  onSubmit={handleSubmit}
-//  renderEditForm={props => <FormElementsEdit {...props}/>}
-//  {
-//    key: "Email",
-//    name: "Email",
-//    icon: "fas fa-envelope",
-//  },
-//  {
-//    key: "Date",
-//    name: "Date",
-//    icon: "far fa-calendar-alt",
-//  },
-// {
-//   key: "Image",
-//   name:"Image",
-//   static:true,
-//   content:"Placeholder"
-// },

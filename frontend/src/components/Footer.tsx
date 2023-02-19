@@ -8,7 +8,7 @@ const Footer = () => {
          <footer className="footer">
             <div className="content has-text-centered">
                <p>
-                  <p>Copyright &copy; {getYear} Form Factory Corp. All rights reserved.</p>
+                  <span>Copyright &copy; {getYear} Form Factory Corp. All rights reserved.</span>
                </p>
             </div>
          </footer>
