@@ -1,4 +1,5 @@
 import os
+from bson import ObjectId
 from flask import Flask, request
 from flask_restful import reqparse, abort, Api, Resource
 from pymongo import MongoClient
@@ -56,6 +57,8 @@ def HelloWorld():
 @app.route('/Publish', methods=["POST"])
 def save_data():
     data = request.get_json()  # Get data from the request
+    if not data or '_id' in data and not data["_id"]: #check for empty _id objects
+        data["_id"] = ObjectId(data["_id"])
     collection_forms.insert_one(data)  # Save the data to the collection
     return "Data saved successfully", 201
 
