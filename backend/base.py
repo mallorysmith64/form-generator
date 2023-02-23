@@ -57,10 +57,23 @@ def HelloWorld():
 @app.route('/Publish', methods=["POST"])
 def save_data():
     data = request.get_json()  # Get data from the request
-    if not data or '_id' in data and not data["_id"]: #check for empty _id objects
-        data["_id"] = ObjectId(data["_id"])
-    collection_forms.insert_one(data)  # Save the data to the collection
-    return "Data saved successfully", 201
+    # check if data is empty or contains empty _id field
+    if not data or '_id' in data and not data["_id"]:
+        return "No data provided", 400
+    else:
+        if "_id" in data:
+            data["_id"] = ObjectId(data["_id"])
+
+            task_data = []  # get list of task data items
+            for item in task_data:
+                # only include fields that have been updated, do not include "Placeholder" text
+                placeholder_text = "Placeholder"
+                updated_fields = {key: val for key, val in item.items() if key != 'content' or (
+                    key == 'content' and val != placeholder_text)}
+                task_data.append(updated_fields)
+                # Save the data to the collection
+                collection_forms.insert_one(data)
+            return "Data saved successfully", 201
 
 
 # delete all documents in form collection

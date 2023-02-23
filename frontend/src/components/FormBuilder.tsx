@@ -132,11 +132,11 @@ function FormBuilder() {
       e.preventDefault();
       try {
          const resp = await axios.post("http://localhost:5000/Publish", data);
-         // sessionStorage.setItem("token", resp.data);
          console.log("Form submitted successfully", resp);
          navigate("/Publish");
       } catch (error) {
          console.error("Unsuccessful form submission", error);
+         alert("Form submission was unsuccessful. Please try again.");
       }
    };
 
