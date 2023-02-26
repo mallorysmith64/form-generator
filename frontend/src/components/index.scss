@@ -50,27 +50,27 @@ ul > li {
 
 // copy link publish page below:
 .card {
-   width:50em;
+   width: 60em;
 }
 
 .card-header {
-  display: flex;
-  flex-direction: column;
-  width:50em;
+   display: flex;
+   flex-direction: column;
+   width: 100%;
 }
 
 .card-header-title {
-  font-size:2em;
+   font-size: 2em;
 }
 
 .copy-link-input {
-   display:flex;
+   display: flex;
    padding: 0.7em;
    font-size: 2em;
    border: 0.1em solid #cccccc;
    border-right: none;
    outline: none;
-   width:20em;
+   width: 95%;
 }
 
 .copy-link-input:hover {
@@ -78,9 +78,6 @@ ul > li {
 }
 
 .copy-link-btn {
-   // display: flex;
-   // align-items: center;
-   // justify-content: center;
    flex-shrink: 0;
    width: 2em;
    height: 2em;
@@ -94,6 +91,6 @@ ul > li {
 }
 
 .row {
-   display:flex;
+   display: flex;
    flex-direction: row;
 }

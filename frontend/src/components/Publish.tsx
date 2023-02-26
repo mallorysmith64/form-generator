@@ -1,30 +1,32 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import FormBuilder from "./FormBuilder";
 import axios from "axios";
 import { useCopyToClipboard } from "usehooks-ts";
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const baseURL = "http://form.formgenerator.com";
-
-const Publish = (props: any) => {
+const Publish = () => {
    const [value, copy] = useCopyToClipboard();
+   const [formUrl, setFormUrl] = useState<string>("");
+   const { formId } = useParams();
+   console.log("b0", formId);
 
-   // const [data, setData] = useState({});
-   // const { id } = useParams();
-   const [url, setUrl] = useState(`${baseURL}/id`);
-   console.log(url);
+   const baseURL = "http://localhost:5000/Publish/";
 
-   // const getForm = async (id: any) => {
-   //    const resp = await axios.get(`http://localhost:5000/Publish${data}`);
-   //    console.log("form id: ", resp.data);
-   //    setData(resp.data);
-   //    console.log("set the data", resp.data);
-   // };
+   const getForm = async (formId: string) => {
+      try {
+         const resp = await axios.get(`${baseURL}${formId}`);
+         console.log(resp.data);
+         const formUrl = `${baseURL}${String(resp.data.form_id)}`; // format url
+         setFormUrl(formUrl);
+         console.log(formUrl);
+      } catch (error) {
+         console.error("Unsuccessful form submission", error);
+      }
+   };
 
-   // useEffect(() => {
-   //    getForm(data);
-   // }, [data]);
+   useEffect(() => {
+      getForm(formId);
+   }, [formId]);
 
    return (
       <>
@@ -32,12 +34,12 @@ const Publish = (props: any) => {
             <header className="card-header">
                <p className="card-header-title">Link to Share</p>
                <div className="row">
-                  <input className="copy-link-input" value={url}></input>
-                  <button className="button copy-link-btn" onClick={() => copy(url)}>
+                  <input className="copy-link-input" value={formUrl}></input>
+                  <button className="button copy-link-btn" onClick={() => copy(formUrl)}>
                      <i className="fas fa-copy"></i>
                   </button>
-                  <p>Copied value: {value ?? "Nothing is copied yet!"}</p>
                </div>
+               <p>Copied value: {value ?? "Nothing is copied yet!"}</p>
             </header>
          </div>
       </>
@@ -45,18 +47,5 @@ const Publish = (props: any) => {
 };
 
 export default Publish;
-
-// const [data, setData] = useState({});
-// const [id] = useState(props.match.params.id);
-
-// const getForm = async (id: any) => {
-//    const resp = await axios.get(`http://localhost:5000/Publish${id}`);
-//    console.log("form id", resp.data);
-//    setData(resp.data);
-// };
-
-// useEffect(() => {
-//    getForm(id);
-// }, [id]);
 
 // if (!data) return "null";

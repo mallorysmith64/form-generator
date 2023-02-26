@@ -133,7 +133,9 @@ function FormBuilder() {
       try {
          const resp = await axios.post("http://localhost:5000/Publish", data);
          console.log("Form submitted successfully", resp);
-         navigate("/Publish");
+         const formId = resp.data.form_id;
+         console.log(`Form submitted with ID: ${formId}`);
+         navigate(`/Publish/${formId}`); // Navigate to the Publish component with the formId as a URL parameter
       } catch (error) {
          console.error("Unsuccessful form submission", error);
          alert("Form submission was unsuccessful. Please try again.");
@@ -173,7 +175,3 @@ export default FormBuilder;
 }
 
 // localStorage.setItem("formData", JSON.stringify(resp.data));
-
-// import { useNavigate } from "react-router-dom"; //useHistory was replaced by useNavigate
-// const navigate = useNavigate();
-// navigate("/Publish");
