@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 
 function FormView() {
    const [formUrl, setFormUrl] = useState<string>("");
-   // const [formData, setFormData] = useState({});
    const { formId } = useParams();
 
    const baseURL = "http://localhost:5000/Publish/";
@@ -27,9 +26,7 @@ function FormView() {
    return (
       <>
          <div>
-            <h1>This is the form view page.</h1>
             <ReactFormBuilder toolbarItems={[]} />
-
          </div>
       </>
    );

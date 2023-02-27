@@ -32,6 +32,15 @@ ul > li {
 .react-form-builder {
    width: 1200px;
    margin: 0 auto;
+   padding-top: 2em;
+}
+
+.react-form-builder-toolbar {
+   padding-top: 1em;
+}
+
+.react-form-builder-toolbar > h4 {
+   display: none;
 }
 
 .modal {
@@ -94,3 +103,8 @@ ul > li {
    display: flex;
    flex-direction: row;
 }
+
+//hide "Toolbox" text only from FormView page
+// div > h4 {
+//    display:none;
+// }
