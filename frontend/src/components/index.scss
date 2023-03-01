@@ -30,7 +30,7 @@ ul > li {
   } */
 
 .react-form-builder {
-   width: 1200px;
+   width: 100em;
    margin: 0 auto;
    padding-top: 2em;
 }
@@ -55,6 +55,14 @@ ul > li {
 
 .Sortable {
    background-color: white;
+}
+
+.publish-btn {
+   padding: 2em 8em 2em 0em;
+}
+
+.publish-btn > button {
+   min-width: 11.25em;
 }
 
 // copy link publish page below:
@@ -108,3 +116,106 @@ ul > li {
 // div > h4 {
 //    display:none;
 // }
+
+// static view form css for testing purposes
+.view-react-form-builder {
+   border: 1px solid #ddd;
+   background: #fafafa;
+   padding: 2em;
+   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
+   min-height: 750px;
+   width: 100%;
+
+   .view-form-group {
+      margin-bottom: 15px;
+   }
+
+   label {
+      font-weight: normal;
+   }
+
+   .view-form-control {
+      display: block;
+      width: 100%;
+      height: calc(1.5em + 0.75rem + 2px);
+      padding: 0.375rem 0.75rem;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+   }
+
+   select.view-form-control {
+      height: calc(1.5em + 0.75rem + 2px);
+      padding-right: 2.5rem;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 5L0 1h4l-2 4z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      background-size: 8px 10px;
+   }
+
+   .view-form-check {
+      display: block;
+      margin-bottom: 0.5rem;
+   }
+
+   .view-form-check-input {
+      position: relative;
+      margin-right: 0.5rem;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      // -webkit-print-color-adjust: exact;
+      // color-adjust: exact;
+      display: inline-block;
+      vertical-align: middle;
+      background-origin: border-box;
+      user-select: none;
+      width: 1rem;
+      height: 1rem;
+      border: 1px solid #adb5bd;
+      background-color: #fff;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+         box-shadow 0.15s ease-in-out;
+   }
+
+   .view-form-check-input[type="checkbox"] {
+      border-radius: 0.25rem;
+   }
+
+   .view-form-check-input[type="radio"] {
+      border-radius: 50%;
+   }
+
+   .view-form-check-input:checked[type="checkbox"] {
+      background-color: #3490dc;
+      border-color: #3490dc;
+   }
+
+   .view-form-check-input:checked[type="radio"] {
+      background-color: #3490dc;
+      border-color: #3490dc;
+   }
+
+   .view-form-check-label {
+      margin-bottom: 0;
+      padding-left: 1.5rem;
+      cursor: pointer;
+   }
+}
+
+.submit-btn {
+   padding: 2em 8em 2em 0em;
+}
+
+.submit-btn > button {
+   min-width: 11.25em;
+}

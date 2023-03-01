@@ -12,8 +12,6 @@ function App() {
    return (
       <div className="App">
          <Router>
-            <NavBar />
-
             <Routes>
                <Route path="/" element={<HomePage />} />
                <Route path="/FormBuilder" element={<FormBuilder />} />

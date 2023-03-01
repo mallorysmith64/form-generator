@@ -3,6 +3,7 @@ import React, { FormEventHandler, useEffect, useState } from "react";
 import { ReactFormBuilder } from "react-form-builder2";
 import { useNavigate } from "react-router-dom";
 import "react-form-builder2/dist/app.css";
+import NavBar from "./NavBar";
 
 interface FormBuilderProps {
    toolbarItems: {
@@ -150,6 +151,7 @@ function FormBuilder() {
 
    return (
       <>
+         <NavBar />
          <div>
             <form onSubmit={handleSubmit} onChange={updateForm}>
                <ReactFormBuilder
@@ -157,7 +159,11 @@ function FormBuilder() {
                   url="http://localhost:8080/FormBuilder"
                   saveUrl="http://localhost:5000/Publish"
                />
-               <button type="submit">Publish</button>
+               <div className="publish-btn">
+                  <button type="submit" className="button is-link is-large">
+                     Publish
+                  </button>
+               </div>
             </form>
          </div>
       </>

@@ -4,6 +4,7 @@ import axios from "axios";
 import { useCopyToClipboard } from "usehooks-ts";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import NavBar from "./NavBar";
 
 const Publish = () => {
    const [value, copy] = useCopyToClipboard();
@@ -37,6 +38,7 @@ const Publish = () => {
 
    return (
       <>
+         <NavBar />
          <div className="card">
             <header className="card-header">
                <p className="card-header-title">Link to Share</p>
