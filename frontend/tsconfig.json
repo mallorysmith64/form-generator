@@ -15,7 +15,7 @@
     "isolatedModules": true,
     "noEmit": false, //change to false so app compiles even with tsx errors
     "noEmitOnError": false,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "baseUrl": "src", //added to make clean import statments possible
     "noImplicitAny": true //added to show warning when ts infers the type "any"
   },
