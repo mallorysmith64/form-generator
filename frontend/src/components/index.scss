@@ -1,17 +1,22 @@
+html,
+body {
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+}
+
 .header-wrapper {
    display: flex;
    justify-content: center;
-   padding: 5em 0em 12em 0em;
+   align-items: center;
+   position: relative;
    font-size: 2.5em;
+   min-height: calc(100vh - 2em);
+   padding: 0em;
 }
 
 header {
    color: black;
-}
-
-.App {
-   padding-top: 4em;
-   text-align: center;
 }
 
 .App-link {
@@ -22,15 +27,43 @@ ul > li {
    list-style-type: none;
 }
 
-/* body {
-    font-size: 14px;
-    font-weight: 300;
-    width: 1200px;
-    margin: 0 auto;
-  } */
+.navbar {
+   background: #f0f0f0ec;
+}
+
+body {
+   display: flex;
+   position: relative;
+   flex-direction: column;
+   color: #404d5b;
+   margin: 0;
+}
+
+.footer {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   margin-bottom: 0em;
+   background: #f0f0f0ec;
+   min-height: 0.1em;
+   padding: 1em 0.5em 0.5em 1em;
+}
+
+.modal {
+   background: rgba(0, 0, 0, 0.3);
+}
+
+.modal-content {
+   padding: 30px;
+   max-height: 800px;
+   overflow-y: auto;
+}
 
 .react-form-builder {
-   width: 100em;
+   width: 60em;
    margin: 0 auto;
    padding-top: 2em;
 }
@@ -58,7 +91,9 @@ ul > li {
 }
 
 .publish-btn {
-   padding: 2em 8em 2em 0em;
+   display: flex;
+   justify-content: center;
+   padding: 2em 0em 2em 33em;
 }
 
 .publish-btn > button {

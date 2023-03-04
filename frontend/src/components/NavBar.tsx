@@ -1,16 +1,21 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import test_logo from "../img/test_logo.jpg";
+// import { useLocation } from "react-router-dom";
 
 const NavBar = () => {
+   // const { pathname } = useLocation();
+   // console.log(pathname);
+
    return (
       <>
          <nav className="navbar" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
-               <Link to="/#" className="navbar-item">
+               {/* <Link to="/#" className="navbar-item">
                   <img src={test_logo} width="30" height="30" />
-                  <Link to="/#" className="navbar-item">
-                     Form Builder
-                  </Link>
+               </Link> */}
+               <Link to="/#" className="navbar-item">
+                  Form Factory
                </Link>
 
                <a
@@ -32,15 +37,16 @@ const NavBar = () => {
                      Create Form
                   </Link>
 
-                  <Link to="/Templates" className="navbar-item">
+                  {/* <Link to="/Templates" className="navbar-item">
                      Templates
-                  </Link>
+                  </Link> */}
 
                   <Link to="/Publish" className="navbar-item">
                      Publish
                   </Link>
 
-                  {/* <div className="navbar-item has-dropdown is-hoverable">
+                  {/* 
+                  <div className="navbar-item has-dropdown is-hoverable">
                   <Link to="/Support" className="navbar-item">
                      Support
                   </Link>
@@ -54,7 +60,7 @@ const NavBar = () => {
                   </div> */}
                </div>
 
-               <div className="navbar-end">
+               {/* <div className="navbar-end">
                   <div className="navbar-item">
                      <div className="buttons">
                         <Link to="/SignUp" className="button is-primary">
@@ -66,7 +72,7 @@ const NavBar = () => {
                         </Link>
                      </div>
                   </div>
-               </div>
+               </div> */}
             </div>
          </nav>
       </>

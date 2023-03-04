@@ -152,20 +152,18 @@ function FormBuilder() {
    return (
       <>
          <NavBar />
-         <div>
-            <form onSubmit={handleSubmit} onChange={updateForm}>
-               <ReactFormBuilder
-                  toolbarItems={items}
-                  url="http://localhost:8080/FormBuilder"
-                  saveUrl="http://localhost:5000/Publish"
-               />
-               <div className="publish-btn">
-                  <button type="submit" className="button is-link is-large">
-                     Publish
-                  </button>
-               </div>
-            </form>
-         </div>
+         <form className="form" onSubmit={handleSubmit} onChange={updateForm}>
+            <ReactFormBuilder
+               url="http://localhost:5000/NewForm"
+               toolbarItems={items}
+               saveUrl="http://localhost:5000/Publish"
+            />
+            <div className="publish-btn">
+               <button type="submit" className="button is-link is-large">
+                  Publish
+               </button>
+            </div>
+         </form>
       </>
    );
 }

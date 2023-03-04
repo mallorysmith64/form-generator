@@ -39,22 +39,22 @@ const Publish = () => {
    return (
       <>
          <NavBar />
-         <div className="card">
-            <header className="card-header">
-               <p className="card-header-title">Link to Share</p>
-               <div className="row">
-                  <input className="copy-link-input" value={formUrl} readOnly></input>
-                  <button className="button copy-link-btn" onClick={handleCopy}>
-                     <i className="fas fa-copy"></i>
-                  </button>
-               </div>
-               <p>Copied value: {value ?? "Nothing is copied yet!"}</p>
-            </header>
-         </div>
+         <section>
+            <div className="card">
+               <header className="card-header">
+                  <p className="card-header-title">Link to Share</p>
+                  <div className="row">
+                     <input className="copy-link-input" value={formUrl} readOnly></input>
+                     <button className="button copy-link-btn" onClick={handleCopy}>
+                        <i className="fas fa-copy"></i>
+                     </button>
+                  </div>
+                  <p>Copied value: {value ?? "Nothing is copied yet!"}</p>
+               </header>
+            </div>
+         </section>
       </>
    );
 };
 
 export default Publish;
-
-// if (!data) return "null";

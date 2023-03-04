@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React from "react";
 import HomePage from "./components/HomePage";
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
 import FormBuilder from "./components/FormBuilder";
 import Publish from "./components/Publish";
 import FormView from "./components/FormView";
@@ -19,7 +18,6 @@ function App() {
                <Route path="/FormView/:formId" element={<FormView />} />
                <Route path="/Templates" element={<Templates />} />
             </Routes>
-            <Footer />
          </Router>
       </div>
    );
