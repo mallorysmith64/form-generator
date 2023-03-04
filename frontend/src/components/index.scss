@@ -31,6 +31,11 @@ ul > li {
    background: #f0f0f0ec;
 }
 
+// get rid of link underlines in navbar
+div > a:hover {
+   text-decoration: none;
+}
+
 body {
    display: flex;
    position: relative;
