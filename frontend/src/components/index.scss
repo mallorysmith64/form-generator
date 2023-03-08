@@ -32,6 +32,14 @@ ul > li {
    background: #f0f0f0ec;
 }
 
+.navbar-brand {
+   display:flex;
+}
+
+.navbar-left {
+   display:flex;
+}
+
 // get rid of link underlines in navbar
 div > a:hover {
    text-decoration: none;
@@ -121,6 +129,13 @@ body {
       }
    }
 }
+
+// dropzone
+.dropzone {
+   width: 300px;
+   height: 500px;
+   border: 2px solid black;
+ }
 
 .publish-btn {
    display: flex;
