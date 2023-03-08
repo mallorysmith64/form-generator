@@ -50,7 +50,7 @@ body {
    position: relative;
    flex-direction: column;
    color: #404d5b;
-   margin: 0;
+   margin: 0em;
 }
 
 .footer {
@@ -105,12 +105,18 @@ body {
 // }
 
 // form builder below
+
 .card-container {
+   margin:0em;
+   padding:2em 2em;
+}
+
+.cards {
    display: flex;
    flex-direction: column;
    justify-content: flex-end;
    align-items: flex-end;
-   padding: 1em;
+   margin:0em;
    @media (max-width: 768px) {
       &.is-flex-wrap-wrap {
          flex-wrap: wrap;
@@ -118,7 +124,7 @@ body {
    }
 }
 
-.card-container > li {
+.cards > li {
    padding: 0.25em;
    // makes cards the same size
    width: 25%;
