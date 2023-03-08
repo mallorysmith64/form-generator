@@ -5,12 +5,12 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently --kill-others 'yarn run vite' 'yarn run tsc-watch' 'yarn run start-backend'", 
-    "start-backend": "cd ../backend && FLASK_ENV=development FLASK_DEBUG=1 env/bin/flask run", 
+    "dev": "concurrently --kill-others 'yarn run vite' 'yarn run tsc-watch' 'yarn run start-backend'",
+    "start-backend": "cd ../backend && FLASK_ENV=development FLASK_DEBUG=1 env/bin/flask run",
     "tsc-watch": "tsc-watch --onFailure 'play /snap/gtk-common-themes/1535/share/sounds/freedesktop/stereo/window-question.oga'",
-    "vite": "   ulimit -Sn 10000 && vite serve   --host 0.0.0.0 --port 8080 --mode development --clearScreen false",
+    "vite": "ulimit -Sn 10000 && vite serve   --host 0.0.0.0 --port 8080 --mode development --clearScreen false",
     "preview": "ulimit -Sn 10000 && vite preview --host 0.0.0.0 --port 8080",
-    "build":   "                    vite build",
+    "build": "vite build",
     "tsc": "tsc"
   },
   "dependencies": {
@@ -20,8 +20,11 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "axios": "^1.3.0",
     "concurrently": "^7.6.0",
+    "immutability-helper": "^3.1.1",
     "nodemon": "^2.0.20",
     "react": "^18.2.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
     "react-router-config": "^5.1.1",
     "tsc-watch": "^6.0.0",
@@ -44,7 +47,6 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.32.1",
     "prettier": "^2.8.3",
-    "react-form-builder2": "^0.14.2",
     "react-router-dom": "^6.7.0",
     "typescript": "^4.9.4",
     "vite-tsconfig-paths": "^4.0.5"

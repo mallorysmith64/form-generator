@@ -1,8 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { ReactFormBuilder } from "react-form-builder2";
 import { useParams } from "react-router-dom";
-import FormBuilder from "./FormBuilder";
+// import FormBuilder from "./FormBuilder";
 
 function FormView() {
    const [formData, setFormData] = useState([]);
@@ -26,9 +25,9 @@ function FormView() {
 
    return (
       <>
-         <div className="form-builder-container">
+         {/* <div className="form-builder-container">
             <ReactFormBuilder toolbarItems={[]} />
-         </div>
+         </div> */}
 
          <div className="submit-btn">
             <button type="submit" className="button is-success is-large">

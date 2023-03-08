@@ -5,21 +5,26 @@ import FormBuilder from "./components/FormBuilder";
 import Publish from "./components/Publish";
 import FormView from "./components/FormView";
 import Templates from "./components/Templates";
-// import "./App.css"; // styles toolbox
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 function App() {
    return (
-      <div className="App">
-         <Router>
-            <Routes>
-               <Route path="/" element={<HomePage />} />
-               <Route path="/FormBuilder" element={<FormBuilder />} />
-               <Route path="/Publish/:formId" element={<Publish />} />
-               <Route path="/FormView/:formId" element={<FormView />} />
-               <Route path="/Templates" element={<Templates />} />
-            </Routes>
-         </Router>
-      </div>
+      <>
+         <DndProvider backend={HTML5Backend}>
+            <div className="App">
+               <Router>
+                  <Routes>
+                     <Route path="/" element={<HomePage />} />
+                     <Route path="/FormBuilder" element={<FormBuilder />} />
+                     <Route path="/Publish/:formId" element={<Publish />} />
+                     <Route path="/FormView/:formId" element={<FormView />} />
+                     <Route path="/Templates" element={<Templates />} />
+                  </Routes>
+               </Router>
+            </div>
+         </DndProvider>
+      </>
    );
 }
 

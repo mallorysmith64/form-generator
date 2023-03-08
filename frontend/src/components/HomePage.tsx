@@ -8,7 +8,7 @@ const HomePage = () => {
       <>
          <NavBar />
          <header className="header-wrapper">
-            <h1 className="header">Create any form with Form Factory</h1>
+            <h1 className="header">Create Any Form with Form Factory</h1>
          </header>
          <Footer />
       </>

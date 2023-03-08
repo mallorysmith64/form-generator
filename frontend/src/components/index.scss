@@ -5,6 +5,7 @@ body {
    overflow: hidden;
 }
 
+// homepage below
 .header-wrapper {
    display: flex;
    justify-content: center;
@@ -57,42 +58,68 @@ body {
    padding: 1em 0.5em 0.5em 1em;
 }
 
-.modal {
-   background: rgba(0, 0, 0, 0.3);
+// .modal {
+//    background: rgba(0, 0, 0, 0.3);
+// }
+
+// .modal-content {
+//    padding: 30px;
+//    max-height: 800px;
+//    overflow-y: auto;
+// }
+
+// .react-form-builder {
+//    width: 60em;
+//    margin: 0 auto;
+//    padding-top: 2em;
+// }
+
+// .react-form-builder-toolbar {
+//    padding-top: 1em;
+// }
+
+// .react-form-builder-toolbar > h4 {
+//    display: none;
+// }
+
+// .modal {
+//    background: rgba(0, 0, 0, 0.3);
+// }
+
+// .modal-content {
+//    padding: 30px;
+//    max-height: 800px;
+//    overflow-y: auto;
+// }
+
+// .Sortable {
+//    background-color: white;
+// }
+
+// form builder below
+.card-container {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+   align-items: flex-end;
+   padding: 1em;
+   @media (max-width: 768px) {
+      &.is-flex-wrap-wrap {
+         flex-wrap: wrap;
+      }
+   }
 }
 
-.modal-content {
-   padding: 30px;
-   max-height: 800px;
-   overflow-y: auto;
-}
-
-.react-form-builder {
-   width: 60em;
-   margin: 0 auto;
-   padding-top: 2em;
-}
-
-.react-form-builder-toolbar {
-   padding-top: 1em;
-}
-
-.react-form-builder-toolbar > h4 {
-   display: none;
-}
-
-.modal {
-   background: rgba(0, 0, 0, 0.3);
-}
-
-.modal-content {
-   padding: 30px;
-   max-height: 800px;
-   overflow-y: auto;
-}
-
-.Sortable {
-   background-color: white;
+.card-container > li {
+   padding: 0.25em;
+   // makes cards the same size
+   width: 25%;
+   max-width: 18em;
+   @media (max-width: 768px) {
+      &.is-4-mobile {
+         width: 100%;
+      }
+   }
 }
 
 .publish-btn {
@@ -106,51 +133,51 @@ body {
 }
 
 // copy link publish page below:
-.card {
-   width: 65em;
-}
+// .card {
+//    width: 65em;
+// }
 
-.card-header {
-   display: flex;
-   flex-direction: column;
-   width: 100%;
-}
+// .card-header {
+//    display: flex;
+//    flex-direction: column;
+//    width: 100%;
+// }
 
-.card-header-title {
-   font-size: 2em;
-}
+// .card-header-title {
+//    font-size: 2em;
+// }
 
-.copy-link-input {
-   display: flex;
-   padding: 0.7em;
-   font-size: 2em;
-   border: 0.1em solid #cccccc;
-   border-right: none;
-   outline: none;
-   width: 95%;
-}
+// .copy-link-input {
+//    display: flex;
+//    padding: 0.7em;
+//    font-size: 2em;
+//    border: 0.1em solid #cccccc;
+//    border-right: none;
+//    outline: none;
+//    width: 95%;
+// }
 
-.copy-link-input:hover {
-   background: #eeeeee;
-}
+// .copy-link-input:hover {
+//    background: #eeeeee;
+// }
 
-.copy-link-btn {
-   flex-shrink: 0;
-   width: 2em;
-   height: 2em;
-   background: #ffffff;
-   border: 0.2em solid #cccccc;
-   cursor: pointer;
-}
+// .copy-link-btn {
+//    flex-shrink: 0;
+//    width: 2em;
+//    height: 2em;
+//    background: #ffffff;
+//    border: 0.2em solid #cccccc;
+//    cursor: pointer;
+// }
 
-.copy-link-button:hover {
-   background: #cccccc;
-}
+// .copy-link-button:hover {
+//    background: #cccccc;
+// }
 
-.row {
-   display: flex;
-   flex-direction: row;
-}
+// .row {
+//    display: flex;
+//    flex-direction: row;
+// }
 
 //hide "Toolbox" text only from FormView page
 // div > h4 {
@@ -259,3 +286,9 @@ body {
 .submit-btn > button {
    min-width: 11.25em;
 }
+
+// .App {
+//    text-align: center;
+//    width: 100vw;
+//    height: 100vh;
+// }
