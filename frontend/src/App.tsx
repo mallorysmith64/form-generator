@@ -7,11 +7,17 @@ import FormView from "./components/FormView";
 import Templates from "./components/Templates";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import DragDrop from "./components/DragDrop";
 
 function App() {
    return (
       <>
-         <DndProvider backend={HTML5Backend}>
+        <DndProvider backend={HTML5Backend}>
+      <div className="App">
+        <DragDrop />
+      </div>
+    </DndProvider>
+         {/* <DndProvider backend={HTML5Backend}>
             <div className="App">
                <Router>
                   <Routes>
@@ -23,7 +29,7 @@ function App() {
                   </Routes>
                </Router>
             </div>
-         </DndProvider>
+         </DndProvider> */}
       </>
    );
 }

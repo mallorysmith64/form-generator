@@ -1,5 +1,5 @@
 import React from "react";
-import DropZone from "./DropZone";
+import DragDrop from "./DragDrop";
 import NavBar from "./NavBar";
 
 function FormBuilder() {
@@ -7,7 +7,7 @@ function FormBuilder() {
       <>
          <NavBar />
    
-         <DropZone />
+         <DragDrop />
       </>
    );
 }

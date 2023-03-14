@@ -17,7 +17,8 @@
     "noEmitOnError": false,
     "jsx": "react",
     "baseUrl": "src", //added to make clean import statments possible
-    "noImplicitAny": true //added to show warning when ts infers the type "any"
+    "noImplicitAny": true, //added to show warning when ts infers the type "any"
+    "outDir": "./build", // js files go to build, only dist will be production build
   },
   "include": ["src", "tsconfig.node.json"],
   "references": [{ "path": "./tsconfig.node.json" }]
