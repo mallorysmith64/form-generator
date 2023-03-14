@@ -3,27 +3,31 @@ import { Picture } from "./Picture";
 import { useDrop } from "react-dnd";
 
 interface CardProps {
-   url: string;
    id: number;
+   text: string;
+   icon: string;
 }
 
 const dragList = [
    {
       id: 1,
-      url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYfkKJywC2TJjE8kuJpPJf9UW3ai6sA27R6g&usqp=CAU",
+      text: "Header",
+      icon: "fas fa-heading",
    },
    {
       id: 2,
-      url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkVmXr28usuQyn2VTvvA1pOopLkMWz_J-85g&usqp=CAU",
-   },
-   {
-      id: 3,
-      url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwQl1K64iaP-Scgn56GGAWJcvHGTNwpC2HPQ&usqp=CAU",
+      text: "Paragraph",
+      icon: "fas fa-paragraph",
    },
 ];
 
 const pictures = dragList.map((picture) => (
-   <Picture key={picture.id} url={picture.url} id={picture.id} />
+   <Picture
+      key={picture.id}
+      id={picture.id}
+      text={picture.text}
+      icon={picture.icon}
+   />
 ));
 
 function DragDrop() {
@@ -41,24 +45,32 @@ function DragDrop() {
    const addImage = (id: number) => {
       const droppedPictures = dragList.filter((picture) => id === picture.id);
       setBoard((board) => [...board, { ...droppedPictures[0], id: board.length + 1 }]);
-      console.log(droppedPictures)
-    };
+      console.log(droppedPictures);
+   };
 
    const boardImages = board.map((picture) => (
-      <Picture key={picture.id} url={picture.url} id={picture.id} />
+      <Picture
+         key={picture.id}
+         id={picture.id}
+         text={picture.text}
+         icon={picture.icon}
+      />
    ));
 
    return (
-      <div className="container">
-         <div className="drag-box">{pictures}</div>
-         <div
-            className="drop-board"
-            ref={drop}
-            style={{ border: isOver ? "3px solid red" : "1px solid black" }}
-         >
-            {boardImages}
-         </div>
-      </div>
+      <>
+         <section className="form-builder-page-container">
+            <div className="card-container">{pictures}</div>
+
+            <div
+               className="form-builder"
+               ref={drop}
+               style={{ border: isOver ? "1px solid red" : "1px solid black" }}
+            >
+               {boardImages}
+            </div>
+         </section>
+      </>
    );
 }
 
