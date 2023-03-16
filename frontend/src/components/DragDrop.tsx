@@ -21,15 +21,6 @@ const dragList = [
    },
 ];
 
-const pictures = dragList.map((picture) => (
-   <Picture
-      key={picture.id}
-      id={picture.id}
-      text={picture.text}
-      icon={picture.icon}
-   />
-));
-
 function DragDrop() {
    const [board, setBoard] = useState<CardProps[]>([]);
    const [{ isOver }, drop] = useDrop(() => ({
@@ -42,19 +33,17 @@ function DragDrop() {
       },
    }));
 
+   const pictures = dragList.map((picture) => (
+      <Picture key={picture.id} id={picture.id} text={picture.text} icon={picture.icon} />
+   ));
+
    const addImage = (id: number) => {
       const droppedPictures = dragList.filter((picture) => id === picture.id);
-      setBoard((board) => [...board, { ...droppedPictures[0], id: board.length + 1 }]);
-      console.log(droppedPictures);
+      setBoard((board) => [...board, { ...droppedPictures[0] }]);
    };
 
    const boardImages = board.map((picture) => (
-      <Picture
-         key={picture.id}
-         id={picture.id}
-         text={picture.text}
-         icon={picture.icon}
-      />
+      <Picture key={picture.id} id={picture.id} text={picture.text} icon={picture.icon} />
    ));
 
    return (
@@ -62,12 +51,10 @@ function DragDrop() {
          <section className="form-builder-page-container">
             <div className="card-container">{pictures}</div>
 
-            <div
-               className="form-builder"
-               ref={drop}
-               style={{ border: isOver ? "1px solid red" : "1px solid black" }}
-            >
-               {boardImages}
+            <div className="form-builder" ref={drop}>
+               <div className="dropzone-container">
+                  <div className="dropzone-cards">{boardImages}</div>
+               </div>
             </div>
          </section>
       </>
@@ -75,35 +62,3 @@ function DragDrop() {
 }
 
 export default DragDrop;
-
-// return (
-//    <>
-{
-   /* <div className="card-container">
-            {cards.map((card: CardProps) => {
-               return <Card key={card.id} {...card} />;
-            })}
-         </div> */
-}
-
-{
-   /* <div ref={drop} className="dropzone">
-            {isOver ? "Release to drop" : "Drag item here"}
-         </div> */
-}
-
-{
-   /* <div className="card-container">
-            {cardList.map((card) => (
-               <Card key={card.id} id={card.id} text={card.text} />
-            ))}
-         </div>
-
-         <div className="dropzone" ref={dropRef}>
-            {dropZone.map(card => <Card key={card.id} id={card.id} text={card.text} /> )}
-            {isOver ? "Release!" : "Drop Here"}
-         </div> */
-}
-//       </>
-//    );
-// };

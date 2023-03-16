@@ -1,19 +1,19 @@
 import React from "react";
 import { useDrag } from "react-dnd";
-
 interface CardProps {
    id: number;
    text: string;
    icon: string;
 }
 
-export function Picture({ id,text, icon }: CardProps) {
+export function Picture({ id, text, icon }: CardProps) {
    const [{ isDragging }, drag] = useDrag(() => ({
       type: "image",
-      item: { id: id },
+      item: () => {
+         return { id };
+      },
       collect: (monitor) => {
          const isDragging = !!monitor.isDragging();
-         console.log("collect isDragging:", isDragging);
          return { isDragging };
       },
    }));
