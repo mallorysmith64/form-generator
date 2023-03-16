@@ -1,14 +1,16 @@
 import React from "react";
 import { useDrag } from "react-dnd";
+
 interface CardProps {
    id: number;
    text: string;
    icon: string;
+   isToolbar:boolean;
 }
 
-export function Picture({ id, text, icon }: CardProps) {
+export function Card({ id, text, icon, isToolbar}: CardProps) {
    const [{ isDragging }, drag] = useDrag(() => ({
-      type: "image",
+      type: "card",
       item: () => {
          return { id };
       },
@@ -29,11 +31,13 @@ export function Picture({ id, text, icon }: CardProps) {
                >
                   <div className="card-content">
                      <div className="media">
+                        {isToolbar && (
                         <div className="media-left">
                            <span className="icon">
                               <i className={icon} aria-hidden="true"></i>
                            </span>
                         </div>
+                        )}
                         <div className="media-content">{text}</div>
                      </div>
                   </div>

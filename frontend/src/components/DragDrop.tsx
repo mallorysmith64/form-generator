@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { Picture } from "./Picture";
+import { Card } from "./Card";
 import { useDrop } from "react-dnd";
 
 interface CardProps {
    id: number;
    text: string;
    icon: string;
+   isToolbar:boolean;
 }
 
-const dragList = [
+const cardList = [
    {
       id: 1,
       text: "Header",
@@ -22,38 +23,37 @@ const dragList = [
 ];
 
 function DragDrop() {
-   const [board, setBoard] = useState<CardProps[]>([]);
+   const [dropZone, setDropZone] = useState<CardProps[]>([]);
    const [{ isOver }, drop] = useDrop(() => ({
-      accept: "image",
-      drop: (item: { id: number }) => addImage(item.id),
+      accept: "card",
+      drop: (item: { id: number, isToolbar:boolean }) => addCard(item.id, item.isToolbar),
       collect: (monitor) => {
          const isOver = !!monitor.isOver();
-         console.log("isOver:", isOver);
          return { isOver };
       },
    }));
 
-   const pictures = dragList.map((picture) => (
-      <Picture key={picture.id} id={picture.id} text={picture.text} icon={picture.icon} />
+   const cards = cardList.map((card) => (
+      <Card key={card.id} id={card.id} text={card.text} icon={card.icon} isToolbar={true}/>
    ));
 
-   const addImage = (id: number) => {
-      const droppedPictures = dragList.filter((picture) => id === picture.id);
-      setBoard((board) => [...board, { ...droppedPictures[0] }]);
+   const addCard = (id: number, isToolbar:boolean) => {
+      const droppedCards = cardList.filter((card) => id === card.id);
+      setDropZone((dropZone) => [...dropZone, { ...droppedCards[0], isToolbar:false }]);
    };
 
-   const boardImages = board.map((picture) => (
-      <Picture key={picture.id} id={picture.id} text={picture.text} icon={picture.icon} />
+   const dropZoneCards = dropZone.map((card) => (
+      <Card key={card.id} id={card.id} text={card.text} icon={card.icon} isToolbar={false}/>
    ));
 
    return (
       <>
          <section className="form-builder-page-container">
-            <div className="card-container">{pictures}</div>
+            <div className="card-container">{cards}</div>
 
             <div className="form-builder" ref={drop}>
                <div className="dropzone-container">
-                  <div className="dropzone-cards">{boardImages}</div>
+                  <div className="dropzone-cards">{dropZoneCards}</div>
                </div>
             </div>
          </section>

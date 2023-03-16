@@ -6,7 +6,7 @@ function FormBuilder() {
    return (
       <>
          <NavBar />
-   
+
          <DragDrop />
       </>
    );
