@@ -1,55 +1,208 @@
+html,
+body {
+   margin: 0em;
+   padding: 0em;
+   overflow: hidden;
+}
+
+// homepage below
 .header-wrapper {
-    display:flex;
-    justify-content: center;
-    padding:5em 0em 12em 0em;
-    font-size:2.5em;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   font-size: 2.5em;
+   min-height: calc(100vh - 2em);
+   padding: 0em;
+   background-color: #ffffff;
 }
 
 header {
-    color:black;
+   color: black;
 }
 
-.App {
-    padding-top:4em;
-    text-align: center;
-  }
-  
-  .App-link {
-    color: #61dafb;
-  }
-  
-  ul > li {
-    list-style-type: none;
-  }
-  
-  /* body {
-    font-size: 14px;
-    font-weight: 300;
-    width: 1200px;
-    margin: 0 auto;
-  } */
-  
-  .react-form-builder {
-    width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .modal {
-    background: rgba(0, 0, 0, 0.3);
-  }
-  
-  .modal-content {
-    padding: 30px;
-    max-height: 800px;
-    overflow-y: auto
-  }
-  
-  .Sortable {
-    background-color:white;
-  }
-  
-  
-  
-  
-  
-  
+.App-link {
+   color: #61dafb;
+}
+
+ul > li {
+   list-style-type: none;
+}
+
+.navbar {
+   background: white;
+}
+
+.navbar-brand {
+   display: flex;
+}
+
+.navbar-left {
+   display: flex;
+}
+
+// get rid of link underlines in navbar
+div > a:hover {
+   text-decoration: none;
+}
+
+body {
+   display: flex;
+   // position: relative;
+   flex-direction: column;
+   // min-height: calc(100vh);
+}
+
+.footer {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   margin-bottom: 0em;
+   background: rgb(199, 194, 194);
+   min-height: 0.1em;
+   padding: 1em 0.5em 0.5em 1em;
+}
+
+// form builder page below
+.form-builder-page-container {
+   display: flex;
+   justify-content: center;
+   flex-direction: row-reverse;
+   padding: 1em 0em 0em 0em;
+   background-color: #f3f3fe;
+   height: calc(100vh - 2vh);
+}
+
+.form-builder {
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   height: calc(100vh - 25vh);
+   width: calc(100vh - 25vh);
+   padding-top: 0.5em;
+   background-color: #ffffff;
+   box-shadow: rgba(87, 100, 126, 0.21) 0px 4px 4px 0px;
+}
+
+.form-builder > .body {
+   background-color: #f3f3fe;
+}
+
+.dropzone-container {
+   display: flex;
+   justify-content: center;
+   width: 100%;
+}
+
+.dropzone-cards > .cards > .is-4-mobile > .card > .card-content {
+   width: calc(100vh - 30vh);
+   cursor: move;
+}
+
+.dropzone-cards > .cards > .is-4-mobile > .card > .card-content:active {
+   border: rgb(2, 147, 226) solid 1px;
+   border-radius: 3px;
+}
+
+.card-container {
+   margin: 0em;
+   padding: 0em 1em 0em 2em;
+}
+
+.card > .card-content {
+   display: flex;
+   justify-content: center;
+   width: 9em;
+}
+
+.cards {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+   align-items: flex-end;
+   margin: 0em;
+   @media (max-width: 768px) {
+      &.is-flex-wrap-wrap {
+         flex-wrap: wrap;
+      }
+   }
+}
+
+.cards > li {
+   padding: 0.1em;
+   // makes cards the same size
+   // width: 100%;
+   @media (max-width: 16em) {
+      &.is-4-mobile {
+         width: 100%;
+      }
+   }
+}
+
+.publish-btn {
+   display: flex;
+   justify-content: center;
+   padding: 2em 0em 2em 33em;
+}
+
+.publish-btn > button {
+   min-width: 11.25em;
+}
+
+// copy link publish page below:
+// .card {
+//    width: 65em;
+// }
+
+// .card-header {
+//    display: flex;
+//    flex-direction: column;
+//    width: 100%;
+// }
+
+// .card-header-title {
+//    font-size: 2em;
+// }
+
+// .copy-link-input {
+//    display: flex;
+//    padding: 0.7em;
+//    font-size: 2em;
+//    border: 0.1em solid #cccccc;
+//    border-right: none;
+//    outline: none;
+//    width: 95%;
+// }
+
+// .copy-link-input:hover {
+//    background: #eeeeee;
+// }
+
+// .copy-link-btn {
+//    flex-shrink: 0;
+//    width: 2em;
+//    height: 2em;
+//    background: #ffffff;
+//    border: 0.2em solid #cccccc;
+//    cursor: pointer;
+// }
+
+// .copy-link-button:hover {
+//    background: #cccccc;
+// }
+
+// .row {
+//    display: flex;
+//    flex-direction: row;
+// }
+
+.submit-btn {
+   padding: 2em 8em 2em 0em;
+}
+
+.submit-btn > button {
+   min-width: 11.25em;
+}
