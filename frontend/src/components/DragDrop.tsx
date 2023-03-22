@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Card } from "./Card";
 import { useDrop } from "react-dnd";
+import { v4 as uuidv4 } from "uuid";
 
 interface CardProps {
-   id: number;
+   id: string;
    text: string;
    icon: string;
-   isToolbar:boolean;
+   index: number;
+   // moveCard?: (dragIndex: number, hoverIndex: number) => void;
 }
 
 const cardList = [
    {
-      id: 1,
+      id: uuidv4(),
+
       text: "Header",
       icon: "fas fa-heading",
    },
    {
-      id: 2,
+      id: uuidv4(),
       text: "Paragraph",
       icon: "fas fa-paragraph",
    },
@@ -26,24 +29,41 @@ function DragDrop() {
    const [dropZone, setDropZone] = useState<CardProps[]>([]);
    const [{ isOver }, drop] = useDrop(() => ({
       accept: "card",
-      drop: (item: { id: number, isToolbar:boolean }) => addCard(item.id, item.isToolbar),
+      drop: (item: { id: string; index: number }) => addCard(item.id, item.index),
       collect: (monitor) => {
          const isOver = !!monitor.isOver();
          return { isOver };
       },
    }));
 
-   const cards = cardList.map((card) => (
-      <Card key={card.id} id={card.id} text={card.text} icon={card.icon} isToolbar={true}/>
+   const cards = cardList.map((card, index) => (
+      <Card
+         key={card.id}
+         id={card.id}
+         index={index}
+         text={card.text}
+         icon={card.icon}
+         isToolbar={true}
+      />
    ));
 
-   const addCard = (id: number, isToolbar:boolean) => {
+   const addCard = (id: string, index: number) => {
       const droppedCards = cardList.filter((card) => id === card.id);
-      setDropZone((dropZone) => [...dropZone, { ...droppedCards[0], isToolbar:false }]);
+      setDropZone((dropZone) => [
+         ...dropZone,
+         { ...droppedCards[0], isToolbar: false, index: dropZone.length },
+      ]);
    };
 
-   const dropZoneCards = dropZone.map((card) => (
-      <Card key={card.id} id={card.id} text={card.text} icon={card.icon} isToolbar={false}/>
+   const dropZoneCards = dropZone.map((card, index) => (
+      <Card
+         key={uuidv4()}
+         id={card.id}
+         index={index}
+         text={card.text}
+         icon={card.icon}
+         isToolbar={false}
+      />
    ));
 
    return (
