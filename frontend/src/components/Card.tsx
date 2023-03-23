@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import { useDrag } from "react-dnd";
 import { v4 as uuidv4 } from "uuid";
 
@@ -8,9 +8,11 @@ interface CardProps {
    icon: string;
    index: number;
    isToolbar: boolean;
+   // deleteByValue?: (id:string) => void;
+   onDelete?: (index: number) => void;
 }
 
-export function Card({ id, text, icon, isToolbar }: CardProps) {
+export function Card({ id, text, icon, isToolbar, index, onDelete }: CardProps) {
    const [{ isDragging }, drag] = useDrag(() => ({
       type: "card",
       item: () => {
@@ -21,6 +23,10 @@ export function Card({ id, text, icon, isToolbar }: CardProps) {
          return { isDragging };
       },
    }));
+
+   const handleDelete = (index: number) => {
+      onDelete(index);
+   };
 
    return (
       <>
@@ -40,12 +46,15 @@ export function Card({ id, text, icon, isToolbar }: CardProps) {
                               </span>
                            </div>
                         )}
-                        <div className="media-content">{text}</div>
-                        {/* {!isToolbar && (
-                           <div className="media-right">
-                              <button className="delete"></button>
+                        {!isToolbar && (
+                           <div className="toolbar-header-btns">
+                              <button className="btn" onClick={() => onDelete(index)}>
+                                <i className="fas fa-trash"></i>
+                              </button>
                            </div>
-                        )} */}
+                        )}
+
+                        <div className="media-content">{text}</div>
                      </div>
                   </div>
                </div>
