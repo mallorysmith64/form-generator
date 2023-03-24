@@ -97,12 +97,12 @@ body {
    width: 100%;
 }
 
-.dropzone-cards > .cards > .is-4-mobile > .card > .card-content {
+.dropZoneCards > .cards > .is-4-mobile > .card > .card-content {
    width: calc(100vh - 30vh);
    cursor: move;
 }
 
-.dropzone-cards > .cards > .is-4-mobile > .card > .card-content:active {
+.dropZoneCards > .cards > .is-4-mobile > .card > .card-content:active {
    border: rgb(2, 147, 226) solid 1px;
    border-radius: 3px;
 }
@@ -113,8 +113,6 @@ body {
 }
 
 .card > .card-content {
-   display: flex;
-   justify-content: center;
    width: 9em;
 }
 
@@ -140,6 +138,12 @@ body {
          width: 100%;
       }
    }
+}
+
+.toolbar-header-btns > button {
+   display: flex;
+   position: relative;
+   bottom: 0.75em;
 }
 
 // .publish-btn {

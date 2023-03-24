@@ -9,8 +9,7 @@ interface CardProps {
    text: string;
    icon: string;
    index: number;
-   // deleteByIndex?:any;
-   onDelete?:number;
+   onDelete?: number;
 }
 
 const cardList = [
@@ -54,12 +53,6 @@ function DragDrop() {
       />
    ));
 
-   console.log("Card key in toolbar: ", cards[0].key);
-   console.log("Card id in toolbar: ", cards[0].props.id);
-
-   console.log("Card key in toolbar: ", cards[1].key);
-   console.log("Card id in toolbar: ", cards[1].props.id);
-
    const addCard = (id: string, index: number, key: string) => {
       const droppedCards = cardList.filter((card) => id === card.id);
       setDropZone((dropZone) => [
@@ -68,20 +61,15 @@ function DragDrop() {
       ]);
    };
 
-   // const handleDeleteCard = (key: any) => {
-   //    setDropZone((prevCards) => prevCards.filter((card) => card.key !== key));
-   //  };
-    
    const handleDeleteCard = (index: number) => {
       setDropZone((prevCards) => {
-        const newCards = [...prevCards];
-        console.log(newCards)
-        newCards.splice(index, 1);
-        console.log(newCards)
-        return newCards;
+         const newCards = [...prevCards];
+         console.log(newCards);
+         newCards.splice(index, 1);
+         console.log(newCards);
+         return newCards;
       });
-    };
-    
+   };
 
    const dropZoneCards = dropZone.map((card, index) => (
       <div className="dropZoneCards">
@@ -96,9 +84,6 @@ function DragDrop() {
          />
       </div>
    ));
-
-   console.log(dropZone)
-   console.log("dropZoneCards: ", dropZoneCards);
 
    return (
       <>
@@ -116,4 +101,3 @@ function DragDrop() {
 }
 
 export default DragDrop;
-

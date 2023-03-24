@@ -8,11 +8,10 @@ interface CardProps {
    icon: string;
    index: number;
    isToolbar: boolean;
-   // deleteByValue?: (id:string) => void;
    onDelete?: (index: number) => void;
 }
 
-export function Card({ id, text, icon, isToolbar, index, onDelete }: CardProps) {
+export function Card({ id, index, text, icon, isToolbar, onDelete }: CardProps) {
    const [{ isDragging }, drag] = useDrag(() => ({
       type: "card",
       item: () => {
@@ -46,15 +45,15 @@ export function Card({ id, text, icon, isToolbar, index, onDelete }: CardProps) 
                               </span>
                            </div>
                         )}
+                        <div className="media-content">{text}</div>
+
                         {!isToolbar && (
                            <div className="toolbar-header-btns">
                               <button className="btn" onClick={() => onDelete(index)}>
-                                <i className="fas fa-trash"></i>
+                                 <i className="fas fa-trash"></i>
                               </button>
                            </div>
                         )}
-
-                        <div className="media-content">{text}</div>
                      </div>
                   </div>
                </div>
