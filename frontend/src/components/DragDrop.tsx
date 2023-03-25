@@ -2,6 +2,10 @@ import React, { useCallback, useState } from "react";
 import { Card } from "./Card";
 import { useDrop } from "react-dnd";
 import { v4 as uuidv4 } from "uuid";
+import { Editable, Slate, useSlate, withReact } from "slate-react";
+import { createEditor } from "slate";
+import { BaseEditor, Descendant } from "slate";
+import { ReactEditor } from "slate-react";
 
 interface CardProps {
    key: string;
@@ -10,6 +14,17 @@ interface CardProps {
    icon: string;
    index: number;
    onDelete?: number;
+}
+
+type CustomElement = { type: "paragraph"; children: CustomText[] };
+type CustomText = { text: string };
+
+declare module "slate" {
+   interface CustomTypes {
+      Editor: BaseEditor & ReactEditor;
+      Element: CustomElement;
+      Text: CustomText;
+   }
 }
 
 const cardList = [
@@ -30,8 +45,16 @@ const cardList = [
    },
 ];
 
+const initialValue: CustomElement[] = [
+   {
+      type: "paragraph",
+      children: [{ text: "Enter text here" }],
+   },
+];
+
 function DragDrop() {
    const [dropZone, setDropZone] = useState<CardProps[]>([]);
+   const [editor] = useState(() => withReact(createEditor()));
    const [{ isOver }, drop] = useDrop(() => ({
       accept: "card",
       drop: (item: { id: string; index: number; key: string }) =>
@@ -94,6 +117,17 @@ function DragDrop() {
                <div className="dropzone-container">
                   <div className="dropzone-cards">{dropZoneCards}</div>
                </div>
+            </div>
+
+            <div className="editor-container">
+               <Slate editor={editor} value={initialValue}>
+                  <Editable
+                     className="editor"
+                     onKeyDown={(event) => {
+                        console.log(event.key);
+                     }}
+                  />
+               </Slate>
             </div>
          </section>
       </>

@@ -113,7 +113,7 @@ body {
 }
 
 .card > .card-content {
-   width: 9em;
+   width: 8em;
 }
 
 .cards {
@@ -144,6 +144,32 @@ body {
    display: flex;
    position: relative;
    bottom: 0.75em;
+}
+
+.toolbar-header-btns {
+   display: flex;
+}
+
+// wysiwig side panel
+.editor-container {
+   display: flex;
+   position: fixed;
+   z-index: 2000;
+   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
+   left: 0;
+   background: #fafafa;
+   padding: 15em;
+   top: 0;
+   height: calc(100vh - 2vh);
+   width: calc(60vh - 2vh);
+   word-break: break-all;
+}
+
+.editor-container > .editor {
+   display: flex;
+   position: fixed !important;
+   left: 1.5em !important;
+   width: 25em;
 }
 
 // .publish-btn {

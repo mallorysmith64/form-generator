@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from "react";
+import React, { MouseEventHandler, useState } from "react";
 import { useDrag } from "react-dnd";
 import { v4 as uuidv4 } from "uuid";
 
@@ -49,6 +49,10 @@ export function Card({ id, index, text, icon, isToolbar, onDelete }: CardProps) 
 
                         {!isToolbar && (
                            <div className="toolbar-header-btns">
+                              <button className="btn">
+                                 <i className="fas fa-edit"></i>
+                              </button>
+
                               <button className="btn" onClick={() => onDelete(index)}>
                                  <i className="fas fa-trash"></i>
                               </button>
