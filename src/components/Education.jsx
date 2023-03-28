@@ -1,5 +1,5 @@
 import React from "react";
-import SDG from "./images/SDG_logo.png";
+import SDG from "./images/education_images/SDG_logo.png";
 
 function Education() {
   return (

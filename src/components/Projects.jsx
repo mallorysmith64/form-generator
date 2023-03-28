@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Collapsible from "react-collapsible";
 
-import Reddit from "./images/reddit_capstone_screenshot.png";
-import SpaceX from "./images/spacex_screenshot.png";
-import Octodex from "./images/octodex_screenshot.png";
-import Minesweeper from "./images/minesweeper_screenshot.png";
-import TV from "./images/tv_guide_screenshot.png";
-import TicTacToe from "./images/tic_tac_toe_screenshot.png";
+import Reddit from "./images/project_images/reddit_capstone_screenshot.png";
+import SpaceX from "./images/project_images/spacex_screenshot.png";
+import Octodex from "./images/project_images/octodex_screenshot.png";
+import Minesweeper from "./images/project_images/minesweeper_screenshot.png";
+import TV from "./images/project_images/tv_guide_screenshot.png";
+import TicTacToe from "./images/project_images/tic_tac_toe_screenshot.png";
 // import Tetris from './images/tetris_screenshot.png'
 
 class Projects extends Component {

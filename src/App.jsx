@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Nav from './components/Nav.jsx'
 import Carousel from './components/Carousel.jsx'
-import Work from './components/Work.jsx'
+// import Work from './components/Work.jsx'
 import Education from './components/Education.jsx'
 import Projects from './components/Projects.jsx'
 import Skills from './components/Skills.jsx'
@@ -21,7 +21,7 @@ class App extends Component {
         <Nav />
         <Carousel/>
         <Projects />
-        <Work/>
+        {/* <Work/> */}
         <Education/>
         <Skills/>
         <About />

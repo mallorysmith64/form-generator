@@ -1,31 +1,5 @@
 import React, { Component } from "react";
-
-import csharp from "./images/csharp_logo.png";
-import javascript from "./images/javascript_logo.png";
-import postgres from "./images/postgreSQL_logo.png";
-import css from "./images/css_logo.png";
-import html5 from "./images/html5_logo.png";
-
-import react from "./images/react_js_logo.png";
-import dotnetcore from "./images/dotnetcore_logo.png";
-import entity from "./images/entity_framework_logo.png";
-
-import oop from "./images/oop.png";
-import mvc from "./images/mvc_photo.jpeg";
-import api from "./images/restful_api.png";
-import mobile from "./images/mobile_first_design.png";
-import spas from "./images/single_page_apps.png";
-
-import vscode from "./images/vs_code.svg";
-import slack from "./images/slack.png";
-import trello from "./images/trello.png";
-import git from "./images/git.png";
-import github from "./images/github.png";
-
-import docker from "./images/docker.png";
-import aws from "./images/aws_logo.png";
-import netlify from "./images/netlify_logo.jpeg";
-import heroku from "./images/heroku_logo.png";
+import images from "./ImageHelper";
 
 class About extends Component {
   render() {
@@ -35,214 +9,128 @@ class About extends Component {
           <h2>Skills and Interests</h2>
         </header>
 
-        <div className="skill-container" id="skills">
-          <section className="language-container">
-            <ul className="languages">
-              <h5>Languages & Databases</h5>
+        <div className="skills-container">
+          <ul className="col">
+            <h5 className="row">Front-End</h5>
 
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/C_Sharp_%28programming_language%29">
-                  <img className="logo" src={csharp} alt="csharp logo" />
-                  <li>C#</li>
-                </a>
-              </h6>
+            <h6 className="row">
+              <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets">
+                <img className="logo" src={images.css} alt="css3 logo" />
+                <li className="skill">CSS</li>
+              </a>
+            </h6>
 
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/JavaScript">
-                  <img
-                    className="logo"
-                    src={javascript}
-                    alt="Javascript logo"
-                  />
-                  <li>Javascript</li>
-                </a>
-              </h6>
+            <h6 className="row">
+              <a href="https://en.wikipedia.org/wiki/HTML5">
+                <img className="logo" src={images.html} alt="html5 logo" />
+                <li className="skill">HTML</li>
+              </a>
+            </h6>
 
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/PostgreSQL">
-                  <img className="logo" src={postgres} alt="PostgreSQL logo" />
-                  <li>PostgreSQL</li>
-                </a>
-              </h6>
+            <h6 className="row">
+              <a href="https://en.wikipedia.org/wiki/JavaScript">
+                <img
+                  className="logo"
+                  src={images.javascript}
+                  alt="Javascript logo"
+                />
+                <li className="skill">Javascript</li>
+              </a>
+            </h6>
 
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets">
-                  <img className="logo" src={css} alt="CSS3 logo" />
-                  <li>CSS3</li>
-                </a>
-              </h6>
+            <h6 className="row">
+              <a href="https://en.wikipedia.org/wiki/React_(web_framework)">
+                <img className="logo" src={images.react} alt="React.js logo" />
+                <li className="skill">React.js</li>
+              </a>
+            </h6>
 
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/HTML5">
-                  <img className="logo" src={html5} alt="HTML5 logo" />
-                  <li>HTML5</li>
-                </a>
-              </h6>
-            </ul>
-          </section>
+            <h6 className="row">
+              <a href="https://en.wikipedia.org/wiki/TypeScript">
+                <img
+                  className="logo"
+                  src={images.typescript}
+                  alt="TypeScript logo"
+                />
+                <li className="skill">TypeScript</li>
+              </a>
+            </h6>
+          </ul>
 
-          <section className="framework-and-library-container">
-            <ul className="frameworks-and-libraries">
-              <h5>Frameworks & Libraries</h5>
+          <ul className="col">
+            <h5 className="row">Back-End</h5>
 
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/React_(web_framework)">
-                  <img className="logo" src={react} alt="React.js logo" />
-                  <li>React.js</li>
-                </a>
-              </h6>
+            <h6 className="row">
+              <a href="https://en.wikipedia.org/wiki/Flask_(web_framework)">
+                <img className="logo" src={images.flask} alt="flask logo" />
+                <li className="skill">Flask</li>
+              </a>
+            </h6>
 
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/.NET_Core">
-                  <img className="logo" src={dotnetcore} alt=".NET Core logo" />
-                  <li>.NET Core</li>
-                </a>
-              </h6>
+            <h6 className="row">
+              <a href="https://en.wikipedia.org/wiki/MongoDB">
+                <img className="logo" src={images.mongo} alt="mongodb logo" />
+                <li className="skill">MongoDB</li>
+              </a>
+            </h6>
 
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/Entity_Framework">
-                  <img
-                    className="logo"
-                    src={entity}
-                    alt="Entity Framework Core logo"
-                  />
-                  <li>Entity Framework Core</li>
-                </a>
-              </h6>
-            </ul>
-          </section>
+            <h6 className="row">
+              <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">
+                <img className="logo" src={images.python} alt="python logo" />
+                <li className="skill">Python</li>
+              </a>
+            </h6>
+          </ul>
 
-          <section className="concept-container">
-            <ul className="concepts">
-              <h5>Programming Concepts</h5>
+          <ul className="col">
+            <h5 className="row">Development Tools</h5>
 
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/Object-oriented_programming">
-                  <img
-                    className="logo"
-                    src={oop}
-                    alt="Object Oriented Programming"
-                  />
-                  <li>Object Oriented Programming</li>
-                </a>
-              </h6>
+            <h6 className="row">
+              <a href="https://en.wikipedia.org/wiki/Docker_%28software%29">
+                <img className="logo" src={images.docker} alt="docker logo" />
+                <li>Docker</li>
+              </a>
+            </h6>
 
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">
-                  <img
-                    className="logo"
-                    src={mvc}
-                    alt="Model View Control Diagram"
-                  />
-                  <li>Model View Controller (MVC)</li>
-                </a>
-              </h6>
+            <h6 className="row">
+              <a href="https://en.wikipedia.org/wiki/Git">
+                <img className="logo" src={images.git} alt="git logo" />
+                <li className="skill">Git</li>
+              </a>
+            </h6>
 
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">
-                  <img className="logo" src={api} alt="RESTful api" />
-                  <li>RESTful API</li>
-                </a>
-              </h6>
+            <h6 className="row">
+              <a href="https://en.wikipedia.org/wiki/GitHub">
+                <img className="logo" src={images.github} alt="github logo" />
+                <li className="skill">GitHub</li>
+              </a>
+            </h6>
 
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/Responsive_web_design">
-                  <img
-                    className="logo"
-                    src={mobile}
-                    alt="mobile first design"
-                  />
-                  <li>Mobile First Design</li>
-                </a>
-              </h6>
+            <h6 className="row">
+              <a href="https://en.wikipedia.org/wiki/Visual_Studio_Code">
+                <img className="logo" src={images.vscode} alt="vscode logo" />
+                <li className="skill">VS Code</li>
+              </a>
+            </h6>
+          </ul>
 
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/Single-page_application">
-                  <img
-                    className="logo"
-                    src={spas}
-                    alt="single page application"
-                  />
-                  <li>Single Page Apps</li>
-                </a>
-              </h6>
-            </ul>
-          </section>
+          <ul className="col">
+            <h5 className="row">Colloboration Tools</h5>
 
-          <section className="software-tool-container">
-            <ul className="software-tools">
-              <h5>Software Tools</h5>
+            <h6 className="row">
+              <a href="https://en.wikipedia.org/wiki/Slack_(software)">
+                <img className="logo" src={images.slack} alt="slack logo" />
+                <li className="skill">Slack</li>
+              </a>
+            </h6>
 
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/Visual_Studio_Code">
-                  <img className="logo" src={vscode} alt="csharp logo" />
-                  <li>VS Code</li>
-                </a>
-              </h6>
-
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/Slack_(software)">
-                  <img className="logo" src={slack} alt="csharp logo" />
-                  <li>Slack</li>
-                </a>
-              </h6>
-
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/Trello">
-                  <img className="logo" src={trello} alt="csharp logo" />
-                  <li>Trello</li>
-                </a>
-              </h6>
-
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/Git">
-                  <img className="logo" src={git} alt="csharp logo" />
-                  <li>Git</li>
-                </a>
-              </h6>
-
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/GitHub">
-                  <img className="logo" src={github} alt="csharp logo" />
-                  <li>GitHub</li>
-                </a>
-              </h6>
-            </ul>
-          </section>
-
-          <section className="deployment-environment-container">
-            <ul className="deployment-environments">
-              <h5>Deployment Environments</h5>
-
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/Docker_%28software%29">
-                  <img className="logo" src={docker} alt="csharp logo" />
-                  <li>Docker</li>
-                </a>
-              </h6>
-
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/Amazon_Web_Services">
-                  <img className="logo" src={aws} alt="csharp logo" />
-                  <li>AWS</li>
-                </a>
-              </h6>
-
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/Netlify">
-                  <img className="logo" src={netlify} alt="csharp logo" />
-                  <li>Netlify</li>
-                </a>
-              </h6>
-
-              <h6 className="skill-icon">
-                <a href="https://en.wikipedia.org/wiki/Heroku">
-                  <img className="logo" src={heroku} alt="csharp logo" />
-                  <li>Heroku</li>
-                </a>
-              </h6>
-            </ul>
-          </section>
+            <h6 className="row">
+              <a href="https://en.wikipedia.org/wiki/Trello">
+                <img className="logo" src={images.trello} alt="trello logo" />
+                <li className="skill">Trello</li>
+              </a>
+            </h6>
+          </ul>
         </div>
       </>
     );

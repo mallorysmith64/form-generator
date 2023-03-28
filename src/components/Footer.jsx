@@ -1,8 +1,8 @@
 import React from "react";
-import CodeWars from "./images/codewars_logo.png";
-import Linkedin from "./images/linkedin_icon.png";
-import GitHub from "./images/github_icon.png";
-import LeetCode from "./images/leetcode_icon.png";
+import CodeWars from "./images/social_images/codewars_icon.png";
+import Linkedin from "./images/social_images/linkedin_icon.png";
+import GitHub from "./images/social_images/github_icon.png";
+import LeetCode from "./images/social_images/leetcode_icon.png";
 
 function Footer() {
   let getYear = new Date().getFullYear();
