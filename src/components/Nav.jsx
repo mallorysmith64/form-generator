@@ -12,17 +12,17 @@ class Nav extends Component {
               </a>
             </li>
 
-            <li>
+            {/* <li>
               <a className="nav-item js-scroll-trigger" href="#work">
                 Work
               </a>
-            </li>
+            </li> */}
 
-            <li>
+            {/* <li>
               <a className="nav-item js-scroll-trigger" href="#education">
                 Education
               </a>
-            </li>
+            </li> */}
 
             <li>
               <a className="nav-item js-scroll-trigger" href="#skills">

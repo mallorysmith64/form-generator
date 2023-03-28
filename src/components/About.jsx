@@ -5,11 +5,11 @@ class About extends Component {
   render() {
     return (
       <>
-        <header className="about-me-title">
+        <header className="about-me-title" id="about">
           <h2>About Me</h2>
         </header>
 
-        <div className="about-me" id="about">
+        <div className="about-me">
           <section className="profile-pic-container">
             <img
               className="img-style responsive-img"

@@ -9,7 +9,7 @@
     "setup-deploy": "app-app --deploy && yarn deploy",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "postdeploy": "echo 'Your site was deployed to https://mallorysmith.me'"
+    "postdeploy": "echo 'Your site was deployed to https://my-portfolio-admin.netlify.app'"
   },
   "browserslist": [
     ">0.2%",
@@ -30,7 +30,7 @@
     "framework7": "^5.2.0",
     "js-levenshtein": "^1.1.6",
     "json": "^10.0.0",
-    "netlify-cli": "^6.8.9",
+    "netlify-cli": "^13.2.1",
     "react": "^16.13.1",
     "react-collapsible": "^2.6.2",
     "react-dom": "^16.9.0",
@@ -40,5 +40,5 @@
     "react-router-dom": "^5.2.1",
     "react-scripts": "^5.0.2"
   },
-  "homepage": "https://mallorysmith.me"
+  "homepage": "mallorysmith.me"
 }

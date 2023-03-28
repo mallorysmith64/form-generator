@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Nav from './components/Nav.jsx'
 import Carousel from './components/Carousel.jsx'
 // import Work from './components/Work.jsx'
-import Education from './components/Education.jsx'
+// import Education from './components/Education.jsx'
 import Projects from './components/Projects.jsx'
 import Skills from './components/Skills.jsx'
 import About from './components/About.jsx'
@@ -22,7 +22,7 @@ class App extends Component {
         <Carousel/>
         <Projects />
         {/* <Work/> */}
-        <Education/>
+        {/* <Education/> */}
         <Skills/>
         <About />
         <Form/>

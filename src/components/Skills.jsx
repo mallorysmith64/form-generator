@@ -5,7 +5,7 @@ class About extends Component {
   render() {
     return (
       <>
-        <header className="header">
+        <header className="header" id="skills">
           <h2>Skills and Interests</h2>
         </header>
 
