@@ -44,12 +44,12 @@ class Projects extends Component {
               </div>
 
               <div className="card-action">
-                {/* <a href="https://reddit-capstone.herokuapp.com/" className="waves-effect waves-light btn">Live Preview</a> */}
+                {/* <a href="https://reddit-capstone.herokuapp.com/" className="waves-effect waves-light btn">Live</a> */}
                 <a
                   href="https://github.com/mallorysmith64/Reddit-Capstone"
                   className="waves-effect waves-light btn"
                 >
-                  Source Code
+                  Source
                 </a>
               </div>
 
@@ -94,13 +94,13 @@ class Projects extends Component {
                   href="https://space-x-mallorysmith64.netlify.com/"
                   className="waves-effect waves-light btn"
                 >
-                  Live Preview
+                  Live
                 </a> */}
                 <a
                   href="https://github.com/mallorysmith64/space-x"
                   className="waves-effect waves-light btn"
                 >
-                  Source Code
+                  Source
                 </a>
               </div>
 
@@ -140,13 +140,13 @@ class Projects extends Component {
                   href="https://tv-guide-mallorysmith64.netlify.com/"
                   className="waves-effect waves-light btn"
                 >
-                  Live Preview
+                  Live
                 </a>
                 <a
                   href="https://github.com/mallorysmith64/tv-guide"
                   className="waves-effect waves-light btn"
                 >
-                  Source Code
+                  Source
                 </a>
               </div>
 
@@ -186,13 +186,13 @@ class Projects extends Component {
                   href="https://minesweeper-mallorysmith64.netlify.com/"
                   className="waves-effect waves-light btn"
                 >
-                  Live Preview
+                  Live
                 </a>
                 <a
                   href="https://github.com/mallorysmith64/minesweeper"
                   className="waves-effect waves-light btn"
                 >
-                  Source Code
+                  Source
                 </a>
               </div>
 
@@ -232,13 +232,13 @@ class Projects extends Component {
                   href="https://minimalist-tic-tac-toe-mallorysmith64.netlify.com/"
                   className="waves-effect waves-light btn"
                 >
-                  Live Preview
+                  Live
                 </a>
                 <a
                   href="https://github.com/mallorysmith64/minimalist-tic-tac-toe"
                   className="waves-effect waves-light btn"
                 >
-                  Source Code
+                  Source
                 </a>
               </div>
 

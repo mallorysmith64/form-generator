@@ -50,7 +50,7 @@ a {
 }
 
 .responsive-img {
-  width: 50em;
+  width: 25em;
 }
 
 .img-style {
@@ -62,14 +62,13 @@ a {
   display: flex;
   flex-wrap: wrap;
   background-color: var(--primary-background);
-  /* padding: 2em; */
 }
 
 .card {
   display: flex;
   flex-direction: column;
   border-radius: 0.5em;
-  width: 28em;
+  width: 22em;
 }
 
 .card:hover {
@@ -83,12 +82,14 @@ a {
 }
 
 .card-action {
+  display:flex;
   border-radius: 0.5em;
 }
 
 /* spacing for card buttons */
 .card-action > .waves-light {
-  margin-left: 1em;
+  margin: 0.5em;
+  width:8em;
 }
 
 .card-image {
@@ -98,7 +99,7 @@ a {
 }
 
 .card-content {
-  height: 12em;
+  height: 7.5em;
 }
 
 strong {
@@ -106,7 +107,7 @@ strong {
 }
 
 .card-description {
-  font-size: 1.25em;
+  font-size: 1em;
   padding-top: 1em;
 }
 
@@ -191,7 +192,7 @@ a {
   /* list-style: none; */
   background-color: var(--accent);
   padding: 2em;
-  font-size: 1.5em;
+  font-size: 1.25em;
   color: var(--secondary-background);
   line-height: 1.25em;
 }
@@ -215,7 +216,7 @@ a {
 }
 
 .contact-form {
-  padding: 2em;
+  padding: 1.5em;
   background-color: var(--secondary-background);
 }
 
@@ -229,14 +230,15 @@ textarea {
 
 .message-btn {
   margin-top: 1em;
-  font-size: 1.2em;
+  font-size: 1.1em;
   border-radius: 0.5em;
-  padding: 0.75em 1em 2em 1em;
+  padding: 0.75em 0.75em 2em 0.75em;
+  text-transform: capitalize;
 }
 
 .page-footer {
   padding: 0.1em;
-  height: 6em;
+  height: 5.5em;
   background-color: var(--primary-background);
   color: var(--secondary-background);
   font-size: 1.5em;
@@ -383,16 +385,12 @@ textarea {
   .about-me,
   .contact-form,
   .page-footer {
-    width: 205%;
+    width: 100%;
   }
 }
 
 /* Galaxy S5 */
 @media (max-width: 360px) {
-  /* body {
-    width:50em;
-  } */
-
   nav {
     width: 22.5em;
   }
@@ -419,14 +417,6 @@ textarea {
   .skill-container {
     display: flex;
     flex-direction: column;
-  }
-
-  .language-container,
-  .framework-and-library-container,
-  .concept-container,
-  .software-tool-container,
-  .deployment-environment-container {
-    padding: 0.2em;
   }
 
   .profile-pic-container {

@@ -83,7 +83,7 @@ class About extends Component {
           </ul>
 
           <ul className="col">
-            <h5 className="row">Development Tools</h5>
+            <h5 className="row">Dev Tools</h5>
 
             <h6 className="row">
               <a href="https://en.wikipedia.org/wiki/Docker_%28software%29">
@@ -115,7 +115,7 @@ class About extends Component {
           </ul>
 
           <ul className="col">
-            <h5 className="row">Colloboration Tools</h5>
+            <h5 className="row">Colloboration</h5>
 
             <h6 className="row">
               <a href="https://en.wikipedia.org/wiki/Slack_(software)">
