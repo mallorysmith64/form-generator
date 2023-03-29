@@ -20,7 +20,7 @@ const Carousel = () => {
       } else {
         setImageIndex((prev) => prev + 1);
       }
-    }, 1200000); //2 minutes
+    }, 120000);
     return () => clearInterval(timer);
   }, [imageIndex]);
 

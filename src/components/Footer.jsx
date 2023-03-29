@@ -1,8 +1,4 @@
 import React from "react";
-import CodeWars from "./images/social_images/codewars_icon.png";
-import Linkedin from "./images/social_images/linkedin_icon.png";
-import GitHub from "./images/social_images/github_icon.png";
-import LeetCode from "./images/social_images/leetcode_icon.png";
 
 function Footer() {
   let getYear = new Date().getFullYear();
@@ -12,65 +8,6 @@ function Footer() {
       <footer className="page-footer">
         <section className="copyright">
           <p>Copyright Mallory Smith {getYear}</p>
-        </section>
-        <section>
-          <ul className="footer-link-container">
-            <li>
-              <a
-                href="https://github.com/mallorysmith64"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  className="github responsive-img"
-                  src={GitHub}
-                  alt="GitHub site icon"
-                />
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="https://www.linkedin.com/in/mallorysmith-64/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  className="linkedin responsive-img"
-                  src={Linkedin}
-                  alt="linkedin site icon"
-                />
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="https://leetcode.com/mallorysmith64/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  className="leetcode responsive-img"
-                  src={LeetCode}
-                  alt="leetcode site icon"
-                />
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="https://www.codewars.com/dashboard"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  className="codewars responsive-img"
-                  src={CodeWars}
-                  alt="codewars site icon"
-                />
-              </a>
-            </li>
-          </ul>
         </section>
       </footer>
     </>

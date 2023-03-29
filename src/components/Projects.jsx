@@ -1,230 +1,263 @@
 import React, { Component } from "react";
 import Collapsible from "react-collapsible";
-
-import Reddit from "./images/project_images/reddit_capstone_screenshot.png";
-import SpaceX from "./images/project_images/spacex_screenshot.png";
-import Octodex from "./images/project_images/octodex_screenshot.png";
-import Minesweeper from "./images/project_images/minesweeper_screenshot.png";
-import TV from "./images/project_images/tv_guide_screenshot.png";
-import TicTacToe from "./images/project_images/tic_tac_toe_screenshot.png";
-// import Tetris from './images/tetris_screenshot.png'
-
+import images from "./ImageHelper";
 class Projects extends Component {
   render() {
     return (
       <>
-        <section className="header" id="projects">
-          {/* the id is used for breadcrumb */}
+        <header className="header" id="projects">
           <h2>Projects</h2>
-        </section>
+        </header>
 
-        <main className="photos-container">
+        <div className="project-container">
           <div className="row">
-            <div className="project" id="reddit-project">
-              <a
-                href="https://reddit-capstone.herokuapp.com/"
-                id="reddit-title"
-              >
-                Reddit Capstone
-              </a>
-              <section className="img-style">
-                <img
-                  src={Reddit}
-                  alt="Reddit Clone project overview"
-                  className="responsive-img"
-                />
-              </section>
-              <article className="after-collapse" id="reddit-collapsible">
-                <Collapsible className="before-collapse" trigger="Read More">
+            <div className="card sticky-action">
+              <div className="card-image waves-effect waves-block waves-light">
+                <img className="activator" src={images.loading}></img>
+              </div>
+              <div className="card-content">
+                <div className="card-title activator">
+                  Form Generator
+                  <i className="material-icons right">more_vert</i>
+                </div>
+              </div>
+
+              <div className="card-action"></div>
+              <div className="card-reveal">
+                <strong className="card-title grey-text text-darken-4">
+                  Form Generator<i className="material-icons right">close</i>
+                </strong>
+                <p>Coming Soon! This project is still baking in the oven.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="card sticky-action">
+              <div className="card-image waves-effect waves-block waves-light">
+                <img className="activator" src={images.reddit}></img>
+              </div>
+              <div className="card-content">
+                <div className="card-title activator">
+                  Reddit<i className="material-icons right">more_vert</i>
+                </div>
+              </div>
+
+              <div className="card-action">
+                {/* <a href="https://reddit-capstone.herokuapp.com/" className="waves-effect waves-light btn">Live Preview</a> */}
+                <a
+                  href="https://github.com/mallorysmith64/Reddit-Capstone"
+                  className="waves-effect waves-light btn"
+                >
+                  Source Code
+                </a>
+              </div>
+
+              <div className="card-reveal">
+                <strong className="card-title grey-text text-darken-4">
+                  Reddit<i className="material-icons right">close</i>
+                </strong>
+                <article className="card-description">
+                  <strong>Overview:</strong>
                   <p>
                     This full-stack app recreates the look and feel of Reddit.
                   </p>
+                  <strong>Features Included:</strong>
                   <p>
-                    Features Included: Users can login and logout using Auth0
-                    and see their profile, they can make new posts to the
-                    homepage and to a subreddit, and they can upvote and
-                    downvote posts created.
+                    Users can login and logout using Auth0 and see their
+                    profile, they can make new posts to the homepage and to a
+                    subreddit, and they can upvote and downvote posts created.
                   </p>
+                  <strong>Technologies Used:</strong>
                   <p>
-                    Technologies Used: C#, .NET Core, Entity Framework, Auth0,
-                    Heroku, PostgreSQL, React.js, Bulma CSS Framework, CSS
-                    Flexbox, HTML5
+                    C#, .NET Core, Entity Framework, Auth0, Heroku, PostgreSQL,
+                    React.js, Bulma CSS Framework, CSS Flexbox, HTML5
                   </p>
-                  <a href="https://github.com/mallorysmith64/Reddit-Capstone">
-                    Reddit Capstone's Code
-                  </a>
-                </Collapsible>
-              </article>
-            </div>
-
-            <div className="project" id="spacex-project">
-              <a
-                href="https://space-x-mallorysmith64.netlify.com/"
-                id="spacex-title"
-              >
-                SpaceX
-              </a>
-              <section className="img-style">
-                <img
-                  src={SpaceX}
-                  alt="SpaceX project overview"
-                  className="responsive-img"
-                />
-              </section>
-              <article className="after-collapse">
-                <Collapsible className="before-collapse" trigger="Read More">
-                  <p>
-                    Objective: Use RESTful API to show user upcoming SpaceX
-                    launch information and show the picture of the day
-                  </p>
-                  <p>
-                    Technologies Used: Javascript, Netlify, CSS Flexbox, HTML5
-                  </p>
-                  <a href="https://github.com/mallorysmith64/space-x">
-                    SpaceX Code
-                  </a>
-                </Collapsible>
-              </article>
-            </div>
-
-            <div className="project" id="octodex-project">
-              <a
-                href="https://octodex-mallorysmith64.netlify.com/"
-                id="octodex-title"
-              >
-                Octodex
-              </a>
-              <section className="img-style">
-                <img
-                  src={Octodex}
-                  alt="Octodex project overview"
-                  className="responsive-img"
-                />
-              </section>
-              <article className="after-collapse">
-                <Collapsible className="before-collapse" trigger="Read More">
-                  <p>Objective: Remake GitHub’s Octodex site</p>
-                  <p>
-                    Technologies Used: React.js, Netlify, Bulma CSS Framework,
-                    CSS Flexbox, HTML5
-                  </p>
-                  <a href="https://github.com/mallorysmith64/space-x">
-                    Octodex Code
-                  </a>
-                </Collapsible>
-              </article>
+                </article>
+              </div>
             </div>
           </div>
 
           <div className="row">
-            <div className="project" id="minesweeper-project">
-              <a
-                href="https://minesweeper-mallorysmith64.netlify.com/"
-                id="minesweeper-title"
-              >
-                Minesweeper
-              </a>
-              <section className="img-style">
-                <img
-                  src={Minesweeper}
-                  alt="Minesweeper project overview"
-                  className="responsive-img"
-                />
-              </section>
-              <article className="after-collapse">
-                <Collapsible className="before-collapse" trigger="Read More">
-                  <p>
-                    Objective: Use RESTful API for some of the game logic,
-                    display a message to show player they won or lost, and allow
-                    user to play multiple difficulty levels.
-                  </p>
-                  <p>React.js, Netlify, CSS Flexbox, HTML5</p>
-                  <a href="https://github.com/mallorysmith64/minesweeper">
-                    Minesweeper Code
-                  </a>
-                </Collapsible>
-              </article>
-            </div>
+            <div className="card sticky-action">
+              <div className="card-image waves-effect waves-block waves-light">
+                <img className="activator" src={images.spacex}></img>
+              </div>
+              <div className="card-content">
+                <div className="card-title activator">
+                  SpaceX<i className="material-icons right">more_vert</i>
+                </div>
+              </div>
 
-            <div className="project" id="tv-guide-project">
-              <a
-                href="https://tv-guide-mallorysmith64.netlify.com/"
-                id="tv-guide-title"
-              >
-                TV Guide
-              </a>
-              <section className="img-style">
-                <img
-                  src={TV}
-                  alt="TV guide project overview"
-                  className="responsive-img"
-                />
-              </section>
-              <article className="after-collapse" id="tv-guide-collapsible">
-                <Collapsible className="before-collapse" trigger="Read More">
-                  <p>
-                    Objective: Make an attractive design for a tv guide and show
-                    users a list of top-rated shows with a description, a
-                    highlighted random show at the top of the page, and details
-                    for cast members.
-                  </p>
-                  <p>
-                    Technologies Used: React.js, Netlify, CSS Flexbox, HTML5
-                  </p>
-                  <a href="https://github.com/mallorysmith64/tv-guide">
-                    TV Guide Code
-                  </a>
-                </Collapsible>
-              </article>
-            </div>
+              <div className="card-action">
+                {/* <a
+                  href="https://space-x-mallorysmith64.netlify.com/"
+                  className="waves-effect waves-light btn"
+                >
+                  Live Preview
+                </a> */}
+                <a
+                  href="https://github.com/mallorysmith64/space-x"
+                  className="waves-effect waves-light btn"
+                >
+                  Source Code
+                </a>
+              </div>
 
-            <div className="project" id="tic-tac-toe-project">
-              <a
-                href="https://minimalist-tic-tac-toe-mallorysmith64.netlify.com/"
-                id="tic-tac-toe-title"
-              >
-                Tic-Tac-Toe
-              </a>
-              <section className="img-style">
-                <img
-                  src={TicTacToe}
-                  alt="Minimalist Tic-Tac-Toe project overview"
-                  className="responsive-img"
-                />
-              </section>
-              <article className="after-collapse">
-                <Collapsible className="before-collapse" trigger="Read More">
-                  <p>Objective: Create a sleek design for a great game</p>
+              <div className="card-reveal">
+                <strong className="card-title grey-text text-darken-4">
+                  SpaceX<i className="material-icons right">close</i>
+                </strong>
+                <article className="card-description">
+                  <strong>Overview:</strong>
                   <p>
-                    Technologies Used: React.js, Netlify, CSS Flexbox, HTML5
+                    Use RESTful API to show user upcoming SpaceX launch
+                    information and show the picture of the day
                   </p>
-                  <a href="https://github.com/mallorysmith64/minimalist-tic-tac-toe">
-                    Minimalist Tic-Tac-Toe Code
-                  </a>
-                </Collapsible>
-              </article>
+
+                  <strong>Technologies Used:</strong>
+                  <p>
+                    Technologies Used: Javascript, Netlify, CSS Flexbox, HTML5
+                  </p>
+                </article>
+              </div>
             </div>
           </div>
 
-          {/* <div className="project" id="tetris-project">
-        <a href="https://tetris-deluxe-mallorysmith64.netlify.com/" id="tetris-title">Tetris Deluxe</a>
-          <section className="img-style">
-            <img
-              src={Tetris}
-              alt="Tetris project overview"
-              className="responsive-img"
-            />
-          </section>
-          <article className="after-collapse" id="tetris-collapsible">
-              <Collapsible className="before-collapse" trigger="Read More">
-                <p>Objective: Create tetris and add audio and css animations for a better user experience</p>
-                <p>Tetris Deluxe is currently being developed.</p>
-                <p>Technologies Used: React.js, React Styled Components, Netlify</p>
-                <a href="https://github.com/mallorysmith64/tetris-deluxe">Tetris Deluxe Code</a>
-              </Collapsible>
-          </article>
-        </div> */}
-        </main>
+          <div className="row">
+            <div className="card sticky-action">
+              <div className="card-image waves-effect waves-block waves-light">
+                <img className="activator" src={images.tv}></img>
+              </div>
+              <div className="card-content">
+                <div className="card-title activator">
+                  TV Guide<i className="material-icons right">more_vert</i>
+                </div>
+              </div>
+
+              <div className="card-action">
+                <a
+                  href="https://tv-guide-mallorysmith64.netlify.com/"
+                  className="waves-effect waves-light btn"
+                >
+                  Live Preview
+                </a>
+                <a
+                  href="https://github.com/mallorysmith64/tv-guide"
+                  className="waves-effect waves-light btn"
+                >
+                  Source Code
+                </a>
+              </div>
+
+              <div className="card-reveal">
+                <strong className="card-title grey-text text-darken-4">
+                  TV Guide<i className="material-icons right">close</i>
+                </strong>
+                <article className="card-description">
+                  <strong>Overview:</strong>
+                  <p>
+                    Make an attractive design for a tv guide and show users a
+                    list of top-rated shows with a description, a highlighted
+                    random show at the top of the page, and details for cast
+                    members.
+                  </p>
+
+                  <strong>Technologies Used:</strong>
+                  <p>React.js, Netlify, CSS Flexbox, HTML5</p>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="card sticky-action">
+              <div className="card-image waves-effect waves-block waves-light">
+                <img className="activator" src={images.minesweeper}></img>
+              </div>
+              <div className="card-content">
+                <div className="card-title activator">
+                  Minesweeper<i className="material-icons right">more_vert</i>
+                </div>
+              </div>
+
+              <div className="card-action">
+                <a
+                  href="https://minesweeper-mallorysmith64.netlify.com/"
+                  className="waves-effect waves-light btn"
+                >
+                  Live Preview
+                </a>
+                <a
+                  href="https://github.com/mallorysmith64/minesweeper"
+                  className="waves-effect waves-light btn"
+                >
+                  Source Code
+                </a>
+              </div>
+
+              <div className="card-reveal">
+                <strong className="card-title grey-text text-darken-4">
+                  Minesweeper<i className="material-icons right">close</i>
+                </strong>
+                <article className="card-description">
+                  <strong>Overview:</strong>
+                  <p>
+                    Use RESTful API for some of the game logic, display a
+                    message to show player they won or lost, and allow the user
+                    to play multiple difficulty levels.
+                  </p>
+
+                  <strong>Technologies Used:</strong>
+                  <p>React.js, Netlify, CSS Flexbox, HTML5</p>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="card sticky-action">
+              <div className="card-image waves-effect waves-block waves-light">
+                <img className="activator" src={images.tictactoe}></img>
+              </div>
+              <div className="card-content">
+                <div className="card-title activator">
+                  Minimalist TicTacToe
+                  <i className="material-icons right">more_vert</i>
+                </div>
+              </div>
+
+              <div className="card-action">
+                <a
+                  href="https://minimalist-tic-tac-toe-mallorysmith64.netlify.com/"
+                  className="waves-effect waves-light btn"
+                >
+                  Live Preview
+                </a>
+                <a
+                  href="https://github.com/mallorysmith64/minimalist-tic-tac-toe"
+                  className="waves-effect waves-light btn"
+                >
+                  Source Code
+                </a>
+              </div>
+
+              <div className="card-reveal">
+                <strong className="card-title grey-text text-darken-4">
+                  Minimalist TicTacToe
+                  <i className="material-icons right">close</i>
+                </strong>
+                <article className="card-description">
+                  <strong>Overview:</strong>
+                  <p>Create a sleek design for a great game</p>
+
+                  <strong>Technologies Used:</strong>
+                  <p>React.js, Netlify, CSS Flexbox, HTML5</p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
       </>
     );
   }

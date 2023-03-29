@@ -5,7 +5,7 @@ class About extends Component {
   render() {
     return (
       <>
-        <header className="about-me-title" id="about">
+        <header className="about-me-header" id="about">
           <h2>About Me</h2>
         </header>
 
@@ -19,22 +19,24 @@ class About extends Component {
           </section>
 
           <section className="about-container">
-            <h5>Who I Am</h5>
+            <u>Who I Am</u>
             <p>
               I'm Mallory A. Smith, a passionate software developer from the
               Tampa Bay area.
             </p>
 
-            <h5>What Motivates Me</h5>
+            <u>What Motivates Me</u>
             <p>
               What motivates me the most is the satisfaction that comes with
               problem solving and creating new projects.
             </p>
 
-            <h5>Hobbies</h5>
+            <u>Favorite Hobbies</u>
             <p>
-              I enjoy practicing yoga, meditation, reading, and writing book
-              reviews.
+              My abosolute favorite hobbies includes the following: writing,
+              meditating, reading, writing, yoga, hypertropy training, writing,
+              petting puppies, drinking tea, writing. Hmmm, did I mention
+              writing yet?
             </p>
           </section>
         </div>

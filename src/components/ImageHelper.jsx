@@ -14,6 +14,15 @@ import trello from "./images/skill_images/trello_logo.png";
 import typescript from "./images/skill_images/typescript_logo.png";
 import vscode from "./images/skill_images/vscode.svg";
 
+import reddit from "./images/project_images/reddit_capstone_screenshot.png"
+import spacex from "./images/project_images/spacex_screenshot.png";
+import octodex from "./images/project_images/octodex_screenshot.png";
+import minesweeper from "./images/project_images/minesweeper_screenshot.png";
+import tv from "./images/project_images/tv_guide_screenshot.png";
+import tictactoe from "./images/project_images/tic_tac_toe_screenshot.png";
+import tetris from "./images/project_images/tetris_screenshot.png"
+import loading from "./images/project_images/loading_screenshot.png";
+
 const images = {
   azure_devops,
   css,
@@ -30,6 +39,15 @@ const images = {
   trello,
   typescript,
   vscode,
+
+  reddit,
+  spacex,
+  octodex,
+  minesweeper,
+  tv,
+  tictactoe,
+  tetris,
+  loading
 };
 
 export default images;
