@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Collapsible from "react-collapsible";
 import images from "./ImageHelper";
 class Projects extends Component {
   render() {
