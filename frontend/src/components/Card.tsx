@@ -1,7 +1,7 @@
 import React, { MouseEventHandler, useState } from "react";
 import { useDrag } from "react-dnd";
 import { v4 as uuidv4 } from "uuid";
-
+import Editor from "./Editor";
 interface CardProps {
    id: string;
    text: string;
@@ -9,9 +9,15 @@ interface CardProps {
    index: number;
    isToolbar: boolean;
    onDelete?: (index: number) => void;
+   onEdit?: (index: number) => void;
+   showEditor?: boolean;
+   setShowEditor?: (value: boolean) => void;
+   value?: string;
+   setValue?: (value: string) => void;
 }
 
-export function Card({ id, index, text, icon, isToolbar, onDelete }: CardProps) {
+export function Card({ id, index, text, icon, isToolbar, onDelete, value, setValue }: CardProps) {
+   const [showEditor, setShowEditor] = useState(false);
    const [{ isDragging }, drag] = useDrag(() => ({
       type: "card",
       item: () => {
@@ -31,11 +37,7 @@ export function Card({ id, index, text, icon, isToolbar, onDelete }: CardProps) 
       <>
          <ul className="cards">
             <li className="is-4-mobile" key={uuidv4()}>
-               <div
-                  className="card is-size-4"
-                  ref={drag}
-                  // style={{ opacity: isDragging ? "0%" : "100%" }}
-               >
+               <div className="card is-size-4" ref={drag}>
                   <div className="card-content">
                      <div className="media">
                         {isToolbar && (
@@ -49,9 +51,15 @@ export function Card({ id, index, text, icon, isToolbar, onDelete }: CardProps) 
 
                         {!isToolbar && (
                            <div className="toolbar-header-btns">
-                              <button className="btn">
+                              <button className="btn" onClick={() => setShowEditor(!showEditor)}>
                                  <i className="fas fa-edit"></i>
                               </button>
+
+                              {showEditor && (
+                                 <div className="editor-container">
+                                    <Editor />
+                                 </div>
+                              )}
 
                               <button className="btn" onClick={() => onDelete(index)}>
                                  <i className="fas fa-trash"></i>
