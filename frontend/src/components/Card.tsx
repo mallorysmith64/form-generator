@@ -55,11 +55,7 @@ export function Card({ id, index, text, icon, isToolbar, onDelete, value, setVal
                                  <i className="fas fa-edit"></i>
                               </button>
 
-                              {showEditor && (
-                                 <div className="editor-container">
-                                    <Editor />
-                                 </div>
-                              )}
+                              {showEditor && <Editor />}
 
                               <button className="btn" onClick={() => onDelete(index)}>
                                  <i className="fas fa-trash"></i>

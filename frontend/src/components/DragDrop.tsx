@@ -100,6 +100,7 @@ function DragDrop() {
    return (
       <>
          <section className="form-builder-page-container">
+            <button className="submit-btn button is-success">Publish</button>
             <div className="card-container">{cards}</div>
 
             <div className="form-builder" ref={drop}>
