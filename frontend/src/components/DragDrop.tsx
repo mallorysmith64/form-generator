@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { Card } from "./Card";
 import { useDrop } from "react-dnd";
 import { v4 as uuidv4 } from "uuid";
+import Header from "./Header";
+import Editor from "./Editor";
+import Paragraph from "./Paragraph";
+import Email from "./Email";
 
 interface CardProps {
    key: string;
@@ -10,18 +14,9 @@ interface CardProps {
    icon: string;
    index: number;
    onDelete?: number;
+   activeCard?: any;
+   showEditor?: boolean;
 }
-
-// const headerProps = {
-//    content: "PLaceholder",
-//    fontSize: 32,
-//    fontStyle: "bold",
-//    textColor: "#000000",
-//    backgroundColor: "#FFFFFF",
-//    alignment: "center",
-//    margin: [10, 10, 10, 10],
-//    padding: [10, 10, 10, 10],
-// };
 
 const cardList = [
    {
@@ -43,6 +38,8 @@ const cardList = [
 
 function DragDrop() {
    const [dropZone, setDropZone] = useState<CardProps[]>([]);
+   const [showEditor, setShowEditor] = useState(false);
+   const [activeCard, setActiveCard] = useState("");
 
    const [{ isOver }, drop] = useDrop(() => ({
       accept: "card",
@@ -62,8 +59,33 @@ function DragDrop() {
          text={card.text}
          icon={card.icon}
          isToolbar={true}
+         // onEdit={() => handleEdit(card.id)}
       />
    ));
+
+   const handleEdit = (editCard: string) => {
+      console.log("handleEdit called with:", editCard);
+      let cardName = "";
+      switch (editCard) {
+         case "Header":
+            setShowEditor(true);
+            cardName = "Header";
+            break;
+         case "Paragraph":
+            setShowEditor(true);
+            cardName = "Paragraph";
+            break;
+         case "Email":
+            setShowEditor(true);
+            cardName = "Email";
+            break;
+         default:
+            setShowEditor(false);
+            cardName = "";
+            break;
+      }
+      setActiveCard(cardName);
+   };
 
    const addCard = (id: string, index: number, key: string) => {
       const droppedCards = cardList.filter((card) => id === card.id);
@@ -84,7 +106,7 @@ function DragDrop() {
    };
 
    const dropZoneCards = dropZone.map((card, index) => (
-      <div className="dropZoneCards">
+      <div className="dropZoneCards" key={card.key}>
          <Card
             key={uuidv4()}
             id={card.id}
@@ -93,6 +115,7 @@ function DragDrop() {
             icon={card.icon}
             isToolbar={false}
             onDelete={handleDeleteCard}
+            onEdit={() => handleEdit(card.text)}
          />
       </div>
    ));
@@ -108,6 +131,15 @@ function DragDrop() {
                   <div className="dropzone-cards">{dropZoneCards}</div>
                </div>
             </div>
+
+            {showEditor && (
+               <div id="side-panel-container">
+                  {" "}
+                  {activeCard === "Header" ? <Header /> : null}
+                  {activeCard === "Paragraph" ? <Editor /> : null}
+                  {activeCard === "Email" ? <Email /> : null}
+               </div>
+            )}
          </section>
       </>
    );

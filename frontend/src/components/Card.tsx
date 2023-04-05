@@ -1,7 +1,7 @@
 import React, { MouseEventHandler, useState } from "react";
 import { useDrag } from "react-dnd";
 import { v4 as uuidv4 } from "uuid";
-import Editor from "./Editor";
+
 interface CardProps {
    id: string;
    text: string;
@@ -9,15 +9,15 @@ interface CardProps {
    index: number;
    isToolbar: boolean;
    onDelete?: (index: number) => void;
-   onEdit?: (index: number) => void;
-   showEditor?: boolean;
-   setShowEditor?: (value: boolean) => void;
+   onEdit?: () => void;
+   // showEditor?: boolean;
+   // setShowEditor?: (value: boolean) => void;
    value?: string;
    setValue?: (value: string) => void;
+   activeCard?: (id: string) => void;
 }
 
-export function Card({ id, index, text, icon, isToolbar, onDelete, value, setValue }: CardProps) {
-   const [showEditor, setShowEditor] = useState(false);
+export function Card({ id, index, text, icon, isToolbar, onDelete, onEdit }: CardProps) {
    const [{ isDragging }, drag] = useDrag(() => ({
       type: "card",
       item: () => {
@@ -32,6 +32,11 @@ export function Card({ id, index, text, icon, isToolbar, onDelete, value, setVal
    const handleDelete = (index: number) => {
       onDelete(index);
    };
+
+   const handleEdit = () => {
+      onEdit && onEdit();
+   };
+   
 
    return (
       <>
@@ -51,11 +56,9 @@ export function Card({ id, index, text, icon, isToolbar, onDelete, value, setVal
 
                         {!isToolbar && (
                            <div className="toolbar-header-btns">
-                              <button className="btn" onClick={() => setShowEditor(!showEditor)}>
+                              <button className="btn" onClick={onEdit}>
                                  <i className="fas fa-edit"></i>
                               </button>
-
-                              {showEditor && <Editor />}
 
                               <button className="btn" onClick={() => onDelete(index)}>
                                  <i className="fas fa-trash"></i>

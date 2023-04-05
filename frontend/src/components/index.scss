@@ -150,25 +150,25 @@ body {
    display: flex;
 }
 
-// wysiwig side panel
-#editor-container {
+//side panel
+#side-panel-container {
    display: flex;
    position: fixed;
-   z-index: 2000;
+   font-size: 1.25em;
+   z-index: 999;
    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
    left: 0;
    background: #fafafa;
-   padding: 4em;
+   padding: 3em;
    top: 0;
    height: calc(100vh - 0vh);
-   width: calc(70vh - 2vh);
+   width: calc(50vh - 2vh);
    word-break: break-all;
 }
 
 .quill {
    height: 8em;
    width: 20em;
-   transition: 3s ease-in-out;
 }
 
 .ql-toolbar {
@@ -185,6 +185,36 @@ body {
 
 .ql-container {
    background-color: white;
+}
+
+.editor-close-btn {
+   display: flex;
+   position: fixed;
+   margin-left: 21em;
+   bottom: 35em;
+   color: white;
+}
+
+.editor-close-btn:hover {
+   color: hsla(0, 0%, 100%, 0.75) !important;
+}
+
+// header side panel
+.header {
+   padding-bottom: 0.5em;
+}
+
+.size-label {
+   padding-top: 0.5em;
+}
+
+.font-size-controls {
+   padding-bottom: 0.5em;
+}
+
+.alignment-container {
+   display: flex;
+   flex-direction: column;
 }
 
 // .publish-btn {
