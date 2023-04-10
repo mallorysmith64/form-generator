@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Card } from "./Card";
 import { useDrop } from "react-dnd";
 import { v4 as uuidv4 } from "uuid";
 import Header from "./Header";
 import Editor from "./Editor";
-import Paragraph from "./Paragraph";
+// import Paragraph from "./Paragraph";
 import Email from "./Email";
+import { FormContext } from "./FormContext";
 
 interface CardProps {
    key: string;
@@ -14,8 +15,7 @@ interface CardProps {
    icon: string;
    index: number;
    onDelete?: number;
-   activeCard?: any;
-   showEditor?: boolean;
+   onEdit?: (id: string) => void;
 }
 
 const cardList = [
@@ -40,6 +40,8 @@ function DragDrop() {
    const [dropZone, setDropZone] = useState<CardProps[]>([]);
    const [showEditor, setShowEditor] = useState(false);
    const [activeCard, setActiveCard] = useState("");
+   const { headerText } = useContext(FormContext);
+   const { emailText } = useContext(FormContext);
 
    const [{ isOver }, drop] = useDrop(() => ({
       accept: "card",
@@ -59,7 +61,6 @@ function DragDrop() {
          text={card.text}
          icon={card.icon}
          isToolbar={true}
-         // onEdit={() => handleEdit(card.id)}
       />
    ));
 
@@ -91,7 +92,12 @@ function DragDrop() {
       const droppedCards = cardList.filter((card) => id === card.id);
       setDropZone((dropZone) => [
          ...dropZone,
-         { ...droppedCards[0], isToolbar: false, index: dropZone.length, key: uuidv4() },
+         {
+            ...droppedCards[0],
+            isToolbar: false,
+            index: dropZone.length,
+            key: uuidv4(),
+         },
       ]);
    };
 
@@ -111,11 +117,13 @@ function DragDrop() {
             key={uuidv4()}
             id={card.id}
             index={index}
-            text={card.text}
             icon={card.icon}
             isToolbar={false}
             onDelete={handleDeleteCard}
             onEdit={() => handleEdit(card.text)}
+            // text={card.text}
+            headerText={card.text == "Header" ? headerText : null}
+            emailText={card.text == "Email" ? emailText : null}
          />
       </div>
    ));
@@ -124,6 +132,7 @@ function DragDrop() {
       <>
          <section className="form-builder-page-container">
             <button className="submit-btn button is-success">Publish</button>
+
             <div className="card-container">{cards}</div>
 
             <div className="form-builder" ref={drop}>
@@ -134,7 +143,6 @@ function DragDrop() {
 
             {showEditor && (
                <div id="side-panel-container">
-                  {" "}
                   {activeCard === "Header" ? <Header /> : null}
                   {activeCard === "Paragraph" ? <Editor /> : null}
                   {activeCard === "Email" ? <Email /> : null}

@@ -1,19 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { FormContext } from "./FormContext";
 
-interface HeaderProps {
-   showEditor: boolean;
-   activeCard: string;
-}
+type HeaderProps = {
+   onTextChange?: (headerText: string) => void;
+};
 
-const Header = () => {
-   const [text, setText] = useState<string>("");
+const Header = ({ onTextChange }: HeaderProps) => {
+   const { headerText, setHeaderText } = useContext(FormContext);
    const [fontSize, setFontSize] = useState<number>(14);
    const [alignment, setAlignment] = useState<string>("left");
-   const [activeCard, setActiveCard] = useState(null);
 
-   const handleText = (event: React.ChangeEvent<HTMLInputElement>) => {
-      console.log(event.target.value);
-      setText(event.target.value);
+   const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const newHeaderText = event.target.value;
+      console.log(newHeaderText);
+      setHeaderText(newHeaderText);
+      // onTextChange(newHeaderText);
    };
 
    const handleFontSize = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -47,8 +48,8 @@ const Header = () => {
                <input
                   type="text"
                   className="header-input"
-                  value={text}
-                  onChange={handleText}
+                  value={headerText}
+                  onChange={handleTextChange}
                   placeholder="Enter header"
                />
             </div>
@@ -76,6 +77,8 @@ const Header = () => {
                   <option value="right">Right</option>
                </select>
             </div>
+
+            <button className="editor-close-btn button is-info">Save & Close</button>
          </div>
       </>
    );

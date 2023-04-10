@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { FormContext } from "./FormContext";
 
 const Email = () => {
-   const [text, setText] = useState<string>("");
+   const { emailText, setEmailText } = useContext(FormContext);
    const [alignment, setAlignment] = useState<string>("left");
 
-   const handleText = (event: React.ChangeEvent<HTMLInputElement>) => {
-      console.log(event.target.value);
-      setText(event.target.value);
+   const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const newText = event.target.value;
+      console.log(newText);
+      setEmailText(newText);
    };
 
    const handleAlignment = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -23,8 +25,8 @@ const Email = () => {
                <input
                   type="text"
                   className="header-input"
-                  value={text}
-                  onChange={handleText}
+                  value={emailText}
+                  onChange={handleTextChange}
                   placeholder="Enter email"
                />
             </div>
@@ -37,6 +39,7 @@ const Email = () => {
                   <option value="right">Right</option>
                </select>
             </div>
+            <button className="editor-close-btn button is-info">Save & Close</button>
          </div>
       </>
    );

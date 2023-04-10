@@ -4,24 +4,34 @@ import { v4 as uuidv4 } from "uuid";
 
 interface CardProps {
    id: string;
-   text: string;
+   text?: string;
    icon: string;
    index: number;
    isToolbar: boolean;
    onDelete?: (index: number) => void;
    onEdit?: () => void;
-   // showEditor?: boolean;
-   // setShowEditor?: (value: boolean) => void;
    value?: string;
    setValue?: (value: string) => void;
    activeCard?: (id: string) => void;
+   headerText?: any;
+   emailText?: any;
 }
 
-export function Card({ id, index, text, icon, isToolbar, onDelete, onEdit }: CardProps) {
+export function Card({
+   id,
+   index,
+   text,
+   icon,
+   isToolbar,
+   onDelete,
+   onEdit,
+   headerText,
+   emailText,
+}: CardProps) {
    const [{ isDragging }, drag] = useDrag(() => ({
       type: "card",
       item: () => {
-         return { id, isToolbar };
+         return { id, isToolbar, headerText };
       },
       collect: (monitor) => {
          const isDragging = !!monitor.isDragging();
@@ -36,7 +46,10 @@ export function Card({ id, index, text, icon, isToolbar, onDelete, onEdit }: Car
    const handleEdit = () => {
       onEdit && onEdit();
    };
-   
+
+   // const handleText = (event: React.ChangeEvent<HTMLInputElement>) => {
+   //    setText && setText(event.target.value); // add this line
+   // };
 
    return (
       <>
@@ -52,7 +65,8 @@ export function Card({ id, index, text, icon, isToolbar, onDelete, onEdit }: Car
                               </span>
                            </div>
                         )}
-                        <div className="media-content">{text}</div>
+
+                        <div className="media-content">{text || emailText || headerText}</div>
 
                         {!isToolbar && (
                            <div className="toolbar-header-btns">
