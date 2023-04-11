@@ -31,7 +31,7 @@ export function Card({
    const [{ isDragging }, drag] = useDrag(() => ({
       type: "card",
       item: () => {
-         return { id, isToolbar, headerText };
+         return { id, isToolbar };
       },
       collect: (monitor) => {
          const isDragging = !!monitor.isDragging();
@@ -46,10 +46,6 @@ export function Card({
    const handleEdit = () => {
       onEdit && onEdit();
    };
-
-   // const handleText = (event: React.ChangeEvent<HTMLInputElement>) => {
-   //    setText && setText(event.target.value); // add this line
-   // };
 
    return (
       <>

@@ -14,7 +14,6 @@ const Header = ({ onTextChange }: HeaderProps) => {
       const newHeaderText = event.target.value;
       console.log(newHeaderText);
       setHeaderText(newHeaderText);
-      // onTextChange(newHeaderText);
    };
 
    const handleFontSize = (event: React.ChangeEvent<HTMLSelectElement>) => {

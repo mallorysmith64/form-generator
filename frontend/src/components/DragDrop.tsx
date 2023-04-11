@@ -14,6 +14,7 @@ interface CardProps {
    text: string;
    icon: string;
    index: number;
+   placeholder:string;
    onDelete?: number;
    onEdit?: (id: string) => void;
 }
@@ -23,16 +24,19 @@ const cardList = [
       id: uuidv4(),
       text: "Header",
       icon: "fas fa-heading",
+      placeholder:"Type Header",
    },
    {
       id: uuidv4(),
       text: "Paragraph",
       icon: "fas fa-paragraph",
+      placeholder:"Type Paragraph",
    },
    {
       id: uuidv4(),
       text: "Email",
       icon: "fas fa-envelope",
+      placeholder:"Type Email",
    },
 ];
 
@@ -42,6 +46,7 @@ function DragDrop() {
    const [activeCard, setActiveCard] = useState("");
    const { headerText } = useContext(FormContext);
    const { emailText } = useContext(FormContext);
+   const [activeEditCard, setActiveEditCard] = useState<string>(null);
 
    const [{ isOver }, drop] = useDrop(() => ({
       accept: "card",
@@ -64,24 +69,29 @@ function DragDrop() {
       />
    ));
 
-   const handleEdit = (editCard: string) => {
+   const handleEdit = (editCard: string, key: string) => {
       console.log("handleEdit called with:", editCard);
       let cardName = "";
       switch (editCard) {
          case "Header":
             setShowEditor(true);
+            setActiveEditCard(key);
             cardName = "Header";
+
             break;
          case "Paragraph":
             setShowEditor(true);
+            setActiveEditCard(key);
             cardName = "Paragraph";
             break;
          case "Email":
             setShowEditor(true);
+            setActiveEditCard(key);
             cardName = "Email";
             break;
          default:
             setShowEditor(false);
+            setActiveEditCard(null);
             cardName = "";
             break;
       }
@@ -120,10 +130,10 @@ function DragDrop() {
             icon={card.icon}
             isToolbar={false}
             onDelete={handleDeleteCard}
-            onEdit={() => handleEdit(card.text)}
+            onEdit={() => handleEdit(card.text, card.key)}
             // text={card.text}
-            headerText={card.text == "Header" ? headerText : null}
-            emailText={card.text == "Email" ? emailText : null}
+            headerText={card.text == "Header" && card.key == activeEditCard ? headerText : card.placeholder}
+            emailText={card.text == "Email" && card.key == activeEditCard ? emailText : null}
          />
       </div>
    ));

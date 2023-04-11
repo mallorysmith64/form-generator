@@ -10,7 +10,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { FormContext } from "./components/FormContext";
 
 function App() {
-   const [headerText, setHeaderText] = useState("Type Header");
+   const [headerText, setHeaderText] = useState("Type Header"); //shows placeholder when user clicks edit btn
    const [emailText, setEmailText] = useState("Type Email");
 
    return (
