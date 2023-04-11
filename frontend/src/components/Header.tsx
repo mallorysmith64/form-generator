@@ -1,11 +1,7 @@
 import React, { useContext, useState } from "react";
 import { FormContext } from "./FormContext";
 
-type HeaderProps = {
-   onTextChange?: (headerText: string) => void;
-};
-
-const Header = ({ onTextChange }: HeaderProps) => {
+const Header = () => {
    const { headerText, setHeaderText } = useContext(FormContext);
    const [fontSize, setFontSize] = useState<number>(14);
    const [alignment, setAlignment] = useState<string>("left");

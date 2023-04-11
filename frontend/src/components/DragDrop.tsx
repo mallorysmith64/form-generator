@@ -14,7 +14,7 @@ interface CardProps {
    text: string;
    icon: string;
    index: number;
-   placeholder:string;
+   placeholder: string;
    onDelete?: number;
    onEdit?: (id: string) => void;
 }
@@ -24,19 +24,19 @@ const cardList = [
       id: uuidv4(),
       text: "Header",
       icon: "fas fa-heading",
-      placeholder:"Type Header",
+      placeholder: "Type Header",
    },
    {
       id: uuidv4(),
       text: "Paragraph",
       icon: "fas fa-paragraph",
-      placeholder:"Type Paragraph",
+      placeholder: "Type Paragraph",
    },
    {
       id: uuidv4(),
       text: "Email",
       icon: "fas fa-envelope",
-      placeholder:"Type Email",
+      placeholder: "Type Email",
    },
 ];
 
@@ -131,8 +131,8 @@ function DragDrop() {
             isToolbar={false}
             onDelete={handleDeleteCard}
             onEdit={() => handleEdit(card.text, card.key)}
-            // text={card.text}
-            headerText={card.text == "Header" && card.key == activeEditCard ? headerText : card.placeholder}
+            text={card.placeholder}
+            headerText={card.text == "Header" && card.key == activeEditCard ? headerText : null}
             emailText={card.text == "Email" && card.key == activeEditCard ? emailText : null}
          />
       </div>

@@ -10,8 +10,10 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { FormContext } from "./components/FormContext";
 
 function App() {
-   const [headerText, setHeaderText] = useState("Type Header"); //shows placeholder when user clicks edit btn
-   const [emailText, setEmailText] = useState("Type Email");
+   const [headerText, setHeaderText] = useState<string>("Type Header"); //shows placeholder when user clicks edit btn
+   const [emailText, setEmailText] = useState<string>("Type Email");
+   const [defaultHeaderSize] = useState<number>();
+   const [defaultFontSize] = useState<number>();
 
    return (
       <>
@@ -20,22 +22,24 @@ function App() {
                headerText,
                setHeaderText,
                emailText,
-               setEmailText
+               setEmailText,
+               defaultHeaderSize,
+               defaultFontSize,
             }}
          >
-         <DndProvider backend={HTML5Backend}>
-            <div className="App">
-               <Router>
-                  <Routes>
-                     <Route path="/" element={<HomePage />} />
-                     <Route path="/FormBuilder" element={<FormBuilder />} />
-                     <Route path="/Publish/:formId" element={<Publish />} />
-                     <Route path="/FormView/:formId" element={<FormView />} />
-                     <Route path="/Templates" element={<Templates />} />
-                  </Routes>
-               </Router>
-            </div>
-         </DndProvider>
+            <DndProvider backend={HTML5Backend}>
+               <div className="App">
+                  <Router>
+                     <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/FormBuilder" element={<FormBuilder />} />
+                        <Route path="/Publish/:formId" element={<Publish />} />
+                        <Route path="/FormView/:formId" element={<FormView />} />
+                        <Route path="/Templates" element={<Templates />} />
+                     </Routes>
+                  </Router>
+               </div>
+            </DndProvider>
          </FormContext.Provider>
       </>
    );
