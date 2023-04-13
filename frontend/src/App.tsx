@@ -12,8 +12,7 @@ import { FormContext } from "./components/FormContext";
 function App() {
    const [headerText, setHeaderText] = useState<string>("Type Header"); //shows placeholder when user clicks edit btn
    const [emailText, setEmailText] = useState<string>("Type Email");
-   const [defaultHeaderSize] = useState<number>();
-   const [defaultFontSize] = useState<number>();
+   const [headerSize, setHeaderSize] = useState<number>();
 
    return (
       <>
@@ -23,8 +22,8 @@ function App() {
                setHeaderText,
                emailText,
                setEmailText,
-               defaultHeaderSize,
-               defaultFontSize,
+               headerSize,
+               setHeaderSize,
             }}
          >
             <DndProvider backend={HTML5Backend}>

@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useDrag } from "react-dnd";
 import { v4 as uuidv4 } from "uuid";
 import { FormContext } from "./FormContext";
@@ -16,6 +16,7 @@ interface CardProps {
    activeCard?: (id: string) => void;
    headerText?: any;
    emailText?: any;
+   headerSize?: any;
 }
 
 export function Card({
@@ -29,9 +30,7 @@ export function Card({
    headerText,
    emailText,
 }: CardProps) {
-   const { defaultHeaderSize } = useContext(FormContext);
-   const { defaultFontSize } = useContext(FormContext);
-
+   const { headerSize } = useContext(FormContext);
    const [{ isDragging }, drag] = useDrag(() => ({
       type: "card",
       item: () => {
@@ -51,6 +50,10 @@ export function Card({
       onEdit && onEdit();
    };
 
+   const headerTextStyle = {
+      fontSize: `${headerSize}px`,
+   };
+
    return (
       <>
          <ul className="cards">
@@ -67,10 +70,8 @@ export function Card({
                         )}
 
                         <div className="media-content">
-                           {headerText && (
-                              <h3 style={{ fontSize: defaultHeaderSize }}>{headerText}</h3>
-                           )}
-                           {emailText && <p style={{ fontSize: defaultFontSize }}>{emailText}</p>}
+                           {headerText && <h3 style={headerTextStyle}>{headerText}</h3>}
+                           {emailText && <p>{emailText}</p>}
                            {text && !headerText && !emailText && <p>{text}</p>}
                         </div>
 

@@ -2,8 +2,7 @@ import React, { useContext, useState } from "react";
 import { FormContext } from "./FormContext";
 
 const Header = () => {
-   const { headerText, setHeaderText } = useContext(FormContext);
-   const [fontSize, setFontSize] = useState<number>(14);
+   const { headerText, setHeaderText, setHeaderSize } = useContext(FormContext);
    const [alignment, setAlignment] = useState<string>("left");
 
    const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,26 +11,13 @@ const Header = () => {
       setHeaderText(newHeaderText);
    };
 
-   const handleFontSize = (event: React.ChangeEvent<HTMLSelectElement>) => {
-      console.log(parseInt(event.target.value));
-      setFontSize(parseInt(event.target.value));
-   };
-
    const handleAlignment = (event: React.ChangeEvent<HTMLSelectElement>) => {
       console.log(event.target.value);
       setAlignment(event.target.value);
    };
 
-   const handleDecreaseFontSize = () => {
-      if (fontSize > 10) {
-         setFontSize(fontSize - 2);
-      }
-   };
-
-   const handleIncreaseFontSize = () => {
-      if (fontSize < 20) {
-         setFontSize(fontSize + 2);
-      }
+   const handleFontSize = (size: number) => {
+      setHeaderSize(size);
    };
 
    return (
@@ -54,14 +40,9 @@ const Header = () => {
             </div>
 
             <div className="font-size-controls">
-               <button onClick={handleDecreaseFontSize}>-</button>
-               <select id="fontSize" value={fontSize} onChange={handleFontSize}>
-                  <option value="14">14</option>
-                  <option value="16">16</option>
-                  <option value="18">18</option>
-                  <option value="20">20</option>
-               </select>
-               <button onClick={handleIncreaseFontSize}>+</button>
+               <button onClick={() => handleFontSize(26)}>Small</button>
+               <button onClick={() => handleFontSize(28)}>Default</button>
+               <button onClick={() => handleFontSize(30)}>Large</button>
             </div>
 
             <div className="alignment-container">

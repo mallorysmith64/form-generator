@@ -46,6 +46,7 @@ function DragDrop() {
    const [activeCard, setActiveCard] = useState("");
    const { headerText } = useContext(FormContext);
    const { emailText } = useContext(FormContext);
+   const { headerSize } = useContext(FormContext);
    const [activeEditCard, setActiveEditCard] = useState<string>(null);
 
    const [{ isOver }, drop] = useDrop(() => ({

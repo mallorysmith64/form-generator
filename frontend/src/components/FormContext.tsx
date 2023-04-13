@@ -5,8 +5,8 @@ type FormContextType = {
    setHeaderText: (text: string) => void;
    emailText: string;
    setEmailText: (text: string) => void;
-   defaultHeaderSize: number;
-   defaultFontSize: number;
+   headerSize: number;
+   setHeaderSize: (size: number) => void;
 };
 
 export const FormContext = React.createContext<FormContextType>({
@@ -14,6 +14,6 @@ export const FormContext = React.createContext<FormContextType>({
    setHeaderText: () => {},
    emailText: "",
    setEmailText: () => {},
-   defaultHeaderSize: 21,
-   defaultFontSize: 2
+   headerSize: 1.1,
+   setHeaderSize: () => {},
 });
