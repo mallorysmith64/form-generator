@@ -13,7 +13,10 @@ function App() {
    const [headerText, setHeaderText] = useState<string>("Type Header"); //shows placeholder when user clicks edit btn
    const [emailText, setEmailText] = useState<string>("Type Email");
    const [headerSize, setHeaderSize] = useState<number>();
-
+   const [nameSize, setNameSize] = useState<number>();
+   const [firstNameText, setFirstNameText] = useState<string>("First Name");
+   const [lastNameText, setLastNameText] = useState<string>("Last Name");
+   
    return (
       <>
          <FormContext.Provider
@@ -24,6 +27,12 @@ function App() {
                setEmailText,
                headerSize,
                setHeaderSize,
+               nameSize,
+               setNameSize,
+               firstNameText,
+               setFirstNameText,
+               lastNameText,
+               setLastNameText
             }}
          >
             <DndProvider backend={HTML5Backend}>

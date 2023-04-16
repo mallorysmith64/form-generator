@@ -16,7 +16,8 @@ interface CardProps {
    activeCard?: (id: string) => void;
    headerText?: any;
    emailText?: any;
-   headerSize?: any;
+   firstNameText?: any;
+   lastNameText?: any;
 }
 
 export function Card({
@@ -29,8 +30,12 @@ export function Card({
    onEdit,
    headerText,
    emailText,
+   firstNameText,
+   lastNameText,
 }: CardProps) {
    const { headerSize } = useContext(FormContext);
+   const { nameSize } = useContext(FormContext);
+
    const [{ isDragging }, drag] = useDrag(() => ({
       type: "card",
       item: () => {
@@ -54,6 +59,10 @@ export function Card({
       fontSize: `${headerSize}px`,
    };
 
+   const nameTextStyle = {
+      fontSize: `${nameSize}px`,
+   };
+
    return (
       <>
          <ul className="cards">
@@ -69,11 +78,32 @@ export function Card({
                            </div>
                         )}
 
-                        <div className="media-content">
-                           {headerText && <h3 style={headerTextStyle}>{headerText}</h3>}
-                           {emailText && <p>{emailText}</p>}
-                           {text && !headerText && !emailText && <p>{text}</p>}
-                        </div>
+                        {headerText && <h3 style={headerTextStyle}>{headerText}</h3>}
+                        {emailText && (
+                           <div>
+                              <h3 className="email-text">{emailText} </h3>
+                              <input type="email" className="input is-small" readOnly />
+                           </div>
+                        )}
+
+                        {firstNameText && lastNameText && (
+                           <>
+                              <div className="name-container" style={nameTextStyle}>
+                                 <div className="first-name-label-container">
+                                    <h2 className="name-label">{firstNameText}</h2>
+                                    <input type="text" className="input is-small" readOnly />
+                                 </div>
+                                 <div className="last-name-label-container">
+                                    <h5 className="name-label">{lastNameText} </h5>
+                                    <input type="text" className="input is-small" readOnly />
+                                 </div>
+                              </div>
+                           </>
+                        )}
+
+                        {text && !headerText && !emailText && !firstNameText && !lastNameText && (
+                           <p>{text}</p>
+                        )}
 
                         {!isToolbar && (
                            <div className="toolbar-header-btns">

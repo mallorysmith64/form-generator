@@ -3,7 +3,7 @@ import { FormContext } from "./FormContext";
 
 const Header = () => {
    const { headerText, setHeaderText, setHeaderSize } = useContext(FormContext);
-   const [alignment, setAlignment] = useState<string>("left");
+   const [textAlign, setTextAlign] = useState("left");
 
    const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const newHeaderText = event.target.value;
@@ -11,9 +11,8 @@ const Header = () => {
       setHeaderText(newHeaderText);
    };
 
-   const handleAlignment = (event: React.ChangeEvent<HTMLSelectElement>) => {
-      console.log(event.target.value);
-      setAlignment(event.target.value);
+   const handleAlignment = (alignment: any) => {
+      setTextAlign(alignment);
    };
 
    const handleFontSize = (size: number) => {
@@ -32,6 +31,8 @@ const Header = () => {
                   value={headerText}
                   onChange={handleTextChange}
                   placeholder="Enter header"
+                  minLength={2}
+                  maxLength={30}
                />
             </div>
 
@@ -39,22 +40,25 @@ const Header = () => {
                <label>Size</label>
             </div>
 
-            <div className="font-size-controls">
+            <div className="font-size-btns">
                <button onClick={() => handleFontSize(26)}>Small</button>
                <button onClick={() => handleFontSize(28)}>Default</button>
                <button onClick={() => handleFontSize(30)}>Large</button>
             </div>
 
-            <div className="alignment-container">
-               <label htmlFor="alignment">Alignment</label>
-               <select id="alignment" value={alignment} onChange={handleAlignment}>
-                  <option value="left">Left</option>
-                  <option value="center">Center</option>
-                  <option value="right">Right</option>
-               </select>
+            <div className="alignment-label">
+               <label>Alignment</label>
             </div>
 
-            <button className="editor-close-btn button is-info">Save & Close</button>
+            <div className="alignment-btns">
+               <button onClick={() => handleAlignment("left")}>Left</button>
+               <button onClick={() => handleAlignment("center")}>Center</button>
+               <button onClick={() => handleAlignment("right")}>Right</button>
+            </div>
+
+            <div>
+               <button className="editor-close-btn button is-info">Save & Close</button>
+            </div>
          </div>
       </>
    );

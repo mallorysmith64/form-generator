@@ -4,8 +4,8 @@ import { useDrop } from "react-dnd";
 import { v4 as uuidv4 } from "uuid";
 import Header from "./Header";
 import Editor from "./Editor";
-// import Paragraph from "./Paragraph";
 import Email from "./Email";
+import Name from "./Name";
 import { FormContext } from "./FormContext";
 
 interface CardProps {
@@ -26,17 +26,24 @@ const cardList = [
       icon: "fas fa-heading",
       placeholder: "Type Header",
    },
-   {
-      id: uuidv4(),
-      text: "Paragraph",
-      icon: "fas fa-paragraph",
-      placeholder: "Type Paragraph",
-   },
+   // {
+   //    id: uuidv4(),
+   //    text: "Paragraph",
+   //    icon: "fas fa-paragraph",
+   //    placeholder: "Type Paragraph",
+   // },
    {
       id: uuidv4(),
       text: "Email",
       icon: "fas fa-envelope",
       placeholder: "Type Email",
+   },
+   {
+      id: uuidv4(),
+      text: "Name",
+      icon: "fas fa-user",
+      placeholder: "First Name",
+      placeholder_two: "Last Name",
    },
 ];
 
@@ -46,7 +53,7 @@ function DragDrop() {
    const [activeCard, setActiveCard] = useState("");
    const { headerText } = useContext(FormContext);
    const { emailText } = useContext(FormContext);
-   const { headerSize } = useContext(FormContext);
+   const { firstNameText, lastNameText } = useContext(FormContext);
    const [activeEditCard, setActiveEditCard] = useState<string>(null);
 
    const [{ isOver }, drop] = useDrop(() => ({
@@ -80,10 +87,10 @@ function DragDrop() {
             cardName = "Header";
 
             break;
-         case "Paragraph":
+         case "Name":
             setShowEditor(true);
             setActiveEditCard(key);
-            cardName = "Paragraph";
+            cardName = "Name";
             break;
          case "Email":
             setShowEditor(true);
@@ -135,6 +142,8 @@ function DragDrop() {
             text={card.placeholder}
             headerText={card.text == "Header" && card.key == activeEditCard ? headerText : null}
             emailText={card.text == "Email" && card.key == activeEditCard ? emailText : null}
+            firstNameText={card.text == "Name" && card.key == activeEditCard ? firstNameText : null}
+            lastNameText={card.text == "Name" && card.key == activeEditCard ? lastNameText : null}
          />
       </div>
    ));
@@ -155,8 +164,8 @@ function DragDrop() {
             {showEditor && (
                <div id="side-panel-container">
                   {activeCard === "Header" ? <Header /> : null}
-                  {activeCard === "Paragraph" ? <Editor /> : null}
                   {activeCard === "Email" ? <Email /> : null}
+                  {activeCard === "Name" ? <Name /> : null}
                </div>
             )}
          </section>
@@ -165,3 +174,7 @@ function DragDrop() {
 }
 
 export default DragDrop;
+
+{
+   /* {activeCard === "Paragraph" ? <Editor /> : null} */
+}

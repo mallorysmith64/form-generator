@@ -3,7 +3,7 @@ import { FormContext } from "./FormContext";
 
 const Email = () => {
    const { emailText, setEmailText } = useContext(FormContext);
-   const [alignment, setAlignment] = useState<string>("left");
+   const [textAlign, setTextAlign] = useState("left");
 
    const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const newText = event.target.value;
@@ -11,9 +11,8 @@ const Email = () => {
       setEmailText(newText);
    };
 
-   const handleAlignment = (event: React.ChangeEvent<HTMLSelectElement>) => {
-      console.log(event.target.value);
-      setAlignment(event.target.value);
+   const handleAlignment = (alignment: any) => {
+      setTextAlign(alignment);
    };
 
    return (
@@ -24,21 +23,24 @@ const Email = () => {
             <div className="header-input">
                <input
                   type="text"
-                  className="header-input"
                   value={emailText}
                   onChange={handleTextChange}
                   placeholder="Enter email"
+                  minLength={2}
+                  maxLength={35}
                />
             </div>
 
-            <div className="alignment-container">
-               <label htmlFor="alignment">Alignment</label>
-               <select id="alignment" value={alignment} onChange={handleAlignment}>
-                  <option value="left">Left</option>
-                  <option value="center">Center</option>
-                  <option value="right">Right</option>
-               </select>
+            <div className="alignment-label">
+               <label>Alignment</label>
             </div>
+
+            <div className="alignment-btns">
+               <button onClick={() => handleAlignment("left")}>Left</button>
+               <button onClick={() => handleAlignment("center")}>Center</button>
+               <button onClick={() => handleAlignment("right")}>Right</button>
+            </div>
+
             <button className="editor-close-btn button is-info">Save & Close</button>
          </div>
       </>

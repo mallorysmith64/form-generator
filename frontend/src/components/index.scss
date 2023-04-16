@@ -98,7 +98,11 @@ body {
 }
 
 .dropZoneCards > .cards > .is-4-mobile > .card > .card-content {
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
    width: calc(100vh - 30vh);
+   height: 4em;
    cursor: move;
 }
 
@@ -108,7 +112,6 @@ body {
 }
 
 .card-container {
-   // margin: 0em;
    padding: 0em 1em 0em 2em;
 }
 
@@ -118,10 +121,10 @@ body {
 }
 
 .cards {
-   display: flex;
-   flex-direction: column;
-   justify-content: flex-end;
-   align-items: flex-end;
+   // display: flex;
+   // flex-direction: column;
+   // justify-content: flex-end;
+   // align-items: flex-end;
    margin: 0.5em;
    @media (max-width: 768px) {
       &.is-flex-wrap-wrap {
@@ -131,9 +134,6 @@ body {
 }
 
 .cards > li {
-   // padding: 0.1em;
-   // makes cards the same size
-   // width: 100%;
    @media (max-width: 16em) {
       &.is-4-mobile {
          width: 100%;
@@ -143,12 +143,12 @@ body {
 
 .toolbar-header-btns > button {
    display: flex;
-   position: relative;
-   bottom: 0.75em;
 }
 
 .toolbar-header-btns {
    display: flex;
+   position: fixed;
+   padding-left: 23em;
 }
 
 //side panel
@@ -205,20 +205,50 @@ body {
 }
 
 .size-label {
-   padding-top: 0.5em;
+   padding-top: 1em;
 }
 
-.font-size-controls {
+.font-size-btns {
    padding-bottom: 0.5em;
 }
 
-.alignment-container {
-   display: flex;
-   flex-direction: column;
+.font-size-btns > button:focus {
+   background-color: #0099ff;
 }
 
-.headerText {
-   font-size: 1.1em;
+.alignment-label {
+   padding-top: 0.5em;
+}
+
+.alignment-btns > button:focus {
+   background-color: #0099ff;
+}
+
+.email-text-label {
+   font-size: 0.75em;
+}
+
+.name-container {
+   display: flex;
+   position: relative;
+}
+
+.first-name-label-container {
+   display: flex;
+   flex-direction: column;
+   margin: 0.5em;
+}
+
+.last-name-label-container {
+   display: flex;
+   flex-direction: column;
+   margin: 0.5em;
+}
+
+.name-label {
+   display: flex;
+   flex-direction: column;
+   font-size: 0.75em;
 }
 
 // .publish-btn {
