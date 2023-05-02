@@ -3,7 +3,7 @@ import { FormContext } from "./FormContext";
 
 const Header = () => {
    const { headerText, setHeaderText, setHeaderSize } = useContext(FormContext);
-   const [textAlign, setTextAlign] = useState("left");
+   const { alignHeader, setAlignHeader } = useContext(FormContext);
 
    const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const newHeaderText = event.target.value;
@@ -11,8 +11,8 @@ const Header = () => {
       setHeaderText(newHeaderText);
    };
 
-   const handleAlignment = (alignment: any) => {
-      setTextAlign(alignment);
+   const handleAlignment = (align: "left" | "center" | "right") => {
+      setAlignHeader(align);
    };
 
    const handleFontSize = (size: number) => {
@@ -51,9 +51,24 @@ const Header = () => {
             </div>
 
             <div className="alignment-btns">
-               <button onClick={() => handleAlignment("left")}>Left</button>
-               <button onClick={() => handleAlignment("center")}>Center</button>
-               <button onClick={() => handleAlignment("right")}>Right</button>
+               <button
+                  className={alignHeader === "left" ? "active" : ""}
+                  onClick={() => handleAlignment("left")}
+               >
+                  Left
+               </button>
+               <button
+                  className={alignHeader === "center" ? "active" : ""}
+                  onClick={() => handleAlignment("center")}
+               >
+                  Center
+               </button>
+               <button
+                  className={alignHeader === "right" ? "active" : ""}
+                  onClick={() => handleAlignment("right")}
+               >
+                  Right
+               </button>
             </div>
 
             <div>

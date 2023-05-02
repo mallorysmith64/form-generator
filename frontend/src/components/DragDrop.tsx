@@ -3,10 +3,10 @@ import { Card } from "./Card";
 import { useDrop } from "react-dnd";
 import { v4 as uuidv4 } from "uuid";
 import Header from "./Header";
-import Editor from "./Editor";
+// import Editor from "./Editor";
 import Email from "./Email";
 import Name from "./Name";
-import { FormContext } from "./FormContext";
+import { AlignType, FormContext } from "./FormContext";
 
 interface CardProps {
    key: string;
@@ -85,7 +85,6 @@ function DragDrop() {
             setShowEditor(true);
             setActiveEditCard(key);
             cardName = "Header";
-
             break;
          case "Name":
             setShowEditor(true);

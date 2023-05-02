@@ -91,22 +91,15 @@ body {
    background-color: #f3f3fe;
 }
 
-.dropzone-container {
+.dropZoneCards > .cards > .card {
    display: flex;
-   justify-content: center;
-   width: 100%;
-}
-
-.dropZoneCards > .cards > .is-4-mobile > .card > .card-content {
-   display: flex;
-   align-items: center;
-   justify-content: flex-start;
-   width: calc(100vh - 30vh);
-   height: 4em;
+   padding: 0.5em;
+   width: 29em;
+   height: 100%;
    cursor: move;
 }
 
-.dropZoneCards > .cards > .is-4-mobile > .card > .card-content:active {
+.dropZoneCards > .cards > .card:active {
    border: rgb(2, 147, 226) solid 1px;
    border-radius: 3px;
 }
@@ -115,43 +108,23 @@ body {
    padding: 0em 1em 0em 2em;
 }
 
-.card > .card-content {
+.card-container > .cards > .card {
+   display: flex;
+   flex-direction: row;
+   padding: 1em;
+}
+
+.card {
    width: 8em;
    height: 3.5em;
 }
 
-.cards {
-   // display: flex;
-   // flex-direction: column;
-   // justify-content: flex-end;
-   // align-items: flex-end;
-   margin: 0.5em;
-   @media (max-width: 768px) {
-      &.is-flex-wrap-wrap {
-         flex-wrap: wrap;
-      }
-   }
-}
-
-.cards > li {
-   @media (max-width: 16em) {
-      &.is-4-mobile {
-         width: 100%;
-      }
-   }
-}
-
-.toolbar-header-btns > button {
-   display: flex;
-}
-
 .toolbar-header-btns {
    display: flex;
-   position: fixed;
-   padding-left: 23em;
+   justify-content: flex-end;
 }
 
-//side panel
+// side panel
 #side-panel-container {
    display: flex;
    position: fixed;
@@ -251,6 +224,18 @@ body {
    font-size: 0.75em;
 }
 
+.submit-btn {
+   position: fixed;
+   bottom: 4em;
+   margin-left: 18em !important;
+   font-size: 1.25em;
+   text-transform: uppercase;
+}
+
+.submit-btn:hover {
+   color: hsla(0, 0%, 100%, 0.75) !important;
+}
+
 // .publish-btn {
 //    display: flex;
 //    justify-content: center;
@@ -307,15 +292,3 @@ body {
 //    display: flex;
 //    flex-direction: row;
 // }
-
-.submit-btn {
-   position: fixed;
-   bottom: 4em;
-   margin-left: 18em !important;
-   font-size: 1.25em;
-   text-transform: uppercase;
-}
-
-.submit-btn:hover {
-   color: hsla(0, 0%, 100%, 0.75) !important;
-}

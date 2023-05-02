@@ -18,6 +18,9 @@ interface CardProps {
    emailText?: any;
    firstNameText?: any;
    lastNameText?: any;
+   alignHeader?: any;
+   alignEmail?: any;
+   alignName?: any;
 }
 
 export function Card({
@@ -35,6 +38,7 @@ export function Card({
 }: CardProps) {
    const { headerSize } = useContext(FormContext);
    const { nameSize } = useContext(FormContext);
+   const { alignHeader, alignEmail, alignName } = useContext(FormContext);
 
    const [{ isDragging }, drag] = useDrag(() => ({
       type: "card",
@@ -55,71 +59,93 @@ export function Card({
       onEdit && onEdit();
    };
 
-   const headerTextStyle = {
-      fontSize: `${headerSize}px`,
+   const resizeHeaderText = {
+      fontSize: headerSize,
    };
 
-   const nameTextStyle = {
-      fontSize: `${nameSize}px`,
+   const realignHeaderText = {
+      textAlign: alignHeader,
+   };
+
+   const realignEmailText = {
+      textAlign: alignEmail,
+   };
+
+   const realignNameText = {
+      textAlign: alignName,
+   };
+
+   const resizeNameText = {
+      fontSize: nameSize,
    };
 
    return (
       <>
          <ul className="cards">
-            <li className="is-4-mobile" key={uuidv4()}>
-               <div className="card is-size-4" ref={drag}>
-                  <div className="card-content">
-                     <div className="media">
-                        {isToolbar && (
-                           <div className="media-left">
-                              <span className="icon">
-                                 <i className={icon} aria-hidden="true"></i>
-                              </span>
-                           </div>
-                        )}
-
-                        {headerText && <h3 style={headerTextStyle}>{headerText}</h3>}
-                        {emailText && (
-                           <div>
-                              <h3 className="email-text">{emailText} </h3>
-                              <input type="email" className="input is-small" readOnly />
-                           </div>
-                        )}
-
-                        {firstNameText && lastNameText && (
-                           <>
-                              <div className="name-container" style={nameTextStyle}>
-                                 <div className="first-name-label-container">
-                                    <h2 className="name-label">{firstNameText}</h2>
-                                    <input type="text" className="input is-small" readOnly />
-                                 </div>
-                                 <div className="last-name-label-container">
-                                    <h5 className="name-label">{lastNameText} </h5>
-                                    <input type="text" className="input is-small" readOnly />
-                                 </div>
-                              </div>
-                           </>
-                        )}
-
-                        {text && !headerText && !emailText && !firstNameText && !lastNameText && (
-                           <p>{text}</p>
-                        )}
-
-                        {!isToolbar && (
-                           <div className="toolbar-header-btns">
-                              <button className="btn" onClick={onEdit}>
-                                 <i className="fas fa-edit"></i>
-                              </button>
-
-                              <button className="btn" onClick={() => onDelete(index)}>
-                                 <i className="fas fa-trash"></i>
-                              </button>
-                           </div>
-                        )}
-                     </div>
+            <div className="card is-size-4" ref={drag} key={uuidv4()}>
+               {/* <div className="card-content"> */}
+               {isToolbar && (
+                  <div className="media-left">
+                     <span className="icon">
+                        <i className={icon} aria-hidden="true"></i>
+                     </span>
                   </div>
+               )}
+
+               {!isToolbar && (
+                  <div className="toolbar-header-btns">
+                     <button className="btn" onClick={onEdit}>
+                        <i className="fas fa-edit"></i>
+                     </button>
+
+                     <button className="btn" onClick={() => onDelete(index)}>
+                        <i className="fas fa-trash"></i>
+                     </button>
+                  </div>
+               )}
+
+               <div style={{ ...realignHeaderText }}>
+                  {headerText && (
+                     <h3
+                        style={{
+                           ...resizeHeaderText,
+                        }}
+                     >
+                        {headerText}
+                     </h3>
+                  )}
                </div>
-            </li>
+
+               <div style={{ ...realignEmailText }}>
+                  {emailText && (
+                     <div>
+                        <h5>{emailText}</h5>
+                        <input type="email" className="input is-small" readOnly />
+                     </div>
+                  )}
+               </div>
+
+               <div>
+                  {firstNameText && lastNameText && (
+                     <>
+                        <div className="name-container" style={{ ...resizeNameText }}>
+                           <div className="first-name-label-container">
+                              <h2 className="name-label">{firstNameText}</h2>
+                              <input type="text" className="input is-small" readOnly />
+                           </div>
+                           <div className="last-name-label-container">
+                              <h5 className="name-label">{lastNameText} </h5>
+                              <input type="text" className="input is-small" readOnly />
+                           </div>
+                        </div>
+                     </>
+                  )}
+               </div>
+
+               {text && !headerText && !emailText && !firstNameText && !lastNameText && (
+                  <p>{text}</p>
+               )}
+            </div>
          </ul>
       </>
    );

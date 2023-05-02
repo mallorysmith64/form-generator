@@ -3,7 +3,7 @@ import { FormContext } from "./FormContext";
 
 const Email = () => {
    const { emailText, setEmailText } = useContext(FormContext);
-   const [textAlign, setTextAlign] = useState("left");
+   const { alignEmail, setAlignEmail } = useContext(FormContext);
 
    const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const newText = event.target.value;
@@ -11,8 +11,8 @@ const Email = () => {
       setEmailText(newText);
    };
 
-   const handleAlignment = (alignment: any) => {
-      setTextAlign(alignment);
+   const handleAlignment = (align: "left" | "center" | "right") => {
+      setAlignEmail(align);
    };
 
    return (
@@ -36,9 +36,24 @@ const Email = () => {
             </div>
 
             <div className="alignment-btns">
-               <button onClick={() => handleAlignment("left")}>Left</button>
-               <button onClick={() => handleAlignment("center")}>Center</button>
-               <button onClick={() => handleAlignment("right")}>Right</button>
+               <button
+                  className={alignEmail === "left" ? "active" : ""}
+                  onClick={() => handleAlignment("left")}
+               >
+                  Left
+               </button>
+               <button
+                  className={alignEmail === "center" ? "active" : ""}
+                  onClick={() => handleAlignment("center")}
+               >
+                  Center
+               </button>
+               <button
+                  className={alignEmail === "right" ? "active" : ""}
+                  onClick={() => handleAlignment("right")}
+               >
+                  Right
+               </button>
             </div>
 
             <button className="editor-close-btn button is-info">Save & Close</button>
