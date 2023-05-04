@@ -32,7 +32,7 @@ const Email = () => {
             </div>
 
             <div className="alignment-label">
-               <label>Alignment</label>
+               <label>Label Alignment</label>
             </div>
 
             <div className="alignment-btns">

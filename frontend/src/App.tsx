@@ -17,6 +17,7 @@ function App() {
 
    const [alignHeader, setAlignHeader] = useState<AlignType>("left");
    const [alignEmail, setAlignEmail] = useState<AlignType>("left");
+   const [alignName, setAlignName] = useState<AlignType>("left");
 
    const [firstNameText, setFirstNameText] = useState<string>("First Name");
    const [lastNameText, setLastNameText] = useState<string>("Last Name");
@@ -38,6 +39,8 @@ function App() {
                setAlignHeader,
                alignEmail,
                setAlignEmail,
+               alignName,
+               setAlignName,
 
                firstNameText,
                setFirstNameText,

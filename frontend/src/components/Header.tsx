@@ -41,9 +41,10 @@ const Header = () => {
             </div>
 
             <div className="font-size-btns">
-               <button onClick={() => handleFontSize(26)}>Small</button>
+               <button onClick={() => handleFontSize(24)}>Small</button>
                <button onClick={() => handleFontSize(28)}>Default</button>
-               <button onClick={() => handleFontSize(30)}>Large</button>
+               <button onClick={() => handleFontSize(32)}>Large</button>
+               <button onClick={() => handleFontSize(36)}>Extra</button>
             </div>
 
             <div className="alignment-label">

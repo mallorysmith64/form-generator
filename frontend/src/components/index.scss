@@ -136,7 +136,7 @@ body {
    padding: 3em;
    top: 0;
    height: calc(100vh - 0vh);
-   width: calc(50vh - 2vh);
+   width: calc(53vh - 2vh);
    word-break: break-all;
 }
 
@@ -222,6 +222,11 @@ body {
    display: flex;
    flex-direction: column;
    font-size: 0.75em;
+}
+
+.name-container {
+   display:flex;
+   justify-content: center;
 }
 
 .submit-btn {

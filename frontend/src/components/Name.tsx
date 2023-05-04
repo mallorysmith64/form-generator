@@ -2,7 +2,8 @@ import React, { useContext, useState } from "react";
 import { FormContext } from "./FormContext";
 
 const Name = () => {
-   const { firstNameText, setFirstNameText, lastNameText, setLastNameText, setNameSize } = useContext(FormContext);
+   const { firstNameText, setFirstNameText, lastNameText, setLastNameText } =
+      useContext(FormContext);
    const { alignName, setAlignName } = useContext(FormContext);
 
    const handleFirstNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,10 +16,6 @@ const Name = () => {
       const newLastNameText = event.target.value;
       console.log(newLastNameText);
       setLastNameText(newLastNameText);
-   };
-
-   const handleFontSize = (size: number) => {
-      setNameSize(size);
    };
 
    const handleAlignment = (align: "left" | "center" | "right") => {
@@ -53,18 +50,8 @@ const Name = () => {
                />
             </div>
 
-            <div className="size-label">
-               <label>Size</label>
-            </div>
-
-            <div className="font-size-btns">
-               <button onClick={() => handleFontSize(22)}>Small</button>
-               <button onClick={() => handleFontSize(24)}>Default</button>
-               <button onClick={() => handleFontSize(26)}>Large</button>
-            </div>
-
             <div className="alignment-label">
-               <label>Alignment</label>
+               <label>Label Alignment</label>
             </div>
 
             <div className="alignment-btns">
@@ -72,7 +59,7 @@ const Name = () => {
                   className={alignName === "left" ? "active" : ""}
                   onClick={() => handleAlignment("left")}
                >
-                  Left
+                  Default
                </button>
                <button
                   className={alignName === "center" ? "active" : ""}
@@ -87,7 +74,6 @@ const Name = () => {
                   Right
                </button>
             </div>
-
 
             <div>
                <button className="editor-close-btn button is-info">Save & Close</button>

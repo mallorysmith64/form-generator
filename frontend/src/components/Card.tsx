@@ -128,7 +128,7 @@ export function Card({
                <div>
                   {firstNameText && lastNameText && (
                      <>
-                        <div className="name-container" style={{ ...resizeNameText }}>
+                        <div className="name-container" style={{ ...realignNameText }}>
                            <div className="first-name-label-container">
                               <h2 className="name-label">{firstNameText}</h2>
                               <input type="text" className="input is-small" readOnly />
