@@ -1,20 +1,28 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FormContext } from "./FormContext";
 import { useLocalStorage } from "usehooks-ts";
 
 const Email = () => {
-   const [emailText, setEmailText] = useLocalStorage("email", "")
+   const [saveEmailText, setSaveEmailText] = useLocalStorage("email", ""); //persists text in side panel after a refresh only
+   const { emailText, setEmailText } = useContext(FormContext);
    const { alignEmail, setAlignEmail } = useContext(FormContext);
 
    const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      const newText = event.target.value;
-      console.log(newText);
-      setEmailText(newText);
+      const newEmailText = event.target.value;
+      const keepText = event.target.value;
+      console.log(newEmailText);
+      console.log(keepText);
+      setEmailText(newEmailText);
+      setSaveEmailText(keepText);
    };
 
    const handleAlignment = (align: "left" | "center" | "right") => {
       setAlignEmail(align);
    };
+
+   useEffect(() => {
+      localStorage.setItem("emailText", JSON.stringify(emailText));
+   }, [emailText]);
 
    return (
       <>
@@ -24,7 +32,7 @@ const Email = () => {
             <div className="header-input">
                <input
                   type="text"
-                  value={emailText}
+                  value={emailText && saveEmailText}
                   onChange={handleTextChange}
                   placeholder="Enter email"
                   minLength={2}
@@ -56,8 +64,6 @@ const Email = () => {
                   Right
                </button>
             </div>
-
-            <button className="editor-close-btn button is-info">Save & Close</button>
          </div>
       </>
    );
@@ -65,5 +71,4 @@ const Email = () => {
 
 export default Email;
 
-
-   // const { emailText, setEmailText } = useContext(FormContext);
+// const { emailText, setEmailText } = useContext(FormContext);

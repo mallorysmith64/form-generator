@@ -1,17 +1,19 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FormContext } from "./FormContext";
 import { useLocalStorage } from "usehooks-ts";
 
 const Header = () => {
-   const [headerText, setHeaderText] = useLocalStorage("header", "")
-   const {setHeaderSize} = useContext(FormContext)
+   const [saveHeaderText, setSaveHeaderText] = useLocalStorage("header", ""); //persists text in side panel after a refresh only
+   const { headerText, setHeaderText, setHeaderSize } = useContext(FormContext);
    const { alignHeader, setAlignHeader } = useContext(FormContext);
-   // const { onSave } = useContext(FormContext);
 
    const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const newHeaderText = event.target.value;
+      const keepText = event.target.value;
       console.log(newHeaderText);
+      console.log(keepText);
       setHeaderText(newHeaderText);
+      setSaveHeaderText(keepText);
    };
 
    const handleAlignment = (align: "left" | "center" | "right") => {
@@ -22,9 +24,9 @@ const Header = () => {
       setHeaderSize(size);
    };
 
-   // const handleSave = () => {
-   //    onSave({ headerText, headerSize, alignHeader }); // call onSave function from FormContext with current values of headerText, headerSize, and alignHeader
-   //  };
+   useEffect(() => {
+      localStorage.setItem("headerText", JSON.stringify(headerText));
+   }, [headerText]);
 
    return (
       <>
@@ -35,7 +37,7 @@ const Header = () => {
                <input
                   type="text"
                   className="header-input"
-                  value={headerText}
+                  value={headerText && saveHeaderText}
                   onChange={handleTextChange}
                   placeholder="Enter header"
                   minLength={2}
@@ -78,10 +80,6 @@ const Header = () => {
                   Right
                </button>
             </div>
-
-            <div>
-               <button className="editor-close-btn button is-info">Save & Close</button>
-            </div>
          </div>
       </>
    );
@@ -89,4 +87,3 @@ const Header = () => {
 
 export default Header;
 
-   // const { headerText, setHeaderText, setHeaderSize } = useContext(FormContext);
