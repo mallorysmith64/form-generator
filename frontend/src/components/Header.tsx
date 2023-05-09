@@ -1,9 +1,13 @@
 import React, { useContext, useState } from "react";
 import { FormContext } from "./FormContext";
+import { useLocalStorage } from "usehooks-ts";
 
 const Header = () => {
-   const { headerText, setHeaderText, setHeaderSize } = useContext(FormContext);
+   const [headerText, setHeaderText] = useLocalStorage("header", "")
+   const {setHeaderSize} = useContext(FormContext)
+   // const { headerText, setHeaderText, setHeaderSize } = useContext(FormContext);
    const { alignHeader, setAlignHeader } = useContext(FormContext);
+   // const { onSave } = useContext(FormContext);
 
    const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const newHeaderText = event.target.value;
@@ -18,6 +22,10 @@ const Header = () => {
    const handleFontSize = (size: number) => {
       setHeaderSize(size);
    };
+
+   // const handleSave = () => {
+   //    onSave({ headerText, headerSize, alignHeader }); // call onSave function from FormContext with current values of headerText, headerSize, and alignHeader
+   //  };
 
    return (
       <>

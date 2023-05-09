@@ -51,10 +51,38 @@ function DragDrop() {
    const [dropZone, setDropZone] = useState<CardProps[]>([]);
    const [showEditor, setShowEditor] = useState(false);
    const [activeCard, setActiveCard] = useState("");
-   const { headerText } = useContext(FormContext);
+
+   const {headerText} = useContext(FormContext)
    const { emailText } = useContext(FormContext);
    const { firstNameText, lastNameText } = useContext(FormContext);
    const [activeEditCard, setActiveEditCard] = useState<string>(null);
+
+   // const handleSave = (newHeaderState: HeaderStateType) => {
+   //    setHeaderState(newHeaderState);
+   //    setShowEditor(false);
+   // };
+   // type AlignType = 'left' | 'center' | 'right';
+   // const formContextValue = {
+   //    headerState,
+   //    setHeaderState,
+   //    onSave: handleSave,
+   //    emailText: "",
+   //    setEmailText: () => {},
+   //    nameSize: 1,
+   //    setNameSize: () => {},
+   //    alignEmail: "left",
+   //    setAlignEmail: () => {},
+   //    alignName: "left",
+   //    setAlignName: () => {},
+   //    firstNameText: "",
+   //    setFirstNameText: () => {},
+   //    lastNameText: "",
+   //    setLastNameText: () => {},
+   //    headerSize: headerState.headerSize,
+   //    setHeaderSize: (size: number) => setHeaderState(prevState => ({ ...prevState, headerSize: size })),
+   //    alignHeader: headerState.alignHeader,
+   //    setAlignHeader: (align: AlignType) => setHeaderState(prevState => ({ ...prevState, alignHeader: align })),
+   //  };
 
    const [{ isOver }, drop] = useDrop(() => ({
       accept: "card",
@@ -103,6 +131,7 @@ function DragDrop() {
             break;
       }
       setActiveCard(cardName);
+      // setShowEditor(true);
    };
 
    const addCard = (id: string, index: number, key: string) => {
@@ -149,31 +178,29 @@ function DragDrop() {
 
    return (
       <>
-         <section className="form-builder-page-container">
-            <button className="submit-btn button is-success">Publish</button>
+         {/* <FormContext.Provider value={formContextValue}> */}
+            <section className="form-builder-page-container">
+               <button className="submit-btn button is-success">Publish</button>
 
-            <div className="card-container">{cards}</div>
+               <div className="card-container">{cards}</div>
 
-            <div className="form-builder" ref={drop}>
-               <div className="dropzone-container">
-                  <div className="dropzone-cards">{dropZoneCards}</div>
+               <div className="form-builder" ref={drop}>
+                  <div className="dropzone-container">
+                     <div className="dropzone-cards">{dropZoneCards}</div>
+                  </div>
                </div>
-            </div>
 
-            {showEditor && (
-               <div id="side-panel-container">
-                  {activeCard === "Header" ? <Header /> : null}
-                  {activeCard === "Email" ? <Email /> : null}
-                  {activeCard === "Name" ? <Name /> : null}
-               </div>
-            )}
-         </section>
+               {showEditor && (
+                  <div id="side-panel-container">
+                     {activeCard === "Header" ? <Header /> : null}
+                     {activeCard === "Email" ? <Email /> : null}
+                     {activeCard === "Name" ? <Name /> : null}
+                  </div>
+               )}
+            </section>
+         {/* </FormContext.Provider> */}
       </>
    );
 }
 
 export default DragDrop;
-
-{
-   /* {activeCard === "Paragraph" ? <Editor /> : null} */
-}

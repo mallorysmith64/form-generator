@@ -2,7 +2,18 @@ import React from "react";
 
 export type AlignType = "left" | "center" | "right";
 
+// type HeaderStateType = {
+//    headerText: string;
+//    headerSize: number;
+//    alignHeader: AlignType;
+//  };
+
 type FormContextType = {
+   // headerState: HeaderStateType;
+   // setHeaderState: (state: HeaderStateType) => void;
+ 
+   // onSave: (newHeaderState: HeaderStateType) => void;
+
    headerText: string;
    setHeaderText: (text: string) => void;
 
@@ -30,6 +41,15 @@ type FormContextType = {
 };
 
 export const FormContext = React.createContext<FormContextType>({
+   // headerState: {
+   //    headerText: "",
+   //    headerSize: 28,
+   //    alignHeader: "left",
+   //  },
+   //  setHeaderState: () => {},
+  
+   //  onSave: () => {},
+
    headerText: "",
    setHeaderText: () => {},
 

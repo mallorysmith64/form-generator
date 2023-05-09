@@ -58,6 +58,7 @@
     "eslint-plugin-promise": "6.1.1",
     "eslint-plugin-react": "7.32.1",
     "prettier": "2.8.3",
+    "sass": "^1.62.1",
     "tsc-watch": "6.0.0",
     "vite-tsconfig-paths": "4.0.5"
   },
