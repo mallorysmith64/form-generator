@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 import { FormContext } from "./FormContext";
+import { useLocalStorage } from "usehooks-ts";
 
 const Email = () => {
-   const { emailText, setEmailText } = useContext(FormContext);
+   const [emailText, setEmailText] = useLocalStorage("email", "")
    const { alignEmail, setAlignEmail } = useContext(FormContext);
 
    const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -63,3 +64,6 @@ const Email = () => {
 };
 
 export default Email;
+
+
+   // const { emailText, setEmailText } = useContext(FormContext);

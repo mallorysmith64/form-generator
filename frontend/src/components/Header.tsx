@@ -5,7 +5,6 @@ import { useLocalStorage } from "usehooks-ts";
 const Header = () => {
    const [headerText, setHeaderText] = useLocalStorage("header", "")
    const {setHeaderSize} = useContext(FormContext)
-   // const { headerText, setHeaderText, setHeaderSize } = useContext(FormContext);
    const { alignHeader, setAlignHeader } = useContext(FormContext);
    // const { onSave } = useContext(FormContext);
 
@@ -89,3 +88,5 @@ const Header = () => {
 };
 
 export default Header;
+
+   // const { headerText, setHeaderText, setHeaderSize } = useContext(FormContext);
