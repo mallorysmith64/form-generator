@@ -91,66 +91,165 @@ body {
    background-color: #f3f3fe;
 }
 
-.dropzone-container {
+.dropZoneCards > .cards > .card {
    display: flex;
-   justify-content: center;
-   width: 100%;
-}
-
-.dropzone-cards > .cards > .is-4-mobile > .card > .card-content {
-   width: calc(100vh - 30vh);
+   padding: 0.5em;
+   width: 29em;
+   height: 100%;
    cursor: move;
 }
 
-.dropzone-cards > .cards > .is-4-mobile > .card > .card-content:active {
+.dropZoneCards > .cards > .card:active {
    border: rgb(2, 147, 226) solid 1px;
    border-radius: 3px;
 }
 
 .card-container {
-   margin: 0em;
    padding: 0em 1em 0em 2em;
 }
 
-.card > .card-content {
+.card-container > .cards > .card {
    display: flex;
-   justify-content: center;
-   width: 9em;
+   flex-direction: row;
+   padding: 1em;
 }
 
-.cards {
+.card {
+   width: 8em;
+   height: 3.5em;
+}
+
+.toolbar-header-btns {
+   display: flex;
+   justify-content: flex-end;
+}
+
+// side panel
+#side-panel-container {
+   display: flex;
+   position: fixed;
+   font-size: 1.25em;
+   z-index: 999;
+   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
+   left: 0;
+   background: #fafafa;
+   padding: 3em;
+   top: 0;
+   height: calc(100vh - 0vh);
+   width: calc(53vh - 2vh);
+   word-break: break-all;
+}
+
+.quill {
+   height: 8em;
+   width: 20em;
+}
+
+.ql-toolbar {
+   background-color: white;
+}
+
+.ql-toolbar > .ql-formats button {
+   transition: 0.3s ease-in-out;
+}
+
+.ql-toolbar > .ql-formats button:hover {
+   transform: scale(1.1);
+}
+
+.ql-container {
+   background-color: white;
+}
+
+.editor-close-btn {
+   display: flex;
+   position: fixed;
+   bottom: 35em;
+   color: white;
+}
+
+.editor-close-btn:hover {
+   color: hsla(0, 0%, 100%, 0.75) !important;
+}
+
+// header side panel
+.header {
+   padding-bottom: 0.5em;
+}
+
+.size-label {
+   padding-top: 1em;
+}
+
+.font-size-btns {
+   padding-bottom: 0.5em;
+}
+
+.font-size-btns > button:focus {
+   background-color: #0099ff;
+}
+
+.alignment-label {
+   padding-top: 0.5em;
+}
+
+.alignment-btns > button:focus {
+   background-color: #0099ff;
+}
+
+.email-text-label {
+   font-size: 0.75em;
+}
+
+.name-container {
+   display: flex;
+   position: relative;
+}
+
+.first-name-label-container {
    display: flex;
    flex-direction: column;
-   justify-content: flex-end;
-   align-items: flex-end;
-   margin: 0em;
-   @media (max-width: 768px) {
-      &.is-flex-wrap-wrap {
-         flex-wrap: wrap;
-      }
-   }
+   margin: 0.5em;
 }
 
-.cards > li {
-   padding: 0.1em;
-   // makes cards the same size
-   // width: 100%;
-   @media (max-width: 16em) {
-      &.is-4-mobile {
-         width: 100%;
-      }
-   }
-}
-
-.publish-btn {
+.last-name-label-container {
    display: flex;
-   justify-content: center;
-   padding: 2em 0em 2em 33em;
+   flex-direction: column;
+   margin: 0.5em;
 }
 
-.publish-btn > button {
-   min-width: 11.25em;
+.name-label {
+   display: flex;
+   flex-direction: column;
+   font-size: 0.75em;
 }
+
+.name-container {
+   display:flex;
+   justify-content: center;
+}
+
+.submit-btn {
+   position: fixed;
+   bottom: 4em;
+   margin-left: 18em !important;
+   font-size: 1.25em;
+   text-transform: uppercase;
+}
+
+.submit-btn:hover {
+   color: hsla(0, 0%, 100%, 0.75) !important;
+}
+
+// .publish-btn {
+//    display: flex;
+//    justify-content: center;
+//    padding: 2em 0em 2em 33em;
+// }
+
+// .publish-btn > button {
+//    min-width: 11.25em;
+// }
 
 // copy link publish page below:
 // .card {
@@ -198,11 +297,3 @@ body {
 //    display: flex;
 //    flex-direction: row;
 // }
-
-.submit-btn {
-   padding: 2em 8em 2em 0em;
-}
-
-.submit-btn > button {
-   min-width: 11.25em;
-}
