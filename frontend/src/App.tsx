@@ -21,8 +21,7 @@ function App() {
 
    const [firstNameText, setFirstNameText] = useState<string>("First Name");
    const [lastNameText, setLastNameText] = useState<string>("Last Name");
-   // const [showEditor, setShowEditor] = useState<boolean>();
-
+   
    return (
       <>
          <FormContext.Provider

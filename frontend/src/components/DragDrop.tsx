@@ -3,10 +3,11 @@ import { Card } from "./Card";
 import { useDrop } from "react-dnd";
 import { v4 as uuidv4 } from "uuid";
 import Header from "./Header";
-// import Editor from "./Editor";
 import Email from "./Email";
 import Name from "./Name";
-import { AlignType, FormContext } from "./FormContext";
+import { FormContext } from "./FormContext";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 interface CardProps {
    key: string;
@@ -26,12 +27,6 @@ const cardList = [
       icon: "fas fa-heading",
       placeholder: "Type Header",
    },
-   // {
-   //    id: uuidv4(),
-   //    text: "Paragraph",
-   //    icon: "fas fa-paragraph",
-   //    placeholder: "Type Paragraph",
-   // },
    {
       id: uuidv4(),
       text: "Email",
@@ -56,6 +51,9 @@ function DragDrop() {
    const { emailText } = useContext(FormContext);
    const { firstNameText, lastNameText } = useContext(FormContext);
    const [activeEditCard, setActiveEditCard] = useState<string>(null);
+   const navigate = useNavigate();
+   const { formId } = useParams();
+   console.log(formId);
 
    const [{ isOver }, drop] = useDrop(() => ({
       accept: "card",
@@ -66,6 +64,25 @@ function DragDrop() {
          return { isOver };
       },
    }));
+
+   const formValues = {
+      header: headerText,
+      email: emailText,
+      firstName: firstNameText,
+      lastName: lastNameText,
+   };
+
+   const handleSubmit = async (e: { preventDefault: () => void }) => {
+      e.preventDefault();
+      try {
+         const resp = await axios.post("http://localhost:5000/Publish", formValues);
+         console.log("Form submitted successfully", resp);
+         const formId = resp.data.form_id;
+         navigate(`/Publish/${formId}`);
+      } catch (error) {
+         console.error("Unsuccessful form submission", error);
+      }
+   };
 
    const cards = cardList.map((card, index) => (
       <Card
@@ -104,7 +121,6 @@ function DragDrop() {
             break;
       }
       setActiveCard(cardName);
-      // setShowEditor(true);
    };
 
    const addCard = (id: string, index: number, key: string) => {
@@ -152,8 +168,6 @@ function DragDrop() {
    return (
       <>
          <section className="form-builder-page-container">
-            <button className="submit-btn button is-success">Publish</button>
-
             <div className="card-container">{cards}</div>
 
             <div className="form-builder" ref={drop}>
@@ -167,6 +181,7 @@ function DragDrop() {
                   {activeCard === "Header" ? <Header /> : null}
                   {activeCard === "Email" ? <Email /> : null}
                   {activeCard === "Name" ? <Name /> : null}
+
                   <button
                      className="editor-close-btn button is-info"
                      onClick={() => setShowEditor(false)}
@@ -175,6 +190,17 @@ function DragDrop() {
                   </button>
                </div>
             )}
+
+            <form
+               action="/Publish"
+               method="post"
+               onSubmit={handleSubmit}
+               className="submit-btn-container"
+            >
+               <button type="submit" className="submit-btn button is-success">
+                  Publish
+               </button>
+            </form>
          </section>
       </>
    );

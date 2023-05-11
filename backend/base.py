@@ -28,7 +28,6 @@ Forms = {
     'form3': {'form_name': 'Lorem Ipsum 3'},
 }
 
-
 # def mongodb_conn():
 try:
     database = MongoClient(
@@ -55,6 +54,7 @@ except Exception as e:
 @app.route("/Publish", methods=["POST"])
 def submit_form():
     data = request.get_json()  # get the form data
+    print(data)
     result = collection_forms.insert_one(data)
     form_id = str(result.inserted_id)
     # form_url = f"http://example.com/forms/{object_id}"

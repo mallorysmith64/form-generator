@@ -225,16 +225,22 @@ body {
 }
 
 .name-container {
-   display:flex;
+   display: flex;
    justify-content: center;
 }
 
+.submit-btn-container {
+   display:flex;
+}
+
 .submit-btn {
-   position: fixed;
-   bottom: 4em;
-   margin-left: 18em !important;
+   display:flex;
+   position: relative;
+   bottom:6em;
+   left:36em;
    font-size: 1.25em;
    text-transform: uppercase;
+   align-self: flex-end;
 }
 
 .submit-btn:hover {
@@ -252,48 +258,47 @@ body {
 // }
 
 // copy link publish page below:
-// .card {
-//    width: 65em;
-// }
+.publish-card {
+   width: 80em;
+   height: 12em;
+}
 
-// .card-header {
-//    display: flex;
-//    flex-direction: column;
-//    width: 100%;
-// }
+.publish-card-container {
+   padding:5em;
+}
 
-// .card-header-title {
-//    font-size: 2em;
-// }
+.publish-card-header {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+}
 
-// .copy-link-input {
-//    display: flex;
-//    padding: 0.7em;
-//    font-size: 2em;
-//    border: 0.1em solid #cccccc;
-//    border-right: none;
-//    outline: none;
-//    width: 95%;
-// }
+.card-header-title {
+   font-size: 2em;
+}
 
-// .copy-link-input:hover {
-//    background: #eeeeee;
-// }
+.copy-link-input {
+   display: flex;
+   font-size: 2em;
+   border: 0.1em solid #cccccc;
+   width: 30em;
+   margin-left:0.5em;
+   margin-right:0.5em;
+}
 
-// .copy-link-btn {
-//    flex-shrink: 0;
-//    width: 2em;
-//    height: 2em;
-//    background: #ffffff;
-//    border: 0.2em solid #cccccc;
-//    cursor: pointer;
-// }
+.copy-link-input:hover {
+   background: #eeeeee;
+}
 
-// .copy-link-button:hover {
-//    background: #cccccc;
-// }
+.copy-link-btn {
+   flex-shrink: 0;
+   width: 3em;
+   height: 3em;
+   background: #ffffff;
+   border: 0.2em solid #cccccc;
+   cursor: pointer;
+}
 
-// .row {
-//    display: flex;
-//    flex-direction: row;
-// }
+.copy-link-button:hover {
+   background: #cccccc;
+}

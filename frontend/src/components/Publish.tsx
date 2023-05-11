@@ -39,9 +39,9 @@ const Publish = () => {
    return (
       <>
          <NavBar />
-         <section>
-            <div className="card">
-               <header className="card-header">
+         <section className="publish-card-container">
+            <div className="publish-card">
+               <header className="publish-card-header">
                   <p className="card-header-title">Link to Share</p>
                   <div className="row">
                      <input className="copy-link-input" value={formUrl} readOnly></input>
