@@ -54,26 +54,33 @@ except Exception as e:
 @app.route("/Publish", methods=["POST"])
 def submit_form():
     data = request.get_json()  # get the form data
-    print(data)
     result = collection_forms.insert_one(data)
     form_id = str(result.inserted_id)
-    # form_url = f"http://example.com/forms/{object_id}"
-    return jsonify({'form_id': form_id})
+    response_data = {'form_id': form_id, 'form_data': data}
+    return json_util.dumps(response_data)
+
+# Custom JSON serializer for handling ObjectId serialization
+def json_serial(obj):
+    if isinstance(obj, ObjectId):
+        return str(obj)
+    raise TypeError("Type %s not serializable" % type(obj))
 
 
-def convert_to_list(obj):
-    if isinstance(obj, set):
-        return list(obj)
-    raise TypeError(
-        f"Object of type {obj.__class__.__name__} is not JSON serializable")
+# def convert_to_list(obj):
+#     if isinstance(obj, set):
+#         return list(obj)
+#     raise TypeError(
+#         f"Object of type {obj.__class__.__name__} is not JSON serializable")
 
 
 @app.route("/Publish/<formId>", methods=["GET"])
 def get_form(formId):
     form = collection_forms.find_one({'_id': ObjectId(formId)})
     if form:
-        formId = convert_to_list({formId})
-        return jsonify({'form_id': formId})
+        form_id = str(form['_id'])
+        form_data = form
+        response_data = {'form_id': form_id, 'form_data': form_data}
+        return json_util.dumps(response_data)
     else:
         return jsonify({'error': 'Form not found'}), 404
 

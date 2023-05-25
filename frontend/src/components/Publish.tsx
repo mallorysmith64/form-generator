@@ -12,14 +12,12 @@ const Publish = () => {
    const { formId } = useParams();
    const navigate = useNavigate();
 
-   const baseURL = "http://localhost:5000/Publish/";
+   const baseURL = "http://localhost:5000/Publish";
 
    const getForm = async (formId: string) => {
       try {
-         const resp = await axios.get(`${baseURL}${formId}`);
-         console.log(resp.data);
-         const formUrl = `${window.location.origin}/FormView/${String(resp.data.form_id)}`; // format url
-         // const formUrl = `${baseURL}${String(resp.data.form_id)}`; // format url
+         const resp = await axios.get(`${baseURL}/${formId}`);
+         const formUrl = `${window.location.origin}/FormView/${formId}`; // format url
          setFormUrl(formUrl);
          console.log(formUrl);
       } catch (error) {

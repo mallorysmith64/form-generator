@@ -72,11 +72,12 @@ function DragDrop() {
       lastName: lastNameText,
    };
 
+   const baseUrl = "http://localhost:5000/Publish";
+
    const handleSubmit = async (e: { preventDefault: () => void }) => {
       e.preventDefault();
       try {
-         const resp = await axios.post("http://localhost:5000/Publish", formValues);
-         console.log("Form submitted successfully", resp);
+         const resp = await axios.post(`${baseUrl}`, formValues);
          const formId = resp.data.form_id;
          navigate(`/Publish/${formId}`);
       } catch (error) {
