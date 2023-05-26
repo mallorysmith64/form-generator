@@ -230,14 +230,14 @@ body {
 }
 
 .submit-btn-container {
-   display:flex;
+   display: flex;
 }
 
 .submit-btn {
-   display:flex;
+   display: flex;
    position: relative;
-   bottom:6em;
-   left:36em;
+   bottom: 6em;
+   left: 36em;
    font-size: 1.25em;
    text-transform: uppercase;
    align-self: flex-end;
@@ -247,16 +247,6 @@ body {
    color: hsla(0, 0%, 100%, 0.75) !important;
 }
 
-// .publish-btn {
-//    display: flex;
-//    justify-content: center;
-//    padding: 2em 0em 2em 33em;
-// }
-
-// .publish-btn > button {
-//    min-width: 11.25em;
-// }
-
 // copy link publish page below:
 .publish-card {
    width: 80em;
@@ -264,7 +254,7 @@ body {
 }
 
 .publish-card-container {
-   padding:5em;
+   padding: 5em;
 }
 
 .publish-card-header {
@@ -282,8 +272,8 @@ body {
    font-size: 2em;
    border: 0.1em solid #cccccc;
    width: 30em;
-   margin-left:0.5em;
-   margin-right:0.5em;
+   margin-left: 0.5em;
+   margin-right: 0.5em;
 }
 
 .copy-link-input:hover {
@@ -301,4 +291,18 @@ body {
 
 .copy-link-button:hover {
    background: #cccccc;
+}
+
+// FormView page
+.formview-btn-container {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   bottom: 5em;
+}
+
+.formview-btn {
+   display: flex;
+   position: absolute;
+   bottom: 5em;
 }
