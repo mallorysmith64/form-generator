@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
 interface FormData {
-   email: string;
+   _id: { $oid: string };
    header: string;
+   email: string;
    firstName: string;
    lastName: string;
 }
@@ -35,22 +35,14 @@ function FormView() {
          <section className="form-builder-page-container">
             <div className="form-builder">
                <div className="dropzone-container">
-                  {formData && (
-                     <>
-                        <div className="dropzone-item">
-                           <p>{formData.email}</p>
-                        </div>
-                        <div className="dropzone-item">
-                           <p>{formData.header}</p>
-                        </div>
-                        <div className="dropzone-item">
-                           <p>{formData.firstName}</p>
-                        </div>
-                        <div className="dropzone-item">
-                           <p>{formData.lastName}</p>
-                        </div>
-                     </>
-                  )}
+                  {formData &&
+                     Object.entries(formData)
+                        .filter(([key]) => key !== "_id")
+                        .map(([key, value], index) => (
+                           <div className="dropzone-item" key={index}>
+                              <p>{value}</p>
+                           </div>
+                        ))}
                </div>
             </div>
          </section>

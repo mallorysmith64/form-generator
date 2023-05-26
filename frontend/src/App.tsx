@@ -10,8 +10,8 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { FormContext, AlignType } from "./components/FormContext";
 
 function App() {
-   const [headerText, setHeaderText] = useState<string>("Type Header"); //shows placeholder when user clicks edit btn
-   const [emailText, setEmailText] = useState<string>("Type Email");
+   const [headerText, setHeaderText] = useState<string>("");
+   const [emailText, setEmailText] = useState<string>("");
    const [headerSize, setHeaderSize] = useState<number>();
    const [nameSize, setNameSize] = useState<number>();
 
@@ -19,8 +19,8 @@ function App() {
    const [alignEmail, setAlignEmail] = useState<AlignType>("left");
    const [alignName, setAlignName] = useState<AlignType>("left");
 
-   const [firstNameText, setFirstNameText] = useState<string>("First Name");
-   const [lastNameText, setLastNameText] = useState<string>("Last Name");
+   const [firstNameText, setFirstNameText] = useState<string>("");
+   const [lastNameText, setLastNameText] = useState<string>("");
    
    return (
       <>
