@@ -1,0 +1,32 @@
+{
+  "name": "form-generator",
+  "version": "1.0.0",
+  "description": "## Before You Can Begin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mallorysmith64/form-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mallorysmith64/form-generator/issues"
+  },
+  "homepage": "https://github.com/mallorysmith64/form-generator#readme",
+  "dependencies": {
+    "bson": "^6.8.0",
+    "flask": "^0.2.10",
+    "python3": "^0.0.1",
+    "react": "^18.3.1",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
+    "react-router-dom": "^6.27.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.11"
+  }
+}
