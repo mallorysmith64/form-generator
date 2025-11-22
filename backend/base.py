@@ -7,7 +7,9 @@ import json
 from flask import Flask, request
 from flask_restful import reqparse, abort, Api, Resource
 from pymongo import MongoClient
+#change to dotenv 11/20/25
 from dotenv import load_dotenv
+# from dotenv import load_dotenvbson
 from flask import jsonify
 from flask_cors import CORS
 
@@ -19,7 +21,8 @@ DB_NAME = os.getenv("DB_NAME")
 
 app = Flask(__name__)
 api = Api(app)
-CORS(app)
+#change to allow vite and frontend 11/20/25
+CORS(app, resources={r"/*": {"origins": ["http://localhost:5173", "http://localhost:3000"]}})
 db = MongoClient()
 
 Forms = {
@@ -77,8 +80,8 @@ def get_form(formId):
     else:
         return jsonify({'error': 'Form not found'}), 404
 
-
-cors = CORS(app, resources={'/*': {'origins': 'http://localhost:5000'}})
+#remove old cors 11/20/25
+# cors = CORS(app, resources={'/*': {'origins': 'http://localhost:5000'}})
 
 if __name__ == '__main__':
     app.run(debug=True)

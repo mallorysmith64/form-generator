@@ -7,7 +7,8 @@ import Header from "./Header";
 import Email from "./Email";
 import Name from "./Name";
 import { AlignType, FormContext } from "./FormContext";
-
+import axios from "axios"; // <--- IMPORT AXIOS
+import { useNavigate } from "react-router-dom"; // <--- IMPORT NAVIGATE
 interface CardProps {
    key: string;
    id: string;
@@ -48,13 +49,25 @@ const cardList = [
 ];
 
 function DragDrop() {
-   const [dropZone, setDropZone] = useState<CardProps[]>([]);
+   // const [dropZone, setDropZone] = useState<CardProps[]>([]);
+   const { formElements, setFormElements } = useContext(FormContext);
+   // ADD THIS LINE:
+   const navigate = useNavigate();
    const [showEditor, setShowEditor] = useState(false);
    const [activeCard, setActiveCard] = useState("");
 
-   const { headerText } = useContext(FormContext);
-   const { emailText } = useContext(FormContext);
-   const { firstNameText, lastNameText } = useContext(FormContext);
+   // const { headerText } = useContext(FormContext);
+   // const { emailText } = useContext(FormContext);
+   // const { firstNameText, lastNameText } = useContext(FormContext);
+
+   const { 
+      headerText, 
+      emailText, 
+      firstNameText, 
+      lastNameText 
+   } = useContext(FormContext);
+
+
    const [activeEditCard, setActiveEditCard] = useState<string>(null);
 
    const [{ isOver }, drop] = useDrop(() => ({
@@ -107,34 +120,55 @@ function DragDrop() {
       // setShowEditor(true);
    };
 
-   const addCard = (id: string, index: number, key: string) => {
+ const addCard = (id: string, index: number, key: string) => {
       const droppedCards = cardList.filter((card) => id === card.id);
-      setDropZone((dropZone) => [
-         ...dropZone,
-         {
+      
+      // The error happens here. Saving FormContext.tsx fixes it.
+      setFormElements((prev) => {
+         const newItem = {
             ...droppedCards[0],
             isToolbar: false,
-            index: dropZone.length,
+            index: prev.length,
             key: uuidv4(),
-         },
-      ]);
+         };
+         return [...prev, newItem];
+      });
    };
+   //    setDropZone((dropZone) => [
+   //       ...dropZone,
+   //       {
+   //          ...droppedCards[0],
+   //          isToolbar: false,
+   //          index: dropZone.length,
+   //          key: uuidv4(),
+   //       },
+   //    ]);
+   // };
 
+   // const handleDeleteCard = (index: number) => {
+   //    setDropZone((prevCards) => {
+   //       const newCards = [...prevCards];
+   //       console.log(newCards);
+   //       newCards.splice(index, 1);
+   //       console.log(newCards);
+   //       return newCards;
+   //    });
+   // };
+
+   // --- 3. DELETE CARD (Fixed to use Context) ---
    const handleDeleteCard = (index: number) => {
-      setDropZone((prevCards) => {
-         const newCards = [...prevCards];
-         console.log(newCards);
+      setFormElements((prev) => {
+         const newCards = [...prev];
          newCards.splice(index, 1);
-         console.log(newCards);
          return newCards;
       });
    };
 
-   const dropZoneCards = dropZone.map((card, index) => (
+   const dropZoneCards = formElements.map((card, index) => (
       <div className="dropZoneCards" key={card.key}>
          <Card
             key={uuidv4()}
-            id={card.id}
+            id={String(card.id)}
             index={index}
             icon={card.icon}
             isToolbar={false}
@@ -149,14 +183,38 @@ function DragDrop() {
       </div>
    ));
 
+    // --- 4. PUBLISH FUNCTION (New) ---
+   const handlePublish = async () => {
+      const payload = {
+         title: headerText || "Untitled Form",
+         schema: formElements,
+         ui_settings: { emailText, firstNameText, lastNameText }
+      };
+
+      try {
+         // Make sure your Python server is running on port 5000
+         const response = await axios.post("http://localhost:5000/Publish", payload);
+         
+         // Redirect to the publish page using the ID from backend
+         if (response.data.form_id) {
+            navigate(`/Publish/${response.data.form_id}`);
+         }
+      } catch (error) {
+         console.error("Error publishing:", error);
+         alert("Failed to publish form. Is the backend running?");
+      }
+   };
+
    return (
       <>
          <section className="form-builder-page-container">
-            <button className="submit-btn button is-success">Publish</button>
+            /* //publish button here!!!!! */
+            <button className="submit-btn button is-success" onClick={handlePublish}
+            >Publish</button>
 
             <div className="card-container">{cards}</div>
 
-            <div className="form-builder" ref={drop}>
+            <div className="form-builder" ref={drop as any}>
                <div className="dropzone-container">
                   <div className="dropzone-cards">{dropZoneCards}</div>
                </div>

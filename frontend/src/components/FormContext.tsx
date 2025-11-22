@@ -1,9 +1,20 @@
-import React from "react";
-
+// import React from "react";
+import React, { Dispatch, SetStateAction } from "react"; // <--- IMPORT THESE
 export type AlignType = "left" | "center" | "right";
 
+//added 11/20/25 from gemini
+export type FormElement = {
+  id: string | number;
+  type?: string;
+  [key: string]: any; // Allows any other properties
+};
 
 type FormContextType = {
+
+   //added formElements 11/20/25 from gemini
+   formElements: FormElement[];
+   setFormElements: Dispatch<SetStateAction<FormElement[]>>;
+
    headerText: string;
    setHeaderText: (text: string) => void;
 
@@ -32,6 +43,10 @@ type FormContextType = {
 };
 
 export const FormContext = React.createContext<FormContextType>({
+//gemini formElements added 11/20/25
+   formElements: [],
+   setFormElements: () => {},  // This stays as an empty function default
+
    headerText: "",
    setHeaderText: () => {},
 

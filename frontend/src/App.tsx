@@ -7,7 +7,7 @@ import FormView from "./components/FormView";
 import Templates from "./components/Templates";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { FormContext, AlignType } from "./components/FormContext";
+import { FormContext, AlignType, FormElement } from "./components/FormContext";
 
 function App() {
    const [headerText, setHeaderText] = useState<string>("Type Header"); //shows placeholder when user clicks edit btn
@@ -23,10 +23,14 @@ function App() {
    const [lastNameText, setLastNameText] = useState<string>("Last Name");
    // const [showEditor, setShowEditor] = useState<boolean>();
 
+   const [formElements, setFormElements] = useState<FormElement[]>([]);
+
    return (
       <>
          <FormContext.Provider
             value={{
+               formElements,
+               setFormElements,
                headerText,
                setHeaderText,
                emailText,
