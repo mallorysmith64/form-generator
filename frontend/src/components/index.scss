@@ -2,7 +2,7 @@ html,
 body {
    margin: 0em;
    padding: 0em;
-   overflow: hidden;
+   // overflow: hidden; //trying to get button to click
 }
 
 // homepage below
@@ -57,7 +57,7 @@ body {
    display: flex;
    justify-content: center;
    align-items: center;
-   position: absolute;
+   // position: absolute;
    bottom: 0;
    width: 100%;
    margin-bottom: 0em;
@@ -230,11 +230,21 @@ body {
 }
 
 .submit-btn {
+   // position: fixed;
+   // bottom: 4em;
+   // margin-left: 18em !important;
+   // font-size: 1.25em;
+   // text-transform: uppercase;
    position: fixed;
    bottom: 4em;
-   margin-left: 18em !important;
+   /* Move it to the right or left specifically so it's not under the side panel */
+   right: 2em; 
+   margin-left: 0 !important; /* Reset this to test */
    font-size: 1.25em;
    text-transform: uppercase;
+   z-index: 9999;           /* Ensure it's above everything */
+   pointer-events: auto;    /* Force it to accept clicks */
+   cursor: pointer;         /* Visual feedback */
 }
 
 .submit-btn:hover {

@@ -5,14 +5,12 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "concurrently --kill-others 'yarn run vite' 'yarn run tsc-watch' 'yarn run start-backend'",
-    "dev": "concurrently --kill-others 'yarn run vite' 'yarn run tsc-watch' 'yarn run start-backend'",
-    "start-backend": "cd ../backend && FLASK_ENV=development FLASK_DEBUG=1 env/bin/flask run",
-    "tsc-watch": "tsc-watch --onFailure 'play /snap/gtk-common-themes/1535/share/sounds/freedesktop/stereo/window-question.oga'",
-    "vite": "ulimit -Sn 10000 && vite serve   --host 0.0.0.0 --port 8080 --mode development --clearScreen false",
-    "preview": "ulimit -Sn 10000 && vite preview --host 0.0.0.0 --port 8080",
-    "build": "vite build",
-    "tsc": "tsc"
+    "start-frontend": "yarn vite",
+    "start-backend": "cd ../backend && flask run",
+    "dev": "concurrently \"yarn start-frontend\" \"yarn start-backend\"",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "0.2.0",

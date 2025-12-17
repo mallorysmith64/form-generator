@@ -60,11 +60,11 @@ function DragDrop() {
    // const { emailText } = useContext(FormContext);
    // const { firstNameText, lastNameText } = useContext(FormContext);
 
-   const { 
-      headerText, 
-      emailText, 
-      firstNameText, 
-      lastNameText 
+   const {
+      headerText,
+      emailText,
+      firstNameText,
+      lastNameText
    } = useContext(FormContext);
 
 
@@ -120,9 +120,9 @@ function DragDrop() {
       // setShowEditor(true);
    };
 
- const addCard = (id: string, index: number, key: string) => {
+   const addCard = (id: string, index: number, key: string) => {
       const droppedCards = cardList.filter((card) => id === card.id);
-      
+
       // The error happens here. Saving FormContext.tsx fixes it.
       setFormElements((prev) => {
          const newItem = {
@@ -183,7 +183,7 @@ function DragDrop() {
       </div>
    ));
 
-    // --- 4. PUBLISH FUNCTION (New) ---
+   // --- 4. PUBLISH FUNCTION (New) ---
    const handlePublish = async () => {
       const payload = {
          title: headerText || "Untitled Form",
@@ -194,7 +194,7 @@ function DragDrop() {
       try {
          // Make sure your Python server is running on port 5000
          const response = await axios.post("http://localhost:5000/Publish", payload);
-         
+
          // Redirect to the publish page using the ID from backend
          if (response.data.form_id) {
             navigate(`/Publish/${response.data.form_id}`);
@@ -205,13 +205,24 @@ function DragDrop() {
       }
    };
 
+   const handleNavigation = () => {
+      console.log("Publish button clicked");
+      try {
+         navigate('/Publish');
+      } catch (error) {
+         console.error("Navigation error:", error);
+      }
+   };
+
    return (
       <>
          <section className="form-builder-page-container">
-            /* //publish button here!!!!! */
-            <button className="submit-btn button is-success" onClick={handlePublish}
+            <button className="submit-btn button is-success"
+               style={{ zIndex: 9999, cursor: 'pointer' }}
+               onClick={() => {
+                  handleNavigation();
+               }}
             >Publish</button>
-
             <div className="card-container">{cards}</div>
 
             <div className="form-builder" ref={drop as any}>
