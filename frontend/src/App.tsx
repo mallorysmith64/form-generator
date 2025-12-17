@@ -59,6 +59,7 @@ function App() {
                      <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/FormBuilder" element={<FormBuilder />} />
+                        <Route path="/Publish" element={<Publish />} />
                         <Route path="/Publish/:formId" element={<Publish />} />
                         <Route path="/FormView/:formId" element={<FormView />} />
                         <Route path="/Templates" element={<Templates />} />

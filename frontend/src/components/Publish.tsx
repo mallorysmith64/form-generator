@@ -10,6 +10,7 @@ const Publish = () => {
    const [value, copy] = useCopyToClipboard();
    const [formUrl, setFormUrl] = useState<string>("");
    const { formId } = useParams();
+   console.log("Current formId from URL:", formId);
    const navigate = useNavigate();
 
    const baseURL = "http://localhost:5000/Publish/";
