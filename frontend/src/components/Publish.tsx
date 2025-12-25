@@ -33,31 +33,31 @@ const Publish = () => {
       navigate(`/FormView/${formId}`);
    };
 
-  useEffect(() => {
-   // Only attempt the request if formId is a real value
-   if (formId && formId !== "undefined") {
-      getForm(formId);
-   } else {
-      console.warn("Skipping GET request: formId is undefined.");
-   }
-}, [formId]);
+   useEffect(() => {
+      // Only attempt the request if formId is a real value
+      if (formId && formId !== "undefined") {
+         getForm(formId);
+      } else {
+         console.warn("Skipping GET request: formId is undefined.");
+      }
+   }, [formId]);
 
    return (
       <>
          <NavBar />
          <section>
-            <div className="card">
-               <header className="card-header">
-                  <p className="card-header-title">Link to Share</p>
-                  <div className="row">
-                     <input className="copy-link-input" value={formUrl} readOnly></input>
-                     <button className="button copy-link-btn" onClick={handleCopy}>
-                        <i className="fas fa-copy"></i>
-                     </button>
-                  </div>
+            
+            <header className="card-header">
+               <p className="card-header-title">Link to Share</p>
+               <div className="row">
+                  <input className="copy-link-input" value={formUrl} readOnly></input>
+                  <button className="button copy-link-btn" onClick={handleCopy}>
+                     <i className="fas fa-copy"></i>
+                  </button>
                   <p>Copied value: {value ?? "Nothing is copied yet!"}</p>
-               </header>
-            </div>
+               </div>
+            </header>
+
          </section>
       </>
    );

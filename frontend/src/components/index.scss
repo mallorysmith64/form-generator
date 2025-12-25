@@ -262,48 +262,41 @@ body {
 // }
 
 // copy link publish page below:
-// .card {
-//    width: 65em;
-// }
+.card-header {
+   display: flex;
+   flex-direction: row;
+   height:10em;
+   width:80em;
+}
 
-// .card-header {
-//    display: flex;
-//    flex-direction: column;
-//    width: 100%;
-// }
+.card-header-title {
+   font-size: 2em;
+   flex-grow:0em !important;
+   padding:1em;
+}
 
-// .card-header-title {
-//    font-size: 2em;
-// }
+.copy-link-input {
+   display: flex;
+   padding: 0.7em;
+   font-size: 1em;
+   border: 0.1em solid #cccccc;
+   outline: none;
+   width: 100%;
+}
 
-// .copy-link-input {
-//    display: flex;
-//    padding: 0.7em;
-//    font-size: 2em;
-//    border: 0.1em solid #cccccc;
-//    border-right: none;
-//    outline: none;
-//    width: 95%;
-// }
+.copy-link-input:hover {
+   background: #eeeeee;
+}
 
-// .copy-link-input:hover {
-//    background: #eeeeee;
-// }
+.copy-link-btn {
+   flex-shrink: 0;
+   width: 2em;
+   height: 2em;
+   background: #ffffff;
+   border: 0.2em solid #cccccc;
+   cursor: pointer;
+}
 
-// .copy-link-btn {
-//    flex-shrink: 0;
-//    width: 2em;
-//    height: 2em;
-//    background: #ffffff;
-//    border: 0.2em solid #cccccc;
-//    cursor: pointer;
-// }
-
-// .copy-link-button:hover {
-//    background: #cccccc;
-// }
-
-// .row {
-//    display: flex;
-//    flex-direction: row;
-// }
+.copy-link-button:hover {
+   background: #cccccc;
+}
