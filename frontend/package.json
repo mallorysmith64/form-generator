@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "start-frontend": "yarn vite",
-    "start-backend": "cd ../backend && flask run",
-    "dev": "concurrently \"yarn start-frontend\" \"yarn start-backend\"",
+    "start-backend": "flask --app ../backend/base.py run",
+   "dev": "concurrently -n \"VITE,FLASK\" -c \"blue,green\" \"yarn start-frontend\" \"yarn start-backend\"",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"

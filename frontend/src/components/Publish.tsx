@@ -13,7 +13,7 @@ const Publish = () => {
    console.log("Current formId from URL:", formId);
    const navigate = useNavigate();
 
-   const baseURL = "http://localhost:5000/Publish/";
+   const baseURL = "http://localhost:5000/Publish";
 
    const getForm = async (formId: string) => {
       try {
@@ -33,9 +33,14 @@ const Publish = () => {
       navigate(`/FormView/${formId}`);
    };
 
-   useEffect(() => {
+  useEffect(() => {
+   // Only attempt the request if formId is a real value
+   if (formId && formId !== "undefined") {
       getForm(formId);
-   }, [formId]);
+   } else {
+      console.warn("Skipping GET request: formId is undefined.");
+   }
+}, [formId]);
 
    return (
       <>
