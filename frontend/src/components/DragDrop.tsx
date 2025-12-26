@@ -205,15 +205,6 @@ function DragDrop() {
       }
    };
 
-   const handleNavigation = () => {
-      console.log("Publish button clicked");
-      try {
-         navigate('/Publish');
-      } catch (error) {
-         console.error("Navigation error:", error);
-      }
-   };
-
    return (
       <>
          <section className="form-builder-page-container">
