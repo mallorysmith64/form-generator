@@ -193,7 +193,7 @@ function DragDrop() {
 
       try {
          // Make sure your Python server is running on port 5000
-         const response = await axios.post("http://localhost:5000/Publish", payload);
+         const response = await axios.post("http://localhost:5000/Publish/", payload);
 
          // Redirect to the publish page using the ID from backend
          if (response.data.form_id) {
@@ -220,7 +220,7 @@ function DragDrop() {
             <button className="submit-btn button is-success"
                style={{ zIndex: 9999, cursor: 'pointer' }}
                onClick={() => {
-                  handleNavigation();
+                  handlePublish();
                }}
             >Publish</button>
             <div className="card-container">{cards}</div>
