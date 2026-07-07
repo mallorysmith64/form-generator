@@ -210,9 +210,11 @@ function DragDrop() {
          <section className="form-builder-page-container">
             <div className="card-container">{cards}</div>
 
-            <div className="form-builder" ref={drop as any}>
-               <div className="dropzone-container">
-                  <div className="dropzone-cards">{dropZoneCards}</div>
+            <div className="form-builder-column">
+               <div className="form-builder" ref={drop as any}>
+                  <div className="dropzone-container">
+                     <div className="dropzone-cards">{dropZoneCards}</div>
+                  </div>
                </div>
 
                <button className="submit-btn button is-success"
