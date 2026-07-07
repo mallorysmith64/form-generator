@@ -68,6 +68,12 @@
     ]
   },
   "main": "index.js",
-  "repository": "git@github.com:mallorysmith64/form-generator-1.0.git",
-  "license": "MIT"
+  "repository": "git+ssh://git@github.com/mallorysmith64/form-generator-1.0.git",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mallorysmith64/form-generator-1.0/issues"
+  },
+  "homepage": "https://github.com/mallorysmith64/form-generator-1.0#readme",
+  "author": "",
+  "description": ""
 }

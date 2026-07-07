@@ -208,18 +208,18 @@ function DragDrop() {
    return (
       <>
          <section className="form-builder-page-container">
-            <button className="submit-btn button is-success"
-               style={{ zIndex: 9999, cursor: 'pointer' }}
-               onClick={() => {
-                  handlePublish();
-               }}
-            >Publish</button>
             <div className="card-container">{cards}</div>
 
             <div className="form-builder" ref={drop as any}>
                <div className="dropzone-container">
                   <div className="dropzone-cards">{dropZoneCards}</div>
                </div>
+
+               <button className="submit-btn button is-success"
+                  onClick={() => {
+                     handlePublish();
+                  }}
+               >Publish</button>
             </div>
 
             {showEditor && (
