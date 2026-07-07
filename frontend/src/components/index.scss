@@ -2,7 +2,6 @@ html,
 body {
    margin: 0em;
    padding: 0em;
-   // overflow: hidden; //trying to get button to click
 }
 
 // homepage below
@@ -76,7 +75,6 @@ body {
    box-sizing: border-box;
    padding: 1em 0em 0em 8em;   // extra left padding nudges the centered group rightward — increase/decrease this to taste
    background-color: #f3f3fe;
-   min-height: calc(100vh - 2vh);
 }
 
 .form-builder-column {
@@ -98,6 +96,8 @@ body {
    padding-top: 0.5em;
    background-color: #ffffff;
    box-shadow: rgba(87, 100, 126, 0.21) 0px 4px 4px 0px;
+   box-sizing: border-box;
+   overflow: auto;   // if dropped cards exceed the box height, they scroll inside the box only — not the whole page
 }
 
 .form-builder > .body {
@@ -143,6 +143,7 @@ body {
 // side panel
 #side-panel-container {
    display: flex;
+   flex-direction: column;
    position: fixed;
    font-size: 1.25em;
    z-index: 999;
@@ -152,8 +153,9 @@ body {
    padding: 3em;
    top: 0;
    height: calc(100vh - 0vh);
-   width: calc(53vh - 2vh);
    word-break: break-all;
+   overflow-y: auto;
+   box-sizing: border-box;
 }
 
 .quill {
@@ -179,8 +181,7 @@ body {
 
 .editor-close-btn {
    display: flex;
-   position: fixed;
-   bottom: 35em;
+   margin-top: 1em;
    color: white;
 }
 
