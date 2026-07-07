@@ -5,20 +5,20 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": false, //change back to true later
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": false, //change to false so app compiles even with tsx errors
     "noEmitOnError": false,
     "jsx": "react",
-    "baseUrl": "src", //added to make clean import statments possible
+     "rootDir": "./src",
     "noImplicitAny": true, //added to show warning when ts infers the type "any"
-    "outDir": "./build", // js files go to build, only dist will be production build
+    "outDir": "./dist"
   },
   "include": ["src", "tsconfig.node.json"],
   "references": [{ "path": "./tsconfig.node.json" }]

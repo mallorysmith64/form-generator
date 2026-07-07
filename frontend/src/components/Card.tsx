@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { useDrag } from "react-dnd";
-import { v4 as uuidv4 } from "uuid";
 import { FormContext } from "./FormContext";
 
 interface CardProps {
@@ -40,6 +39,8 @@ export function Card({
    const { nameSize } = useContext(FormContext);
    const { alignHeader, alignEmail, alignName } = useContext(FormContext);
 
+   const cardRef = useRef<HTMLDivElement>(null);
+
    const [{ isDragging }, drag] = useDrag(() => ({
       type: "card",
       item: () => {
@@ -51,12 +52,14 @@ export function Card({
       },
    }));
 
+   drag(cardRef);
+
    const handleDelete = (index: number) => {
-      onDelete(index);
+      onDelete?.(index);
    };
 
    const handleEdit = () => {
-      onEdit && onEdit();
+      onEdit?.();
    };
 
    const resizeHeaderText = {
@@ -81,8 +84,8 @@ export function Card({
 
    return (
       <>
-         <ul className="cards">
-            <div className="card is-size-4" ref={drag} key={uuidv4()}>
+         <div className="cards">
+            <div className="card is-size-4" ref={cardRef}>
                {/* <div className="card-content"> */}
                {isToolbar && (
                   <div className="media-left">
@@ -94,11 +97,11 @@ export function Card({
 
                {!isToolbar && (
                   <div className="toolbar-header-btns">
-                     <button className="btn" onClick={onEdit}>
+                     <button className="btn" onClick={handleEdit}>
                         <i className="fas fa-edit"></i>
                      </button>
 
-                     <button className="btn" onClick={() => onDelete(index)}>
+                     <button className="btn" onClick={() => handleDelete(index)}>
                         <i className="fas fa-trash"></i>
                      </button>
                   </div>
@@ -146,7 +149,7 @@ export function Card({
                   <p>{text}</p>
                )}
             </div>
-         </ul>
+         </div>
       </>
    );
 }
