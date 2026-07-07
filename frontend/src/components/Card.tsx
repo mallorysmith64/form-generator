@@ -85,7 +85,7 @@ export function Card({
    return (
       <>
          <div className="cards">
-            <div className="card is-size-4" ref={cardRef}>
+            <div className="card" ref={cardRef}>
                {/* <div className="card-content"> */}
                {isToolbar && (
                   <div className="media-left">
