@@ -47,6 +47,10 @@ try:
         print(doc)
 except Exception as e:
     print(f"Error - Could not connect to mongo: {e}")
+    
+@app.route('/')
+def index():
+    return "Hello, world!"
 
 @app.route('/Publish/', methods=['POST'])
 def save_form():
