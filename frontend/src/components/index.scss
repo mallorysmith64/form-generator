@@ -264,15 +264,27 @@ body {
 // copy link publish page below:
 .card-header {
    display: flex;
-   flex-direction: row;
-   height:10em;
-   width:80em;
+   flex-direction: column;   // was row — now stacks title above the link row
+   width: 100%;
+   max-width: 50em;          // was width: 80em — no more overflow off-page
+   box-sizing: border-box;
+   padding: 1em;
+   height: auto;             // was a fixed 10em, let content decide the height
+   margin-left:5em;
+   margin-top:1em;
 }
 
 .card-header-title {
    font-size: 2em;
-   flex-grow:0em !important;
-   padding:1em;
+   padding: 0 0 0.5em 0;     // just spacing under the title now
+}
+
+.row {
+   display: flex;
+   flex-direction: row;      // input + copy button stay side-by-side
+   align-items: center;
+   width: 100%;
+   gap: 0.5em;
 }
 
 .copy-link-input {
@@ -281,7 +293,8 @@ body {
    font-size: 1em;
    border: 0.1em solid #cccccc;
    outline: none;
-   width: 100%;
+   flex: 1;                  // was width: 100% — flex: 1 plays nicer inside the row
+   min-width: 0;             // prevents input from overflowing its flex container
 }
 
 .copy-link-input:hover {
@@ -299,4 +312,8 @@ body {
 
 .copy-link-button:hover {
    background: #cccccc;
+}
+
+.copy-status {
+   margin-top:1em;
 }

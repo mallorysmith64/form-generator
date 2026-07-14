@@ -54,8 +54,8 @@ const Publish = () => {
                   <button className="button copy-link-btn" onClick={handleCopy}>
                      <i className="fas fa-copy"></i>
                   </button>
-                  <p>Copied value: {value ?? "Nothing is copied yet!"}</p>
                </div>
+               <p className="copy-status">Copied value: {value ?? "Nothing is copied yet!"}</p>
             </header>
 
          </section>
