@@ -17,7 +17,7 @@ const NavBar = () => {
                   </Link> */}
 
                   <Link to="/#" className="navbar-item">
-                     Form Factory
+                     Form Generator
                   </Link>
                </div>
 

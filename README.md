@@ -25,7 +25,7 @@ Ex: code .
 * yarn add uuid (this fixes build errors like Rollup failed to resolve import "uuid")
 
 * yarn build
-* yarn preview (Run this to see project in the browser. You are all set!)
+* yarn vite to start project
 
 ## To Start Backend
 
