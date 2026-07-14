@@ -13,7 +13,7 @@ const Publish = () => {
    console.log("Current formId from URL:", formId);
    const navigate = useNavigate();
 
-   const baseURL = "http://localhost:5000/Publish";
+   const baseURL = "http://localhost:5000/Publish/";
 
    const getForm = async (formId: string) => {
       try {
