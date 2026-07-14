@@ -76,6 +76,7 @@ def get_form(form_id):
         
         if form:
             form['_id'] = str(form['_id']) # Convert ObjectId to string for JSON
+            form['form_id'] = form['_id'] # Consistent key for the frontend to read
             return jsonify(form), 200
         return jsonify({"error": "Form not found"}), 404
     except Exception as e:
@@ -83,4 +84,3 @@ def get_form(form_id):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
