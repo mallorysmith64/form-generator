@@ -1,27 +1,28 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// import FormBuilder from "./FormBuilder";
 
 function FormView() {
    const [formData, setFormData] = useState([]);
    const { formId } = useParams();
 
-   const baseURL = "http://localhost:5000/Publish/";
+   // Relative path: works whether this runs on localhost, staging, or
+   // production, since the frontend and API are served from the same origin.
+   const baseURL = "/Publish/";
 
    const viewForm = async (formId: string) => {
-  try {
-     const resp = await axios.get(`${baseURL}${formId}`);
-     console.log("Full DB Object:", resp.data);
-     
-     // Match the key name you used in the POST payload
-     if (resp.data.schema) {
-        setFormData(resp.data.schema); 
-     }
-  } catch (error) {
-     console.error("Error fetching form data: ", error);
-  }
-};
+      try {
+         const resp = await axios.get(`${baseURL}${formId}`);
+         console.log("Full DB Object:", resp.data);
+
+         // Match the key name you used in the POST payload
+         if (resp.data.schema) {
+            setFormData(resp.data.schema);
+         }
+      } catch (error) {
+         console.error("Error fetching form data: ", error);
+      }
+   };
 
    useEffect(() => {
       viewForm(formId);
@@ -69,17 +70,4 @@ function FormView() {
    );
 }
 
-         // <div className="submit-btn">
-         //    <button type="submit" className="button is-success is-large">
-         //       Submit
-         //    </button>
-         // </div>
-//       </>
-//    );
-// }
-
 export default FormView;
-
-{
-   /* <div className="view-react-form-builder">{renderFormFields(formData)}</div> */
-}

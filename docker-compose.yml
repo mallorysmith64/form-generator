@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: my-app:latest
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    # MONGO_USER, MONGO_PASSWORD, MONGO_HOST, DB_NAME all come from .env
+    # and are read directly by the Flask app (via python-dotenv / os.environ)
+    # to build its Atlas connection string. No local "mongodb" service
+    # is needed here since the database lives on Atlas, not in this file.

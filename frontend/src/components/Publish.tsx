@@ -13,14 +13,15 @@ const Publish = () => {
    console.log("Current formId from URL:", formId);
    const navigate = useNavigate();
 
-   const baseURL = "http://localhost:5000/Publish/";
+   // Relative path: works whether this runs on localhost, staging, or
+   // production, since the frontend and API are served from the same origin.
+   const baseURL = "/Publish";
 
    const getForm = async (formId: string) => {
       try {
-         const resp = await axios.get(`${baseURL}${formId}`);
+         const resp = await axios.get(`${baseURL}/${formId}`);
          console.log(resp.data);
-         const formUrl = `${window.location.origin}/FormView/${String(resp.data.form_id)}`; // format url
-         // const formUrl = `${baseURL}${String(resp.data.form_id)}`; // format url
+         const formUrl = `${window.location.origin}/FormView/${String(resp.data.form_id)}`;
          setFormUrl(formUrl);
          console.log(formUrl);
       } catch (error) {
@@ -54,8 +55,8 @@ const Publish = () => {
                   <button className="button copy-link-btn" onClick={handleCopy}>
                      <i className="fas fa-copy"></i>
                   </button>
+                  <p>Copied value: {value ?? "Nothing is copied yet!"}</p>
                </div>
-               <p className="copy-status">Copied value: {value ?? "Nothing is copied yet!"}</p>
             </header>
 
          </section>

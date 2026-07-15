@@ -13,16 +13,17 @@ from flask import jsonify
 from flask_cors import CORS
 
 load_dotenv()
-USER = os.getenv("USER")
-PASSWORD = os.getenv("PASSWORD")
-HOST = os.getenv("HOST")
+USER = os.getenv("MONGO_USER")
+PASSWORD = os.getenv("MONGO_PASSWORD")
+HOST = os.getenv("MONGO_HOST")
 DB_NAME = os.getenv("DB_NAME")
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="static", static_url_path="")
 api = Api(app)
 
-CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
-db = MongoClient()
+# CORS origin is configurable per environment via .env; defaults to the
+# local Vite dev server port if not set.
+CORS(app, resources={r"/Publish/*": {"origins": os.getenv("CORS_ORIGIN", "http://localhost:5173")}})
 
 Forms = {
     'form1': {'form_name': 'Lorem Ipsum'},
@@ -32,8 +33,8 @@ Forms = {
 
 try:
     database = MongoClient(
-        f"mongodb+srv://admin:{PASSWORD}@fgen-cluster-1.hqbtg0a.mongodb.net/?appName=fgen-cluster-1")
-    form_db = database['form_generator_db']
+    f"mongodb+srv://{USER}:{PASSWORD}@{HOST}/?appName=fgen-cluster-1")
+    form_db = database[DB_NAME]
     # Create a Collection - dictionary style
     collection_forms = form_db['forms'] 
     print("Successfully connected to MongoDB Atlas")
@@ -48,10 +49,6 @@ try:
 except Exception as e:
     print(f"Error - Could not connect to mongo: {e}")
     
-@app.route('/')
-def index():
-    return "Hello, world!"
-
 @app.route('/Publish/', methods=['POST'])
 def save_form():
     print("p1, save form function")
@@ -81,6 +78,16 @@ def get_form(form_id):
         return jsonify({"error": "Form not found"}), 404
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve_frontend(path):
+    # Serve a real built file (JS, CSS, images, etc.) if the path matches one.
+    if path and os.path.exists(os.path.join(app.static_folder, path)):
+        return app.send_static_file(path)
+    # Otherwise (any client-side route like /FormBuilder or /FormView/123),
+    # fall back to index.html and let React Router handle it.
+    return app.send_static_file('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
